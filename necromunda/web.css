@@ -1,6 +1,37 @@
+nav {
+  background-color: lightgrey;
+  height: 100%;
+  width: 240px;
+  overflow: auto;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav li {
+  margin: 10px 0px 10px 0px;
+}
+
+header h1 {
+  text-align: center;
+}
+
+main {
+  margin-left: 260px;
+  max-width: 800px;
+}
+
 table {
   border-collapse: collapse;
   margin: 5px;
+}
+
+table.territorytable {
+  width: 100%;
 }
 
 th, td {

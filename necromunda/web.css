@@ -1,3 +1,7 @@
+body {
+  font-family: "Jura", sans-serif;
+}
+
 nav {
   background-color: lightgrey;
   height: 100%;
@@ -32,7 +36,8 @@ nav a {
   top: 0px;
 }
 
-header h1 {
+h1 {
+  font-family: "Russo One", sans-serif;
   text-align: center;
 }
 
@@ -68,7 +73,7 @@ th, td {
  * "If aboutnecromunda is a sibling to a checked input radionecromunda, show it.
  * Otherwise, hide it."
  * Based on method described: Frederic Kizar, 2013, JSFiddle https://jsfiddle.net/khnNe/ */
-#aboutnecromunda, #aboutsite, #aboutnew {
+input, #aboutnecromunda, #aboutsite, #aboutnew {
   display: none;
 }
 

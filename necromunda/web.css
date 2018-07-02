@@ -16,6 +16,18 @@ nav li {
   margin: 10px 0px 10px 0px;
 }
 
+nav a {
+  display: block;
+}
+
+.navedge {
+  height: 100%;
+  width: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
 header h1 {
   text-align: center;
 }
@@ -37,4 +49,28 @@ table.territorytable {
 th, td {
   border: 1px solid black;
   padding: 5px;
+}
+
+.hazardstripes {
+  background: repeating-linear-gradient(45deg, black, black 15px, yellow 15px, yellow 30px);
+}
+
+/* CSS for hiding and displaying content on front page. Can be read as:
+ * "If aboutnecromunda is a sibling to a checked input radionecromunda, show it.
+ * Otherwise, hide it."
+ * Based on method described: Frederic Kizar, 2013, JSFiddle https://jsfiddle.net/khnNe/ */
+#aboutnecromunda, #aboutsite, #aboutnew {
+  display: none;
+}
+
+input#radionecromunda:checked ~ #aboutnecromunda {
+  display: block;
+}
+
+input#radiosite:checked ~ #aboutsite {
+  display: block;
+}
+
+input#radionew:checked ~ #aboutnew {
+  display: block;
 }

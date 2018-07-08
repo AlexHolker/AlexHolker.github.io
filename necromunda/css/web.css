@@ -1,0 +1,177 @@
+/* Colour Scheme:
+ * #F0F8FF aliceblue - a very pale blue/grey, like silver metal. Used for text.
+ * #292d33 - a dark blue/grey, like forged metal. Used for navbar background.
+ * #FF4500 orangered - a dull red. Used for "cool" links.
+ * #FFD700 gold - a slightly orange yellow. Used for "hot" links.
+ * #FFFFFF black - used for background and hazard stripes.
+ * #FFFF00 yellow - used for hazard stripes.
+ */
+
+body {
+  background-color: black;
+  color: aliceblue;
+  font-family: "Jura", sans-serif;
+  margin-bottom: 200px;
+}
+
+a:link, a:visited, label {
+  color: gold;
+  text-decoration: none;
+  text-shadow: 0px 0px 10px orangered;
+}
+
+a:hover, label:hover {
+  color: orangered;
+  text-shadow: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+h1 {
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+
+nav {
+  background-color: #292d33;
+  height: 100%;
+  width: 240px;
+  overflow: auto;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  box-shadow: 0px 0px 20px black;
+}
+
+nav ul {
+  list-style-type: none;
+  padding-left: 30px;
+}
+
+nav li {
+  margin: 10px 0px 10px 0px;
+}
+
+nav a {
+  display: block;
+}
+
+/* Hazard stripes on navbar uses CSS gradient with steep edges.*/
+.hazardstripes {
+  background: repeating-linear-gradient(45deg, black, black 15px, yellow 15px, yellow 30px);
+}
+
+.navedge {
+  height: 100%;
+  width: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  border-right: 1px solid darkgrey;
+}
+
+main {
+  margin-left: 260px;
+  max-width: 800px;
+}
+
+img {
+  float: left;
+  margin-right: 10px;
+  max-width: 100%;
+}
+
+/* Clearfix hack from W3Schools, clears float properties.
+ * https://www.w3schools.com/css/css_float.asp
+ */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Tooltips implemented using method taught in Web Programming for drop-down
+ * menus.
+ */
+.tooltip {
+  display: inline-block;
+  position: relative;
+  border-bottom: 1px dotted gold;
+}
+
+.tooltiptext {
+  display: none;
+}
+
+.tooltip:hover .tooltiptext {
+  display: block;
+  min-width: 100px;
+  background-color: #292d33;
+  padding: 2px;
+  position: absolute;
+  left: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  margin: 5px;
+}
+
+th, td {
+  border: 1px solid aliceblue;
+  padding: 5px;
+  text-align: center;
+}
+
+div.equipmenttable {
+  columns: 250px 3;
+}
+
+.equipmenttable>table {
+  margin-top: 0px;
+  width: 100%;
+}
+
+table.territorytable {
+  width: 100%;
+}
+
+.statstable th {
+  min-width: 6%;
+}
+
+.divtable {
+  display: table;
+  border-spacing: 10px;
+}
+
+.divtablerow {
+  display: table-row;
+}
+
+.divtablerow h4 {
+  display: table-cell;
+  width: 120pt;
+}
+
+.divtablerow p {
+  display: table-cell;
+}
+
+/* CSS for hiding and displaying content on front page. Can be read as:
+ * "If aboutnecromunda is a sibling to a checked input radionecromunda, show it.
+ * Otherwise, hide it."
+ * Based on method described here:
+ * Frederic Kizar, 2013, JSFiddle, https://jsfiddle.net/khnNe/
+ */
+input, #aboutnecromunda, #aboutsite, #aboutnew {
+  display: none;
+}
+
+input#radionecromunda:checked ~ #aboutnecromunda,
+input#radiosite:checked ~ #aboutsite,
+input#radionew:checked ~ #aboutnew {
+  display: block;
+}

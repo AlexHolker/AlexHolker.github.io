@@ -3,7 +3,7 @@
   <head>
     <title>Alex's Necromunda</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="web.css">
+    <link rel="stylesheet" type="text/css" href="css/web.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
   </head>
   <body>
@@ -29,18 +29,23 @@
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="utilities.html">Utilities</a></li>
       </ul>
+      <!--Empty div element used to apply background gradient to a region.-->
       <div class="navedge hazardstripes"></div>
     </nav>
     
     <main>
+      <!--Hidden radio buttons used to flag CSS rules.-->
       <input type="radio" name="display" id="radionecromunda">
       <input type="radio" name="display" id="radiosite">
       <input type="radio" name="display" id="radionew">
+      <!--Labels act as clickable extensions for the above inputs.-->
       <h2><label for="radionecromunda">What Is Necromunda?</label>
       <label for="radiosite">About This Site</label>
       <label for="radionew">What's New?</label></h2>
-      <section id="aboutnecromunda">
+      <!--Following sections hidden using CSS rules unless sibling of the right checked radio button.-->
+      <section id="aboutnecromunda" class="clearfix">
         <h2>What Is Necromunda?</h2>
+        <img src="img/rulebookcovers.png" alt="Necromunda rulebooks" style="width:371px; height:311px;">
         <p>Necromunda is a tabletop skirmish game set in the Warhammer 40,000 universe, in which players command gangs fighting through the underbelly of the largest arcology on the world of Necromunda, Hive Primus.</p>
         <p>The original boxed game was released in 1995, with an expansion Outlanders released the following year.</p>
         <p>The Necromunda Living Rulebook is an update of the original game, released for free by Games Workshop's Specialist Games.</p>
@@ -48,7 +53,7 @@
       </section>
       <section id="aboutsite">
         <h2>About This Site</h2>
-        <p></p>
+        <p>The house rules and utilities on this website are designed for use with the Necromunda Living Rulebook or Necromunda: Community Edition. If you've moved on to Necromunda Underhive you might be able to adapt this content for use in your campaign, but I can't make any promises.</p>
       </section>
       <section id="aboutnew">
         <h2>What's New?</h2>

@@ -11,11 +11,35 @@ body {
   background-color: black;
   color: aliceblue;
   font-family: "Jura", sans-serif;
-  margin-bottom: 200px;
+  max-width: 800px;
+  margin-left: 280px;
+}
+
+/* Background implemented using greyscale image with colour added with multiply
+ * blend mode.
+ **/
+body.hiveprimus {
+  background: linear-gradient(#5B554F, #5B554F), url("../img/hiveprimus.jpg");
+  background-blend-mode: multiply;
+  background-size: cover;
+}
+
+h1 {
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+
+h2 {
+  text-shadow: -1px -1px grey;
+}
+
+h4 {
+  margin: 5px 0px;
 }
 
 a:link, a:visited, label {
   color: gold;
+  cursor: pointer;
   text-decoration: none;
   text-shadow: 0px 0px 10px orangered;
 }
@@ -25,19 +49,20 @@ a:hover, label:hover {
   text-shadow: none;
 }
 
-label {
-  cursor: pointer;
+a.currentpage {
+  color: aliceblue;
+  text-shadow: 0px 0px 10px gold, 0px 0px 20px orangered;
 }
 
-h1 {
-  font-family: "Russo One", sans-serif;
-  text-align: center;
+.flavourtext {
+  font-style: italic;
+  margin-top: 0px;
 }
 
 nav {
   background-color: #292d33;
   height: 100%;
-  width: 240px;
+  width: 260px;
   overflow: auto;
   position: fixed;
   left: 0px;
@@ -45,13 +70,17 @@ nav {
   box-shadow: 0px 0px 20px black;
 }
 
-nav ul {
+ul {
   list-style-type: none;
   padding-left: 30px;
 }
 
 nav li {
-  margin: 10px 0px 10px 0px;
+  margin: 10px 0px;
+}
+
+nav li li {
+  margin: 0px;
 }
 
 nav a {
@@ -73,8 +102,7 @@ nav a {
 }
 
 main {
-  margin-left: 260px;
-  max-width: 800px;
+  min-height: 460px;
 }
 
 img {
@@ -90,28 +118,6 @@ img {
   content: "";
   clear: both;
   display: table;
-}
-
-/* Tooltips implemented using method taught in Web Programming for drop-down
- * menus.
- */
-.tooltip {
-  display: inline-block;
-  position: relative;
-  border-bottom: 1px dotted gold;
-}
-
-.tooltiptext {
-  display: none;
-}
-
-.tooltip:hover .tooltiptext {
-  display: block;
-  min-width: 100px;
-  background-color: #292d33;
-  padding: 2px;
-  position: absolute;
-  left: 10px;
 }
 
 table {
@@ -134,30 +140,106 @@ div.equipmenttable {
   width: 100%;
 }
 
-table.territorytable {
+.territorytable {
   width: 100%;
+}
+
+.territorytable th:not(:first-child) {
+  min-width: 16%;
+}
+
+.territorytable td {
+  vertical-align: top;
+}
+
+summary h4 {
+  display: inline-block;
+}
+
+.territorytable ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* Font size of 14.4px instead of 16px - still large enough to be easily
+ * legible, but makes tables less massive.*/
+.territorytable p {
+  font-size: 0.9em;
+  margin-bottom: 0px;
 }
 
 .statstable th {
   min-width: 6%;
 }
 
+footer {
+  margin: 100px 0px;
+}
+
+#breadcrumb {
+  font-weight: bold;
+}
+
+/* Tooltips implemented using method taught in Web Programming for drop-down
+ * menus.
+ */
+.tooltip {
+  display: inline-block;
+  position: relative;
+  text-decoration: underline dotted gold;
+}
+
+.tooltiptext {
+  display: none;
+}
+
+.tooltip:hover .tooltiptext,
+.workedvalue:hover::after,
+.lootedvalue:hover::after {
+  display: block;
+  min-width: 100px;
+  background-color: #292d33;
+  padding: 2px;
+  position: absolute;
+  left: 10px;
+}
+
+/* Divtables used for responsive tables.
+ * Child element of divtable automatically made table-row.
+ * Grandchild element of divtable automatically made table-cell.
+ */
 .divtable {
   display: table;
   border-spacing: 10px;
+  width: 100%;
 }
 
-.divtablerow {
+.divtable>div {
   display: table-row;
 }
 
-.divtablerow h4 {
+.divtable>div>* {
   display: table-cell;
+}
+
+.divtable>div>h3,
+.divtable>div>h4 {
   width: 120pt;
 }
 
-.divtablerow p {
-  display: table-cell;
+.workedvalue, .lootedvalue {
+  width: 50%;
+}
+
+/* Automated addition of tooltips for worked values and looted values in
+ * territory tables.
+ */
+.workedvalue:hover::after {
+  content: "Worked value";
+}
+
+.lootedvalue:hover::after {
+  content: "Looted value";
 }
 
 /* CSS for hiding and displaying content on front page. Can be read as:

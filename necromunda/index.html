@@ -3,10 +3,14 @@
   <head>
     <title>Alex's Necromunda</title>
     <meta charset="utf-8">
+    <meta name="description" content="House rules for Necromunda">
+    <meta name="keywords" content="Necromunda">
+    <meta name="author" content="Alex Holker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
   </head>
-  <body>
+  <body class="hiveprimus">
     <header>
       <h1>TITLE</h1>
     </header>
@@ -14,7 +18,7 @@
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="#" class="currentpage">Home</a></li>
         <li>
           Campaign Rules
           <a href="equipment.html">Equipment Lists</a>
@@ -25,6 +29,7 @@
           Gang Rules
           <!--<a href="houseescher.html">House Escher Gang</a>-->
           <a href="adeptasororitas.html">Adepta Sororitas Squad</a>
+          <a href="houseprospectors.html">House Prospector Team</a>
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="utilities.html">Utilities</a></li>
@@ -48,8 +53,8 @@
         <img src="img/rulebookcovers.png" alt="Necromunda rulebooks" style="width:371px; height:311px;">
         <p>Necromunda is a tabletop skirmish game set in the Warhammer 40,000 universe, in which players command gangs fighting through the underbelly of the largest arcology on the world of Necromunda, Hive Primus.</p>
         <p>The original boxed game was released in 1995, with an expansion Outlanders released the following year.</p>
-        <p>The Necromunda Living Rulebook is an update of the original game, released for free by Games Workshop's Specialist Games.</p>
-        <p>Necromunda Underhive is the third official edition of the game, released in 2017.</p>
+        <p>The Necromunda Living Rulebook is an update of the original game, released for free by Games Workshop's Specialist Games. It is no longer supported by Games Workshop, but survives in the form of Necromunda: Community Edition.</p>
+        <p>Necromunda: Underhive is the third official edition of the game, released in 2017. To learn more about Necromunda: Underhive, visit <a href="https://necromunda.com/" target="_blank">the official website</a>.</p>
       </section>
       <section id="aboutsite">
         <h2>About This Site</h2>
@@ -58,9 +63,15 @@
       <section id="aboutnew">
         <h2>What's New?</h2>
         <ul>
-          <li>Website currently under construction.</li>
+          <li>15/07/2018: Initial release of Adepta Sororitas Squad and House Prospectors Team rules.</li>
         </ul>
       </section>
     </main>
+    
+    <footer>
+      <p id="breadcrumb"><a href="index.html" class="currentpage">Home</a></p>
+      <p>&copy; Alex Holker, 2018</p>
+      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+    </footer>
   </body>
 </html>

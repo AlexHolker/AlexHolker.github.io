@@ -3,6 +3,10 @@
   <head>
     <title>Alex's Necromunda - Territories Tables</title>
     <meta charset="utf-8">
+    <meta name="description" content="House rules for Necromunda">
+    <meta name="keywords" content="Necromunda">
+    <meta name="author" content="Alex Holker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
   </head>
@@ -14,20 +18,30 @@
         <li>
           Campaign Rules
           <a href="equipment.html">Equipment Lists</a>
-          <a href="territories.html">Territory Tables</a>
+          <a href="#" class="currentpage">Territory Tables</a>
+          <ul>
+            <li><a href="#miningoutpost">Mining Outpost</a></li>
+            <li><a href="#settlement">Settlement</a></li>
+            <li><a href="#civilised">Civilised</a></li>
+            <li><a href="#outlands">Outlands</a></li>
+            <li><a href="#deadzone">Deadzone</a></li>
+            <li><a href="#redemptionist">Redemptionist</a></li>
+            <li><a href="#prospector">Prospector Finds</a></li>
+          </ul>
           <!--<li><a href="bounties.html">Bounties</a></li>-->
         </li>
         <li>
           Gang Rules
           <!--<a href="houseescher.html">House Escher Gang</a>-->
           <a href="adeptasororitas.html">Adepta Sororitas Squad</a>
+          <a href="houseprospectors.html">House Prospector Team</a>
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="utilities.html">Utilities</a></li>
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-    
+
     <main>
       <h2>Territories</h2>
       <section id="miningoutpost">
@@ -44,35 +58,210 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="4">Chem Pit</td>
-            <td rowspan="4">Slag Field</td>
-            <td colspan="2" rowspan="2">Tunnels</td>
-            <td rowspan="2">Drinking Hole</td>
-            <td rowspan="2">Mineral Outcrop</td>
+            <td rowspan="4">
+              <!--Testing using Details > Summary tags. Validator complains, but code works.-->
+              <details>
+                <summary>
+                  <h4>Chem Pit</h4>
+                  <div class="divtable">
+                    <div>
+                      <p class="tooltip workedvalue">2D6</p>
+                      <p class="tooltip lootedvalue">0</p>
+                    </div>
+                  </div>
+                  <ul>
+                    <li>Underhive</li>
+                  </ul>
+                </summary>
+                <p>If a double is rolled for income, no income is gained. The fighter working the territory receives Horrible Scars.</p>
+              </details>
+            </td>
+            <td rowspan="4">
+              <h4>Slag Field</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Add two Slag Piles to your list of territories.</p>
+            </td>
+            <td colspan="2" rowspan="2">
+              <h4>Tunnels</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on ground level more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Drinking Hole</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>After each battle, roll a D6: on a 6, you may add or subtract 1 from the Scenario Table roll next game.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Mineral Outcrop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If a 6 is rolled for income, earn an additional D6x10 credits income.</p>
+            </td>
           </tr>
           <tr>
             <th>2</th>
           </tr>
           <tr>
             <th>3</th>
-            <td colspan="2" rowspan="2">Vents</td>
-            <td rowspan="2">Workshop</td>
-            <td rowspan="2">Spore Cave</td>
+            <td colspan="2" rowspan="2">
+              <h4>Vents</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Workshop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Once per battle, you may ignore a failed Ammo roll.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Spore Cave</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>If a 2 is rolled for income, the fighter receives Spore Sickness.</p>
+            </td>
           </tr>
           <tr>
             <th>4</th>
           </tr>
           <tr>
             <th>5</th>
-            <td colspan="2" rowspan="2">Mine Workings</td>
-            <td rowspan="2">Water Still</td>
-            <td rowspan="2">Holestead</td>
-            <td rowspan="2">Guilder Contact</td>
-            <td>Archeotech Hoard</td>
+            <td colspan="2" rowspan="2">
+              <h4>Mine Workings</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>When one of your fighters works this territory, you may add an additional 10 credits income for each prisoner held by your gang. Each prisoner may only improve one Mine Working.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Water Still</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="2">
+              <h4>Holestead</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If the gang has a Heavy or Techno, all fighters reduce their Starvation to 0.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Guilder Contact</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Whenever you visit the Guild Trading Post, you gain 1 additional roll on the Rare Trade Chart.</p>
+              <p>You may sell loot counters for D6*5+5 credits income.</p>
+            </td>
+            <td>
+              <h4>Archeotech Hoard</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2-6D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+            </td>
           </tr>
           <tr>
             <th>6</th>
-            <td>Green Hivers</td>
+            <td>
+              <h4>Green Hivers</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Choose one territory from the <a href="territories.html#civilised">Underhive Civilised Territories Table</a>.</p>
+            </td>
           </tr>
         </table>
       </section>
@@ -91,35 +280,205 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="6">Ruined Outskirts</td>
-            <td colspan="2" rowspan="4">Settlement</td>
-            <td rowspan="2">Tunnels</td>
-            <td rowspan="2">Drinking Hole</td>
-            <td rowspan="2">Friendly Doc</td>
+            <td rowspan="6">
+              <h4>Ruined Outskirts</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Add two Old Ruins to your list of territories.</p>
+            </td>
+            <td colspan="2" rowspan="4">
+              <h4>Settlement</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">20</p>
+                  <p class="tooltip lootedvalue">60</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Working a settlement earns 20 credits plus 5 credits for each of the following territories you control: other Settlements, Drinking Holes, Friendly Docs, Gambling Dens, Guilder Contacts, Water Stills, Workshops.</p>
+              <p>After each battle, roll a D6: on a 6, you may add a Juve to your roster.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Tunnels</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on ground level more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Drinking Hole</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>After each battle, roll a D6: on a 6, you may add or subtract 1 from the Scenario Table roll next game.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Friendly Doc</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If a fighter dies, roll a D6: on a 5+ they receive Multiple Injuries instead.</p>
+            </td>
           </tr>
           <tr>
             <th>2</th>
           </tr>
           <tr>
             <th>3</th>
-            <td rowspan="2">Vents</td>
-            <td rowspan="2">Workshop</td>
-            <td rowspan="2">Gambling Den</td>
+            <td rowspan="2">
+              <h4>Vents</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Workshop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Once per battle, you may ignore a failed Ammo roll.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Gambling Den</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If a double is rolled for income, you lose that much income instead.</p>
+            </td>
           </tr>
           <tr>
             <th>4</th>
           </tr>
           <tr>
             <th>5</th>
-            <td rowspan="2">Hive Wall Breach</td>
-            <td rowspan="2">Water Still</td>
-            <td rowspan="2">Holestead</td>
-            <td rowspan="2">Guilder Contact</td>
-            <td>Archaeotech Hoard</td>
+            <td rowspan="2">
+              <h4>Hive Wall Breach</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x5</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <p>You may relocate your hideout to the Hive or the Ash Wastes, or allow another gang to do so. A gang that does so may not visit the Trading Post, forage or work territories until after their next battle.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Water Still</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p></p>
+            </td>
+            <td rowspan="2">
+              <h4>Holestead</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If the gang has a Heavy or Techno, all fighters reduce their Starvation to 0.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Guilder Contact</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Whenever you visit the Guild Trading Post, you gain 1 additional roll on the Rare Trade Chart.</p>
+              <p>You may sell loot counters for D6*5+5 credits income.</p>
+            </td>
+            <td>
+              <h4>Archeotech Hoard</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2-6D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+            </td>
           </tr>
           <tr>
             <th>6</th>
-            <td>Green Hivers</td>
+            <td>
+              <h4>Green Hivers</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Choose one territory from the <a href="territories.html#civilised">Underhive Civilised Territories Table</a>.</p>
+            </td>
           </tr>
         </table>
       </section>
@@ -138,39 +497,204 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="4">Ruined Outskirts</td>
-            <td rowspan="4">Slag Field</td>
-            <td rowspan="4">Settlement</td>
-            <td rowspan="2">Tunnels</td>
-            <td rowspan="2">Drinking Hole</td>
-            <td>Mineral Outcrop</td>
+            <td rowspan="4">
+              <h4>Ruined Outskirts</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Add two Old Ruins to your list of territories.</p>
+            </td>
+            <td rowspan="4">
+              <h4>Slag Field</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Add two Slag Piles to your list of territories.</p>
+            </td>
+            <td rowspan="4">
+              <h4>Settlement</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">20</p>
+                  <p class="tooltip lootedvalue">60</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Working a settlement earns 20 credits plus 5 credits for each of the following territories you control: other Settlements, Drinking Holes, Friendly Docs, Gambling Dens, Guilder Contacts, Water Stills, Workshops.</p>
+              <p>After each battle, roll a D6: on a 6, you may add a Juve to your roster.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Tunnels</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on ground level more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Drinking Hole</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>After each battle, roll a D6: on a 6, you may add or subtract 1 from the Scenario Table roll next game.</p>
+            </td>
+            <td>
+              <h4>Mineral Outcrop</h4>
+            </td>
           </tr>
           <tr>
             <th>2</th>
-            <td>Friendly Doc</td>
+            <td>
+              <h4>Friendly Doc</h4>
+            </td>
           </tr>
           <tr>
             <th>3</th>
-            <td rowspan="2">Vents</td>
-            <td rowspan="2">Workshop</td>
-            <td>Gambling Den</td>
+            <td rowspan="2">
+              <h4>Vents</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Workshop</h4>
+            </td>
+            <td>
+              <h4>Gambling Den</h4>
+            </td>
           </tr>
           <tr>
             <th>4</th>
-            <td>Spore Cave</td>
+            <td>
+              <h4>Spore Cave</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>If a 2 is rolled for income, the fighter receives Spore Sickness.</p>
+            </td>
           </tr>
           <tr>
             <th>5</th>
-            <td rowspan="2">Chem Pit</td>
-            <td rowspan="2">Mine Workings</td>
-            <td rowspan="2">Water Still</td>
-            <td rowspan="2">Holestead</td>
-            <td rowspan="2">Guilder Contact</td>
-            <td>Archaeotech Hoard</td>
+            <td rowspan="2">
+              <h4>Chem Pit</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Mine Workings</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>When one of your fighters works this territory, you may add an additional 10 credits income for each prisoner held by your gang. Each prisoner may only improve one Mine Working.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Water Still</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="2">
+              <h4>Holestead</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If the gang has a Heavy or Techno, all fighters reduce their Starvation to 0.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Guilder Contact</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Whenever you visit the Guild Trading Post, you gain 1 additional roll on the Rare Trade Chart.</p>
+              <p>You may sell loot counters for D6*5+5 credits income.</p>
+            </td>
+            <td>
+              <h4>Archaeotech Hoard</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2-6D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+            </td>
           </tr>
           <tr>
             <th>6</th>
-            <td>Green Hivers</td>
+            <td>
+              <h4>Green Hivers</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Choose one territory from the <a href="territories.html#civilised">Underhive Civilised Territories Table</a>.</p>
+            </td>
           </tr>
         </table>
       </section>
@@ -189,34 +713,131 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="6">Collapsed Dome</td>
-            <td rowspan="4">Wastes</td>
-            <td rowspan="2">Outlaw Settlement</td>
-            <td rowspan="2">Outlands Workshop</td>
-            <td rowspan="4">Sludge Sea</td>
-            <td rowspan="3">Scrap Yard</td>
+            <td rowspan="6">
+              <h4>Collapsed Dome</h4>
+            </td>
+            <td rowspan="4">
+              <h4>Wastes</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="2">
+              <h4>Outlaw Settlement</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Outlands Workshop</h4>
+            </td>
+            <td rowspan="4">
+              <h4>Sludge Sea</h4>
+            </td>
+            <td rowspan="3">
+              <h4>Scrap Yard</h4>
+            </td>
           </tr>
           <tr>
             <th>2</th>
           </tr>
           <tr>
             <th>3</th>
-            <td rowspan="4">Rad Zone</td>
-            <td rowspan="2">Sump Spillage</td>
+            <td rowspan="4">
+              <h4>Rad Zone</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>If a double is rolled for income, no income is generated. The fighter working the territory receives Horrible Scars.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Sump Spillage</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">5</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+            </td>
           </tr>
           <tr>
             <th>4</th>
-            <td rowspan="2">Abandoned Outpost</td>
+            <td rowspan="2">
+              <h4>Abandoned Outpost</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Roll D3 times on the Underhive Outlands Territory Table.</p>
+              <p>These territories count as a single territory for the purposes of gaining or losing territory, but must be worked individually.</p>
+            </td>
           </tr>
           <tr>
             <th>5</th>
-            <td rowspan="2">Fungus Grotto</td>
-            <td rowspan="2">Small Holestead</td>
-            <td rowspan="2">Power Cable Tap</td>
+            <td rowspan="2">
+              <h4>Fungus Grotto</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Small Holestead</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">20</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If the gang has a Heavy or Techno, all fighters reduce their starvation to 0.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Power Cable Tap</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">20</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Roll a D6: on a 6, the territory generates D6x10 credits instead of 10.</p>
+              <p>Each battle, Pit Slaves and Servitors gain a +1 bonus on their first Initiative test.</p>
+            </td>
           </tr>
           <tr>
             <th>6</th>
-            <td>Green Hivers</td>
+            <td>
+              <h4>Green Hivers</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">N/A</p>
+                  <p class="tooltip lootedvalue">N/A</p>
+                </div>
+              </div>
+              <p>Roll once on the <a href="territories.html#civilised">Underhive Civilised Territories Table</a>.</p>
+            </td>
           </tr>
         </table>
       </section>
@@ -235,31 +856,86 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="6">Collapsed Dome</td>
-            <td rowspan="4">Wastes</td>
-            <td rowspan="2">Sump Spillage</td>
-            <td rowspan="2">Barren Tunnels</td>
-            <td rowspan="6">Sludge Sea</td>
-            <td>Plague Infestation</td>
+            <td rowspan="6">
+              <h4>Collapsed Dome</h4>
+            </td>
+            <td rowspan="4">
+              <h4>Wastes</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Sump Spillage</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Barren Tunnels</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on ground level more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="6">
+              <h4>Sludge Sea</h4>
+            </td>
+            <td>
+              <h4>Plague Infestation</h4>
+            </td>
           </tr>
           <tr>
             <th>2</th>
-            <td>Hermit Camp</td>
+            <td>
+              <h4>Hermit Camp</h4>
+            </td>
           </tr>
           <tr>
             <th>3</th>
-            <td rowspan="4">Rad Zone</td>
-            <td rowspan="2">Barren Vents</td>
-            <td rowspan="2">Spore Cave</td>
+            <td rowspan="4">
+              <h4>Rad Zone</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Barren Vents</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+            </td>
+            <td rowspan="2">
+              <h4>Spore Cave</h4>
+            </td>
           </tr>
           <tr>
             <th>4</th>
           </tr>
           <tr>
             <th>5</th>
-            <td rowspan="2">Fungus Grotto</td>
-            <td rowspan="2">Clean Water</td>
-            <td rowspan="2">Ancient Weapons Cache</td>
+            <td rowspan="2">
+              <h4>Fungus Grotto</h4>
+            </td>
+            <td rowspan="2">
+              <h4>Clean Water</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">5</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="2">
+              <h4>Ancient Weapons Cache</h4>
+            </td>
           </tr>
           <tr>
             <th>6</th>
@@ -281,12 +957,83 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="6">Wastes</td>
-            <td rowspan="6">Old Ruin</td>
-            <td rowspan="6">Slag Pile</td>
-            <td rowspan="6">Settlement</td>
-            <td rowspan="3">Holestead</td>
-            <td rowspan="3">Seminary</td>
+            <td rowspan="6">
+              <h4>Wastes</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="6">
+              <h4>Old Ruin</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">10</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="6">
+              <h4>Slag Pile</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">15</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="6">
+              <h4>Settlement</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">20</p>
+                  <p class="tooltip lootedvalue">60</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Roll a D6: on a 6, you may add a Novice to your roster.</p>
+            </td>
+            <td rowspan="3">
+              <h4>Holestead</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+            </td>
+            <td rowspan="3">
+              <h4>Seminary</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Roll 3D6: for each 6, you may add a Novice to your roster.</p>
+            </td>
           </tr>
           <tr>
             <th>2</th>
@@ -296,8 +1043,32 @@
           </tr>
           <tr>
             <th>4</th>
-            <td rowspan="3">Weapons Cache</td>
-            <td rowspan="3">Hidden Weapons Cache</td>
+            <td rowspan="3">
+              <h4>Weapons Cache</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">Special</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>Instead of working this territory, loot it. When you loot this territory, add up to 2D6x10 credits of equipment from the <a href="equipment.html#hiver">Hiver Supply Chain</a> to your stash.</p>
+            </td>
+            <td rowspan="3">
+              <h4>Hidden Weapons Cache</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">0</p>
+                  <p class="tooltip lootedvalue">Special</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>Instead of working this territory, loot it. When you loot this territory, add up to 3D6x10 credits of equipment from the <a href="equipment.html#hiver">Hiver Supply Chain</a> to your stash.</p>
+            </td>
           </tr>
           <tr>
             <th>5</th>
@@ -307,6 +1078,58 @@
           </tr>
         </table>
       </section>
+
+      <section id="prospector">
+        <h3>Prospector Finds Table</h3>
+        <table class="territorytable">
+          <tr>
+            <th>D66</th>
+            <th>10</th>
+            <th>20</th>
+            <th>30</th>
+            <th>40</th>
+            <th>50</th>
+            <th>60</th>
+          </tr>
+          <tr>
+            <th>1</th>
+            <td rowspan="5">Ash Wastes</td>
+            <td rowspan="5">Shanty Ruins</td>
+            <td rowspan="5">Hard-Baked Ash Pan</td>
+            <td rowspan="5">Chemical Find</td>
+            <td rowspan="5">Vehicle Wreck</td>
+            <td rowspan="3">Mineral Find</td>
+          </tr>
+          <tr>
+            <th>2</th>
+          </tr>
+          <tr>
+            <th>3</th>
+          </tr>
+          <tr>
+            <th>4</th>
+            <td rowspan="2">Spacecraft Wreck</td>
+          </tr>
+          <tr>
+            <th>5</th>
+          </tr>
+          <tr>
+            <th>6</th>
+            <td>Chemical Outflow</td>
+            <td>Sludge Sea</td>
+            <td>Scrap Wreckage</td>
+            <td>Transport Tube Wreck</td>
+            <td>Ore Find</td>
+            <td>Archeotech Find</td>
+          </tr>
+        </table>
+      </section>
     </main>
+
+    <footer>
+      <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="territories.html" class="currentpage">Territory Tables</a></p>
+      <p>&copy; Alex Holker, 2018</p>
+      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+    </footer>
   </body>
 </html>

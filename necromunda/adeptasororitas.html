@@ -3,6 +3,10 @@
   <head>
     <title>Alex's Necromunda - Adepta Sororitas Squad</title>
     <meta charset="utf-8">
+    <meta name="description" content="House rules for Necromunda">
+    <meta name="keywords" content="Necromunda">
+    <meta name="author" content="Alex Holker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
   </head>
@@ -20,7 +24,16 @@
         <li>
           Gang Rules
           <!--<a href="houseescher.html">House Escher Gang</a>-->
-          <a href="adeptasororitas.html">Adepta Sororitas Squad</a>
+          <a href="#" class="currentpage">Adepta Sororitas Squad</a>
+          <ul>
+            <li><a href="#sistersuperior">Sister Superior</a></li>
+            <li><a href="#sisterfamulous">Sister Famulous</a></li>
+            <li><a href="#sisterhospitaller">Sister Hospitaller</a></li>
+            <li><a href="#retributor">Retributor</a></li>
+            <li><a href="#battlesister">Battle Sister</a></li>
+            <li><a href="#faithful">Faithful</a></li>
+          </ul>
+          <a href="houseprospectors.html">House Prospector Team</a>
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="utilities.html">Utilities</a></li>
@@ -30,10 +43,47 @@
 
     <main>
       <h2>Adepta Sororitas Squad</h2>
-      <p>The shuttle's systems failed on the final approach.</p>
+      <p class="flavourtext">The shuttle's systems failed during the final approach. With no sign of rescue, the survivors must make their way through the Underhive if they're going to return to civilisation.</p>
 
+      <h3>Squad Composition</h3>
+      <div class="divtable">
+        <div>
+          <h4>Minimum 3 fighters.</h4>
+        </div>
+        <div>
+          <h4>Sister Superior</h4>
+          <p>The squad may have 0-1 Superior.</p>
+        </div>
+        <div>
+          <h4>Sister Famulous</h4>
+          <p>The squad may have 0-1 Famulous.</p>
+        </div>
+        <div>
+          <h4>Sister Hospitaller</h4>
+          <p>The squad may have 0-1 Hospitaller.</p>
+        </div>
+        <div>
+          <h4>Retributor</h4>
+          <p>The squad may have 0-1 Retributor.</p>
+        </div>
+        <div>
+          <h4>Battle Sisters</h4>
+          <p>The squad may have any number of Battle Sisters.</p>
+        </div>
+        <div>
+          <h4>Faithful</h4>
+          <p>The squad may have any number of Faithful.</p>
+        </div>
+      </div>
+      
       <section id="sistersuperior">
-        <h3>Sister Superior</h3>
+        <div class="divtable">
+          <div>
+            <h3>Sister Superior</h3>
+            <p>160 credits</p>
+            <p>120+D6 experience</p>
+          </div>
+        </div>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -59,19 +109,19 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Basic, Special, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Nerves of Steel</h4>
             <p>Adepta Sororitas are trained soldiers and have the Nerves of Steel skill for free.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Witch Hunter</h4>
             <p>An Adepta Sororitas directly affected by a Wyrd power must roll a Leadership test. If passed, she is unaffected by the power this turn.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Leader</h4>
             <p>If the Sister Superior is killed, this ability is passed on to her successor.<br>The leader can choose Stealth and Techno skills, and can use Special weapons.<br>If the leader is not down or broken, any fighter within 6" may use her Leadership for Leadership tests, and Initiative for Pinning tests.</p>
           </div>
@@ -79,7 +129,13 @@
       </section>
 
       <section id="sisterfamulous">
-        <h3>Sister Famulous</h3>
+        <div class="divtable">
+          <div>
+            <h3>Sister Famulous</h3>
+            <p>80 credits</p>
+            <p>60+D6 experience</p>
+          </div>
+        </div>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -105,19 +161,19 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Basic, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Nerves of Steel</h4>
             <p>Adepta Sororitas are trained soldiers and have the Nerves of Steel skill for free.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Witch Hunter</h4>
             <p>An Adepta Sororitas directly affected by a Wyrd power must roll a Leadership test. If passed, she is unaffected by the power this turn.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Skilled Diplomat</h4>
             <p>When visiting the Trading Post, the Sister Famulous grants 1D3 rolls on the Rare Trade Chart.</p>
           </div>
@@ -125,7 +181,13 @@
       </section>
 
       <section id="sisterhospitaller">
-        <h3>Sister Hospitaller</h3>
+        <div class="divtable">
+          <div>
+            <h3>Sister Hospitaller</h3>
+            <p>150 credits</p>
+            <p>40+D6 experience</p>
+          </div>
+        </div>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -151,19 +213,19 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Nerves of Steel</h4>
             <p>Adepta Sororitas are trained soldiers and have the Nerves of Steel skill for free.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Witch Hunter</h4>
             <p>An Adepta Sororitas directly affected by a Wyrd power must roll a Leadership test. If passed, she is unaffected by the power this turn.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Medic</h4>
             <p>A Sister Hospitaller is automatically equipped with a with a medi-pack and has the Medic skill for free.</p>
           </div>
@@ -171,7 +233,13 @@
       </section>
 
       <section id="retributor">
-        <h3>Retributor</h3>
+        <div class="divtable">
+          <div>
+            <h3>Retributor</h3>
+            <p>100 credits</p>
+            <p>80+D6 experience</p>
+          </div>
+        </div>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -197,15 +265,15 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Basic, Special, Heavy, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Nerves of Steel</h4>
             <p>Adepta Sororitas are trained soldiers and have the Nerves of Steel skill for free.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Witch Hunter</h4>
             <p>An Adepta Sororitas directly affected by a Wyrd power must roll a Leadership test. If passed, she is unaffected by the power this turn.</p>
           </div>
@@ -213,7 +281,13 @@
       </section>
 
       <section id="battlesister">
-        <h3>Battle Sister</h3>
+        <div class="divtable">
+          <div>
+            <h3>Battle Sister</h3>
+            <p>80 credits</p>
+            <p>50+D6 experience</p>
+          </div>
+        </div>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -239,15 +313,15 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Basic, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Nerves of Steel</h4>
             <p>Adepta Sororitas are trained soldiers and have the Nerves of Steel skill for free.</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Witch Hunter</h4>
             <p>An Adepta Sororitas directly affected by a Wyrd power must roll a Leadership test. If passed, she is unaffected by the power this turn.</p>
           </div>
@@ -255,8 +329,14 @@
       </section>
 
       <section id="faithful">
-        <h3>Faithful</h3>
-        <p>Even in the Underhive, there are many who follow the Imperial Creed. As word spreads that the Emperor's servants walk the Underhive, men and women flock to aid them.</p>
+        <div class="divtable">
+          <div>
+            <h3>Faithful</h3>
+            <p>25 credits</p>
+            <p>0 experience</p>
+          </div>
+        </div>
+        <p class="flavourtext">Even in the Underhive, there are many who follow the Imperial Creed. As word spreads that the Emperor's servants walk the Underhive, men and women flock to aid them.</p>
         <table class="statstable">
           <tr>
             <th>M</th>
@@ -282,11 +362,11 @@
           </tr>
         </table>
         <div class="divtable">
-          <div class="divtablerow">
+          <div>
             <h4>Weapons</h4>
             <p>Hand-to-Hand, Pistols, Extra</p>
           </div>
-          <div class="divtablerow">
+          <div>
             <h4>Frateris Militia</h4>
             <p>Faithful may not be recruited at gang creation. Whenever you win a game, you may recruit up to D3 Faithful.</p>
           </div>
@@ -392,7 +472,7 @@
       <p>Once per battle, a single Witch Hunter may gain the benefit of any one of the following Minor Wyrd Powers: Nullify Power, Zen Shootist, Lucky Aura, Healing Hands.</p>
       
       <h3>Territory</h3>
-      <p>An Adepta Sororitas Squad relies on the aid of loyal worshippers of the Emperor as they make their way up the Underhive. After every battle, roll once on the <a href="territories.html#redemptionist">Redemptionist Territory Table</a>. The squad does not need to assign a fighter to work the territory to gain the benefits.</p>
+      <p>An Adepta Sororitas Squad relies on the aid of loyal worshippers of the Emperor as they make their way up the Underhive. After every battle, roll once on the <a href="territories.html#redemptionist">Redemptionist Territories</a> table. The squad does not need to assign a fighter to work the territory to gain the benefits.</p>
       <p>As strangers to the Underhive the Adepta Sororitas cannot earn income by foraging, but receive enough food from loyalists to avoid starvation.</p>
       
       <h3>Leadership</h3>
@@ -400,7 +480,13 @@
       
       <h3>Capture</h3>
       <p>If an Adepta Sororitas Squad captures a Wyrd, Spook user, Scaly or fighter with a mutation, you may not exchange the captive - the other gang must attempt a rescue mission or allow the mutant to be put to death.</p>
-      <p>Any Redemptionist gang that captures a Witch Hunter will release her unharmed - treat the result as a Full Recovery. If a Witch Hunter is captured and you cannot secure her release through exchange, you <i>must</i> attempt a rescue.</p>
+      <p>Any Redemptionist gang that captures a Witch Hunter will release her unharmed - treat the result as a Full Recovery. If a Witch Hunter is captured and you cannot secure her release through exchange, you <em>must</em> attempt a rescue.</p>
     </main>
+    
+    <footer>
+      <p id="breadcrumb"><a href="index.html">Home</a> &gt; Gang Rules &gt; <a href="adeptasororitas.html" class="currentpage">Adepta Sororitas Squad</a></p>
+      <p>&copy; Alex Holker, 2018</p>
+      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+    </footer>
   </body>
 </html>

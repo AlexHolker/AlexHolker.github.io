@@ -12,25 +12,62 @@ body {
   color: aliceblue;
   font-family: "Jura", sans-serif;
   max-width: 800px;
-  margin-left: 280px;
+  padding-left: 280px;
 }
 
-/* Background implemented using greyscale image with colour added with multiply
- * blend mode.
+/* Background first implemented using greyscale image with colour added with
+ * multiply blend mode.
+ * background-blend-mode doesn't work on IE/Edge, so replaced with colour image
+ * with colour gradient "baked in".
  **/
 body.hiveprimus {
-  background: linear-gradient(#5B554F, #5B554F), url("../img/hiveprimus.jpg");
-  background-blend-mode: multiply;
+  /*background: linear-gradient(#5B554F, #5B554F), url("../img/hiveprimus.jpg");
+  background-blend-mode: multiply;*/
+  background: url("../img/hiveprimus.jpg");
   background-size: cover;
+  background-attachment: fixed;
+}
+
+.logo {
+  background: url("../img/spideraquila.png"), repeating-linear-gradient(-30deg, darkgrey, lightgrey 30%, darkgrey 60%);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: aliceblue 4px ridge;
+  border-radius: 10px;
+  margin: auto;
+  padding: 25px 30px;
+  max-width: 560px;
+}
+
+.logosmall {
+  background: lightgrey;
+  border: aliceblue 1px outset;
+  border-radius: 5px;
+  font-size: 0.3em;
+  margin: auto;
+  max-width: 200px;
+}
+
+.hiveprimus .logosmall {
+  visibility: hidden;
 }
 
 h1 {
-  font-family: "Russo One", sans-serif;
+  font-family: "Allerta Stencil", sans-serif;
+  font-size: 4em;
+  margin: 2px;
   text-align: center;
+  color: red;
+  text-shadow: 5px -2px 20px red;
+  transform: rotate(4deg);
 }
 
 h2 {
   text-shadow: -1px -1px grey;
+}
+
+h3 {
+  margin: 30px 0px 10px 0px;
 }
 
 h4 {
@@ -67,6 +104,7 @@ nav {
   position: fixed;
   left: 0px;
   top: 0px;
+  padding-top: 10px;
   box-shadow: 0px 0px 20px black;
 }
 
@@ -102,13 +140,21 @@ nav a {
 }
 
 main {
-  min-height: 460px;
+  min-height: 450px;
 }
 
 img {
+  max-width: 100%;
+}
+
+.floatleft {
   float: left;
   margin-right: 10px;
-  max-width: 100%;
+}
+
+.floatright {
+  float: right;
+  margin-left: 10px;
 }
 
 /* Clearfix hack from W3Schools, clears float properties.
@@ -157,15 +203,21 @@ summary h4 {
 }
 
 .territorytable ul {
-  margin: 0px;
+  /*margin-top: 0px;*/
+  margin: 0px 0px 7px 0px;
   padding: 0px;
 }
 
-/* Font size of 14.4px instead of 16px - still large enough to be easily
+/* Adds "..." when a details element is closed to indicate more text.*/
+details:not([open=""]) summary::after {
+  content: "...";
+}
+
+/* Font size of 14px instead of 16px - still large enough to be easily
  * legible, but makes tables less massive.*/
-.territorytable p {
-  font-size: 0.9em;
-  margin-bottom: 0px;
+.territorytable details, .territorytable p {
+  font-size: 14px;
+  margin: 0px;
 }
 
 .statstable th {
@@ -173,7 +225,12 @@ summary h4 {
 }
 
 footer {
-  margin: 100px 0px;
+  margin-top: 50px;
+  padding: 20px 0px;
+}
+
+hr {
+  color: aliceblue;
 }
 
 #breadcrumb {
@@ -189,19 +246,34 @@ footer {
   text-decoration: underline dotted gold;
 }
 
+/* position:relative allows the parent <div> element to be used as a reference
+ * point for the child <ul> element, if in-page navigation is implemented as a
+ * drop-down menu.
+ */
+.dropdown {
+  position: relative;
+}
+
+/*.dropdown ul,*/
 .tooltiptext {
   display: none;
 }
 
+/*.dropdown:hover ul,*/
+.dropdown:hover .tooltiptext,
 .tooltip:hover .tooltiptext,
 .workedvalue:hover::after,
-.lootedvalue:hover::after {
+.lootedvalue:hover::after,
+.findersfee:hover::after {
   display: block;
   min-width: 100px;
+  border: 1px outset grey;
   background-color: #292d33;
   padding: 2px;
   position: absolute;
   left: 10px;
+  top: 100%;
+  z-index: 10;
 }
 
 /* Divtables used for responsive tables.
@@ -234,12 +306,19 @@ footer {
 /* Automated addition of tooltips for worked values and looted values in
  * territory tables.
  */
-.workedvalue:hover::after {
+.workedvalue::after {
   content: "Worked value";
+  display: none;
 }
 
-.lootedvalue:hover::after {
+.lootedvalue::after {
   content: "Looted value";
+  display: none;
+}
+
+.findersfee::after {
+  content: "Finder's fee";
+  display: none;
 }
 
 /* CSS for hiding and displaying content on front page. Can be read as:

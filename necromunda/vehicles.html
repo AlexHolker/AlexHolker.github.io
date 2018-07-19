@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Alex's Necromunda - New Vehicles</title>
+    <title>New Vehicles - The Living Hive</title>
     <meta charset="utf-8">
-    <meta name="description" content="House rules for Necromunda">
+    <meta name="description" content="New vehicle house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body>
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li>
@@ -28,11 +33,13 @@
           <a href="houseprospectors.html">House Prospector Team</a>
         </li>
         <li>
-          <a href="#" class="currentpage">Vehicles</a>
-          <ul>
-            <li><a href="#rhino">Rhino</a></li>
-            <li><a href="#repressor">Repressor</a></li>
-          </ul>
+          <div class="dropdown">
+            <a href="#" class="currentpage">Vehicles</a>
+            <ul>
+              <li><a href="#rhino">Rhino</a></li>
+              <li><a href="#repressor">Repressor</a></li>
+            </ul>
+          </div>
         </li>
         <li><a href="utilities.html">Utilities</a></li>
       </ul>
@@ -41,10 +48,22 @@
 
     <main>
       <h2>Vehicles</h2>
-      <p>The following vehicles are an extension of the <span class="tooltip">vehicle rules<span class="tooltiptext">Necromunda Magazine 4</span></span> written for the Ash Waste campaign setting.</p>
+      <p>The following vehicles were created for use with the <span class="tooltip">vehicle rules<span class="tooltiptext">Necromunda Magazine 4</span></span> written for the Ash Waste campaign setting.</p>
       <section id="rhino">
-        <h3>Rhino</h3>
-        <p class="flavourtext">The Rhino has been the mainstay of the Imperial military since its inception. While no longer used by the Imperial Army, its reliability and ease of repair ensures that if one falls into civilian hands, it may be passed from user to user for hundreds of years.</p>
+        <div class="divtable">
+          <div>
+            <h3>Rhino</h3>
+            <p>300+10D6 credits</p>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="dropdown floatright">
+            <!-- 3D model render from Epic Scale Deimos Pattern Rhino APCs, 2017, Thingiverse, accessed 20/07/18 <https://www.thingiverse.com/thing:2518846> -->
+            <img src="img/rhinosmall.jpg" alt="Rhino APC">
+            <span class="tooltiptext">&copy;Mkhand Industries, 2017. <a href="https://www.thingiverse.com/thing:2473254">Source</a></span>
+          </div>
+          <p class="flavourtext">The Rhino has been the mainstay of the Imperial military since its inception. While no longer used by the Imperial Army, its reliability and ease of repair ensures that if one falls into civilian hands, it may be passed from user to user for hundreds of years.</p>
+        </div>
         <table>
           <tr>
             <th></th>
@@ -142,8 +161,20 @@
       </section>
 
       <section id="repressor">
-        <h3>Repressor</h3>
-        <p class="flavourtext">The Repressor is a dedicated crowd control vehicle, whose shielded fire ports and riot plow makes it a dangerous tool in the hands of any gang that manages to capture one.</p>
+        <div class="divtable">
+          <div>
+            <h3>Repressor</h3>
+            <p>450+12D6 credits</p>
+          </div>
+        </div>
+        <div class="clearfix">
+          <div class="dropdown floatright">
+            <!-- 3D model render from Epic Scale Repressor, 2017, Thingiverse, accessed 20/07/18 <https://www.thingiverse.com/thing:2518846> -->
+            <img src="img/repressorsmall.jpg" alt="Repressor IFV">
+            <span class="tooltiptext">&copy;Mkhand Industries, 2017. <a href="https://www.thingiverse.com/thing:2518846">Source</a></span>
+          </div>
+          <p class="flavourtext">The Repressor is a dedicated crowd control vehicle, whose shielded fire ports and riot plow makes it a dangerous tool in the hands of any gang that manages to capture one.</p>
+        </div>
         <table>
           <tr>
             <th></th>
@@ -242,11 +273,13 @@
         </div>
       </section>
     </main>
-    
+
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; <a href="vehicles.html" class="currentpage">New Vehicles</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

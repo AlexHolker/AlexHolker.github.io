@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Territories Tables</title>
+    <title>Utilities - The Living Hive</title>
     <meta charset="utf-8">
-    <meta name="description" content="House rules for Necromunda">
+    <meta name="description" content="Utilities for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body>
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li>
@@ -29,29 +34,33 @@
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li>
-          <a href="#" class="currentpage">Utilities</a>
-          <ul>
-            <li><a href="#randomhiredgun">Random Hired Gun Generator</a></li>
-          </ul>
+          <div class="dropdown">
+            <a href="#" class="currentpage">Utilities</a>
+            <ul>
+              <li><a href="#randomhiredgun">Random Hired Gun Generator</a></li>
+            </ul>
+          </div>
         </li>
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-    
+
     <main>
       <h2>Utilities for Necromunda</h2>
       <section id="randomhiredgun" class="clearfix">
         <h3>Random Hired Gun Generator</h3>
-        <img src="img/randomhiredgun.png" alt="Screenshot from Random Hired Gun Generator" style="width:50%;">
+        <img src="img/randomhiredgun.png" alt="Screenshot from Random Hired Gun Generator" class="floatleft" style="width:50%;">
         <p>I wrote this Java program in 2014 to make it easier to create a pool of hired guns for a narrative campaign.</p>
         <p>Running the JAR file and selecting a hired gun type will automatically select weapons, skills and a name for a new Hired Gun of the chosen type. The result can also be exported to a text file.</p>
       </section>
     </main>
-    
+
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="utilities.html" class="currentpage">Utilities for Necromunda</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

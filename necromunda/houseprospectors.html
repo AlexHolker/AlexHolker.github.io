@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Alex's Necromunda - House Prospector Team</title>
+    <title>House Prospector Team - The Living Hive</title>
     <meta charset="utf-8">
-    <meta name="description" content="House rules for Necromunda">
+    <meta name="description" content="Prospector Team house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body>
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li>
@@ -25,13 +30,15 @@
           Gang Rules
           <!--<a href="houseescher.html">House Escher Gang</a>-->
           <a href="adeptasororitas.html">Adepta Sororitas Squad</a>
-          <a href="#" class="currentpage">House Prospector Team</a>
-          <ul>
-            <li><a href="#chiefengineer">Chief Engineer</a></li>
-            <li><a href="#engineer">Engineer</a></li>
-            <li><a href="#apprentice">Apprentice</a></li>
-            <li><a href="#pitslave">Pit Slave</a></li>
-          </ul>
+          <div class="dropdown">
+            <a href="#" class="currentpage">House Prospector Team</a>
+            <ul>
+              <li><a href="#chiefengineer">Chief Engineer</a></li>
+              <li><a href="#engineer">Engineer</a></li>
+              <li><a href="#apprentice">Apprentice</a></li>
+              <li><a href="#pitslave">Pit Slave</a></li>
+            </ul>
+          </div>
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
         <li><a href="utilities.html">Utilities</a></li>
@@ -41,7 +48,8 @@
 
     <main>
       <h2>House Prospector Team</h2>
-
+      <p>This is my modified take on the House Prospector Team created by Chris Ward, Stuart Witter and Rob Atkins for the Ash Wastes setting.</p>
+      
       <h3>Team Composition</h3>
       <div class="divtable">
         <div>
@@ -335,6 +343,9 @@
           <td>7</td>
         </tr>
       </table>
+      
+      <h3>Patron House</h3>
+      <p>When creating a House Prospector team, choose one of the six main Houses. The patron house determines the team's access to equipment and skills as indicated above.</p>
 
       <h3>Leadership</h3>
       <p>Members of a House Prospector team will never challenge the Chief Engineer for leadership. If the Chief Engineer dies, her Leader ability is passed to the Engineer with the most Techno skills - or the Engineer with the highest experience if there is a tie.</p>
@@ -342,21 +353,23 @@
       <h3>Income</h3>
       <p>A House Prospector team may not work territories, and instead possesses a House Prospector Contract. After every game, roll on the <a href="territories.html#prospector">Prospector Finds</a> table. All income is added directly to their stash.</p>
       <p>A gang that seizes the Prospector team's territory may loot it for 100 credits, and you must pay 50+4D6 credits to replace the stolen gear. If you do not have enough credits in your stash, the excess is written off.</p>
-      
+
       <h3>Transport</h3>
       <p>A House Prospector team follows the normal rules for vehicle availability. You may not buy beasts unless you have vehicles with sufficient transport capacity to carry them.</p>
 
       <h3>Hired Guns</h3>
       <p>To ensure their discretion, you must pay double the normal fee for any hired guns you employ.</p>
-      
+
       <h3>Guild Law</h3>
       <p>As representatives of their House, a Prospector team may not jeopardise their relationship with the Guild by committing illegal acts. If you hire an outlaw hired gun, halve your income from finds after the next battle. If you attack a Guilder, you earn no income from finds after the next 1D3 battles.</p>
     </main>
-    
+
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Gang Rules &gt; <a href="houseprospectors.html" class="currentpage">House Prospector Team</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

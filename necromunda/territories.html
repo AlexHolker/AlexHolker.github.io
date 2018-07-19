@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Alex's Necromunda - Territories Tables</title>
+    <title>Territories Tables - The Living Hive</title>
     <meta charset="utf-8">
-    <meta name="description" content="House rules for Necromunda">
+    <meta name="description" content="Territory house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body>
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li>
           Campaign Rules
           <a href="equipment.html">Equipment Lists</a>
-          <a href="#" class="currentpage">Territory Tables</a>
-          <ul>
-            <li><a href="#miningoutpost">Mining Outpost</a></li>
-            <li><a href="#settlement">Settlement</a></li>
-            <li><a href="#civilised">Civilised</a></li>
-            <li><a href="#outlands">Outlands</a></li>
-            <li><a href="#deadzone">Deadzone</a></li>
-            <li><a href="#redemptionist">Redemptionist</a></li>
-            <li><a href="#prospector">Prospector Finds</a></li>
-          </ul>
+          <div class="dropdown">
+            <a href="#" class="currentpage">Territory Tables</a>
+            <ul>
+              <li><a href="#miningoutpost">Mining Outpost</a></li>
+              <li><a href="#settlement">Settlement</a></li>
+              <li><a href="#civilised">Civilised</a></li>
+              <li><a href="#outlands">Outlands</a></li>
+              <li><a href="#deadzone">Deadzone</a></li>
+              <li><a href="#redemptionist">Redemptionist</a></li>
+              <li><a href="#prospector">Prospector Finds</a></li>
+            </ul>
+          </div>
           <!--<li><a href="bounties.html">Bounties</a></li>-->
         </li>
         <li>
@@ -44,6 +51,16 @@
 
     <main>
       <h2>Territories</h2>
+      <section class="clearfix">
+        <div class="dropdown floatright">
+          <!-- Screenshot from Necromunda: Underhive Wars, 2018, Rogue Factor, accessed 15/07/18, <http://necromunda-underhivewars.com/en/media> -->
+          <img src="img/powercabletap.jpg" alt="Two gangs fighting over some valuable territory" style="width: 400px">
+          <span class="tooltiptext">&copy;Rogue Factor, 2018. <a href="http://necromunda-underhivewars.com/en/media">Source</a></span>
+        </div>
+        <p>These modified territory tables were created as part of a map-based campaign system I was working on.</p>
+        <p>The most significant difference from the official tables is the addition of two new tables for law-abiding gangs: Mining Outpost territories and Settlement territories. Rather than rolling five times on the standard table, the Arbitrator might allow players to spend some of their rolls on these new tables, giving them more control over whether their gang's power base is resources or people.</p>
+      </section>
+      
       <section id="miningoutpost">
         <h3>Underhive Mining Outpost Territories Table</h3>
         <table class="territorytable">
@@ -59,22 +76,17 @@
           <tr>
             <th>1</th>
             <td rowspan="4">
-              <!--Testing using Details > Summary tags. Validator complains, but code works.-->
-              <details>
-                <summary>
-                  <h4>Chem Pit</h4>
-                  <div class="divtable">
-                    <div>
-                      <p class="tooltip workedvalue">2D6</p>
-                      <p class="tooltip lootedvalue">0</p>
-                    </div>
-                  </div>
-                  <ul>
-                    <li>Underhive</li>
-                  </ul>
-                </summary>
-                <p>If a double is rolled for income, no income is gained. The fighter working the territory receives Horrible Scars.</p>
-              </details>
+              <h4>Chem Pit</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>If a double is rolled for income, no income is gained. The fighter working the territory receives Horrible Scars.</p>
             </td>
             <td rowspan="4">
               <h4>Slag Field</h4>
@@ -84,6 +96,9 @@
                   <p class="tooltip lootedvalue">N/A</p>
                 </div>
               </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
               <p>Add two Slag Piles to your list of territories.</p>
             </td>
             <td colspan="2" rowspan="2">
@@ -247,7 +262,10 @@
                 <li>Civilised</li>
                 <li>Underhive</li>
               </ul>
-              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+              <details>
+                <summary>If you roll more than 2D6 </summary>
+                <p>and you roll any doubles, abandon the territory.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -288,6 +306,9 @@
                   <p class="tooltip lootedvalue">N/A</p>
                 </div>
               </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
               <p>Add two Old Ruins to your list of territories.</p>
             </td>
             <td colspan="2" rowspan="4">
@@ -363,7 +384,10 @@
               <ul>
                 <li>Underhive</li>
               </ul>
-              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+              <details>
+                <summary>At the start of each battle, </summary>
+                <p>you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+              </details>
             </td>
             <td rowspan="2">
               <h4>Workshop</h4>
@@ -464,7 +488,10 @@
                 <li>Civilised</li>
                 <li>Underhive</li>
               </ul>
-              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+              <details>
+                <summary>If you roll more than 2D6 </summary>
+                <p>and you roll any doubles, abandon the territory.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -505,6 +532,9 @@
                   <p class="tooltip lootedvalue">N/A</p>
                 </div>
               </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
               <p>Add two Old Ruins to your list of territories.</p>
             </td>
             <td rowspan="4">
@@ -515,6 +545,9 @@
                   <p class="tooltip lootedvalue">N/A</p>
                 </div>
               </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
               <p>Add two Slag Piles to your list of territories.</p>
             </td>
             <td rowspan="4">
@@ -561,12 +594,40 @@
             </td>
             <td>
               <h4>Mineral Outcrop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <details>
+                <summary>If a 6 is rolled for income, </summary>
+                <p>earn an additional D6x10 credits income.</p>
+              </details>
             </td>
           </tr>
           <tr>
             <th>2</th>
             <td>
               <h4>Friendly Doc</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <details>
+                <summary>If a fighter dies, roll a D6: </summary>
+                <p>on a 5+ they receive Multiple Injuries instead.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -582,13 +643,41 @@
               <ul>
                 <li>Underhive</li>
               </ul>
-              <p>At the start of each battle, you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+              <details>
+                <summary>At the start of each battle, </summary>
+                <p>you may choose not to deploy up to three fighters. At the end of your first turn, deploy them anywhere on the top surface of any building more than 8" from any enemy.</p>
+              </details>
             </td>
             <td rowspan="2">
               <h4>Workshop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Once per battle, you may ignore a failed Ammo roll.</p>
             </td>
             <td>
               <h4>Gambling Den</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6x10</p>
+                  <p class="tooltip lootedvalue">240</p>
+                </div>
+              </div>
+              <ul>
+                <li>Civilised</li>
+                <li>Underhive</li>
+              </ul>
+              <details>
+                <summary>If a double is rolled for </summary>
+                <p>income, you lose that much income instead.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -604,7 +693,10 @@
               <ul>
                 <li>Underhive</li>
               </ul>
-              <p>If a 2 is rolled for income, the fighter receives Spore Sickness.</p>
+              <details>
+                <summary>If a 2 is rolled for income, </summary>
+                <p>the fighter receives Spore Sickness.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -624,7 +716,10 @@
                 <li>Civilised</li>
                 <li>Underhive</li>
               </ul>
-              <p>When one of your fighters works this territory, you may add an additional 10 credits income for each prisoner held by your gang. Each prisoner may only improve one Mine Working.</p>
+              <details>
+                <summary>When one of your fighters works this territory, </summary>
+                <p>you may add an additional 10 credits income for each prisoner held by your gang. Each prisoner may only improve one Mine Working.</p>
+              </details>
             </td>
             <td rowspan="2">
               <h4>Water Still</h4>
@@ -680,7 +775,9 @@
                 <li>Civilised</li>
                 <li>Underhive</li>
               </ul>
-              <p>If you roll more than 2D6 and you roll any doubles, abandon the territory.</p>
+              <details>
+                <summary>If you roll more than 2D6 </summary>
+                <p>and you roll any doubles, abandon the territory.</p>
             </td>
           </tr>
           <tr>
@@ -1093,12 +1190,72 @@
           </tr>
           <tr>
             <th>1</th>
-            <td rowspan="5">Ash Wastes</td>
-            <td rowspan="5">Shanty Ruins</td>
-            <td rowspan="5">Hard-Baked Ash Pan</td>
-            <td rowspan="5">Chemical Find</td>
-            <td rowspan="5">Vehicle Wreck</td>
-            <td rowspan="3">Mineral Find</td>
+            <td rowspan="5">
+              <h4>Ash Wastes</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td rowspan="5">
+              <h4>Shanty Ruins</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">3D6</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td rowspan="5">
+              <h4>Hard-Baked Ash Pan</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">5D6</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td rowspan="5">
+              <h4>Chemical Find</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td rowspan="5">
+              <h4>Vehicle Wreck</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">2D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td rowspan="3">
+              <h4>Mineral Find</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">2D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
           </tr>
           <tr>
             <th>2</th>
@@ -1108,28 +1265,101 @@
           </tr>
           <tr>
             <th>4</th>
-            <td rowspan="2">Spacecraft Wreck</td>
+            <td rowspan="2">
+              <h4>Spacecraft Wreck</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">2D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
           </tr>
           <tr>
             <th>5</th>
           </tr>
           <tr>
             <th>6</th>
-            <td>Chemical Outflow</td>
-            <td>Sludge Sea</td>
-            <td>Scrap Wreckage</td>
-            <td>Transport Tube Wreck</td>
-            <td>Ore Find</td>
-            <td>Archeotech Find</td>
+            <td>
+              <h4>Chemical Outflow</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">2D6</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td>
+              <h4>Sludge Sea</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">4D6</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td>
+              <h4>Scrap Wreckage</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">6D6</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td>
+              <h4>Transport Tube Wreck</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">2D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td>
+              <h4>Ore Find</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">3D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+            </td>
+            <td>
+              <h4>Archeotech Find</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip findersfee">6D6x10</p>
+                </div>
+              </div>
+              <ul>
+                <li>Ash Waste</li>
+              </ul>
+              <p>You may forfeit the finder's fee for a random piece of archaotech.</p>
+            </td>
           </tr>
         </table>
       </section>
     </main>
 
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="territories.html" class="currentpage">Territory Tables</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

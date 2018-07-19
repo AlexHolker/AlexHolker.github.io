@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+  <!--  -->
   <head>
-    <title>Alex's Necromunda</title>
+    <title>The Living Hive - House Rules for Necromunda LRB</title>
     <meta charset="utf-8">
     <meta name="description" content="House rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body class="hiveprimus">
     <header>
-      <h1>TITLE</h1>
+      <div class="logo">
+        <h1>THE LIVING HIVE</h1>
+      </div>
     </header>
     
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="#" class="currentpage">Home</a></li>
         <li>
@@ -44,34 +52,42 @@
       <input type="radio" name="display" id="radiosite">
       <input type="radio" name="display" id="radionew">
       <!--Labels act as clickable extensions for the above inputs.-->
-      <h2><label for="radionecromunda">What Is Necromunda?</label>
-      <label for="radiosite">About This Site</label>
-      <label for="radionew">What's New?</label></h2>
+      <div class="divtable">
+        <div>
+          <h2><label for="radionecromunda">What Is Necromunda?</label></h2>
+          <h2><label for="radiosite">About This Site</label></h2>
+          <h2><label for="radionew">What's New?</label></h2>
+        </div>
+      </div>
+      
       <!--Following sections hidden using CSS rules unless sibling of the right checked radio button.-->
       <section id="aboutnecromunda" class="clearfix">
-        <h2>What Is Necromunda?</h2>
-        <img src="img/rulebookcovers.png" alt="Necromunda rulebooks" style="width:371px; height:311px;">
+        <h3>What is Necromunda?</h3>
+        <img src="img/rulebookcovers.png" alt="Necromunda rulebooks" style="width:371px;" class="floatleft">
         <p>Necromunda is a tabletop skirmish game set in the Warhammer 40,000 universe, in which players command gangs fighting through the underbelly of the largest arcology on the world of Necromunda, Hive Primus.</p>
         <p>The original boxed game was released in 1995, with an expansion Outlanders released the following year.</p>
         <p>The Necromunda Living Rulebook is an update of the original game, released for free by Games Workshop's Specialist Games. It is no longer supported by Games Workshop, but survives in the form of Necromunda: Community Edition.</p>
         <p>Necromunda: Underhive is the third official edition of the game, released in 2017. To learn more about Necromunda: Underhive, visit <a href="https://necromunda.com/" target="_blank">the official website</a>.</p>
       </section>
       <section id="aboutsite">
-        <h2>About This Site</h2>
+        <h3>About This Site</h3>
         <p>The house rules and utilities on this website are designed for use with the Necromunda Living Rulebook or Necromunda: Community Edition. If you've moved on to Necromunda Underhive you might be able to adapt this content for use in your campaign, but I can't make any promises.</p>
       </section>
       <section id="aboutnew">
-        <h2>What's New?</h2>
+        <h3>What's New?</h3>
         <ul>
+          <li>20/07/2018: Initial release of new vehicles rules: Rhino and Repressor.</li>
           <li>15/07/2018: Initial release of Adepta Sororitas Squad and House Prospectors Team rules.</li>
         </ul>
       </section>
     </main>
     
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html" class="currentpage">Home</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

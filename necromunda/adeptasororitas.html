@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Alex's Necromunda - Adepta Sororitas Squad</title>
+    <title>Adepta Sororitas Squad - The Living Hive</title>
     <meta charset="utf-8">
-    <meta name="description" content="House rules for Necromunda">
+    <meta name="description" content="Adepta Sororitas house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Russo+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
   </head>
   <body>
     <!-- Without PHP, nav element copied-and-pasted between html files. -->
     <nav>
+      <a href="index.html">
+        <div class="logosmall">
+          <h1>THE LIVING HIVE</h1>
+        </div>
+      </a>
       <ul>
         <li><a href="index.html">Home</a></li>
         <li>
@@ -24,15 +29,17 @@
         <li>
           Gang Rules
           <!--<a href="houseescher.html">House Escher Gang</a>-->
-          <a href="#" class="currentpage">Adepta Sororitas Squad</a>
-          <ul>
-            <li><a href="#sistersuperior">Sister Superior</a></li>
-            <li><a href="#sisterfamulous">Sister Famulous</a></li>
-            <li><a href="#sisterhospitaller">Sister Hospitaller</a></li>
-            <li><a href="#retributor">Retributor</a></li>
-            <li><a href="#battlesister">Battle Sister</a></li>
-            <li><a href="#faithful">Faithful</a></li>
-          </ul>
+          <div class="dropdown">
+            <a href="#" class="currentpage">Adepta Sororitas Squad</a>
+            <ul>
+              <li><a href="#sistersuperior">Sister Superior</a></li>
+              <li><a href="#sisterfamulous">Sister Famulous</a></li>
+              <li><a href="#sisterhospitaller">Sister Hospitaller</a></li>
+              <li><a href="#retributor">Retributor</a></li>
+              <li><a href="#battlesister">Battle Sister</a></li>
+              <li><a href="#faithful">Faithful</a></li>
+            </ul>
+          </div>
           <a href="houseprospectors.html">House Prospector Team</a>
         </li>
         <li><a href="vehicles.html">Vehicles</a></li>
@@ -75,7 +82,7 @@
           <p>The squad may have any number of Faithful.</p>
         </div>
       </div>
-      
+
       <section id="sistersuperior">
         <div class="divtable">
           <div>
@@ -372,10 +379,10 @@
           </div>
         </div>
       </section>
-      
+
       <h3>Equipment</h3>
       <p>When the squad is created, it may treat items on the <a href="equipment.html#adeptasororitas">Adepta Sororitas Supply Chain</a> table as common items. After the squad's first battle, it may only treat items on the <a href="equipment.html#hiver">Hiver Supply Chain</a> table as common items.</p>
-      
+
       <h3>Skills</h3>
       <table class="skillstable">
         <tr>
@@ -463,30 +470,32 @@
           <td></td>
         </tr>
       </table>
-      
+
       <h3>Recruitment</h3>
       <p>Cut off as they are, the Sister Superior, Sister Famulous, Sister Hospitaller, Retributor and Battle Sisters may only be recruited before the squad's first battle. The Faithful may only be recruited after the squad wins a battle.</p>
       <p>Hired Guns may only be recruited if the squad includes a Sister Famulous, and no Wyrd or other mutant may be hired for any reason.</p>
-      
+
       <h3>The Emperor Protects</h3>
       <p>Once per battle, a single Witch Hunter may gain the benefit of any one of the following Minor Wyrd Powers: Nullify Power, Zen Shootist, Lucky Aura, Healing Hands.</p>
-      
+
       <h3>Territory</h3>
       <p>An Adepta Sororitas Squad relies on the aid of loyal worshippers of the Emperor as they make their way up the Underhive. After every battle, roll once on the <a href="territories.html#redemptionist">Redemptionist Territories</a> table. The squad does not need to assign a fighter to work the territory to gain the benefits.</p>
       <p>As strangers to the Underhive the Adepta Sororitas cannot earn income by foraging, but receive enough food from loyalists to avoid starvation.</p>
-      
+
       <h3>Leadership</h3>
       <p>If a Sister Superior dies, she passes her Leadership ability to the most experienced Battle Sister. If all Witch Hunters die, the surviving Faithful may become a Redemptionist Mob.</p>
-      
+
       <h3>Capture</h3>
       <p>If an Adepta Sororitas Squad captures a Wyrd, Spook user, Scaly or fighter with a mutation, you may not exchange the captive - the other gang must attempt a rescue mission or allow the mutant to be put to death.</p>
       <p>Any Redemptionist gang that captures a Witch Hunter will release her unharmed - treat the result as a Full Recovery. If a Witch Hunter is captured and you cannot secure her release through exchange, you <em>must</em> attempt a rescue.</p>
     </main>
-    
+
     <footer>
+      <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Gang Rules &gt; <a href="adeptasororitas.html" class="currentpage">Adepta Sororitas Squad</a></p>
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, and the associate factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
     </footer>
   </body>
 </html>

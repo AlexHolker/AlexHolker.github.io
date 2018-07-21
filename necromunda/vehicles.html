@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>New Vehicles - The Living Hive</title>
     <meta charset="utf-8">
     <meta name="description" content="New vehicle house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Recommended by W3Schools for responsive design. -->
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
   </head>
+  
+  <!-- Body contains all content to be displayed on screen. -->
   <body>
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
-        <div class="logosmall">
-          <h1>THE LIVING HIVE</h1>
-        </div>
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -45,7 +46,8 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-
+    
+    <!-- Semantic element for main content of website. -->
     <main>
       <h2>Vehicles</h2>
       <p>The following vehicles were created for use with the <span class="tooltip">vehicle rules<span class="tooltiptext">Necromunda Magazine 4</span></span> written for the Ash Waste campaign setting.</p>
@@ -97,6 +99,7 @@
             <th>5</th>
             <td>Engine</td>
             <td>11</td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <th>6</th>
@@ -109,6 +112,7 @@
             <th>7</th>
             <td>Vehicle Body</td>
             <td>11</td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <th>8</th>
@@ -121,6 +125,7 @@
             <th>9</th>
             <td>Tracks</td>
             <td>10</td>
+            <td colspan="2" rowspan="2"></td>
           </tr>
           <tr>
             <th>10</th>
@@ -138,6 +143,7 @@
             <th>12</th>
             <td>Miss!</td>
             <td></td>
+            <td colspan="2"></td>
           </tr>
         </table>
         <div class="divtable">
@@ -208,6 +214,7 @@
             <th>5</th>
             <td>Engine</td>
             <td>11/12</td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <th>6</th>
@@ -220,6 +227,7 @@
             <th>7</th>
             <td>Vehicle Body</td>
             <td>11/12</td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <th>8</th>
@@ -232,6 +240,7 @@
             <th>9</th>
             <td>Tracks</td>
             <td>10/11</td>
+            <td colspan="2" rowspan="4"></td>
           </tr>
           <tr>
             <th>10</th>
@@ -273,7 +282,8 @@
         </div>
       </section>
     </main>
-
+    
+    <!-- Semantic element for webpage footer. -->
     <footer>
       <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; <a href="vehicles.html" class="currentpage">New Vehicles</a></p>

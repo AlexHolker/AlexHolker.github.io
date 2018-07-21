@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>Adepta Sororitas Squad - The Living Hive</title>
     <meta charset="utf-8">
     <meta name="description" content="Adepta Sororitas house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Recommended by W3Schools for responsive design. -->
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
   </head>
+  
+  <!-- Body contains all content to be displayed on screen. -->
   <body>
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
-        <div class="logosmall">
-          <h1>THE LIVING HIVE</h1>
-        </div>
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -47,7 +48,8 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-
+    
+    <!-- Semantic element for main content of website. -->
     <main>
       <h2>Adepta Sororitas Squad</h2>
       <p class="flavourtext">The shuttle's systems failed during the final approach. With no sign of rescue, the survivors must make their way through the Underhive if they're going to return to civilisation.</p>
@@ -489,7 +491,8 @@
       <p>If an Adepta Sororitas Squad captures a Wyrd, Spook user, Scaly or fighter with a mutation, you may not exchange the captive - the other gang must attempt a rescue mission or allow the mutant to be put to death.</p>
       <p>Any Redemptionist gang that captures a Witch Hunter will release her unharmed - treat the result as a Full Recovery. If a Witch Hunter is captured and you cannot secure her release through exchange, you <em>must</em> attempt a rescue.</p>
     </main>
-
+    
+    <!-- Semantic element for webpage footer. -->
     <footer>
       <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Gang Rules &gt; <a href="adeptasororitas.html" class="currentpage">Adepta Sororitas Squad</a></p>

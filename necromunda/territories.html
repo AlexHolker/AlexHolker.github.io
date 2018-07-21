@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>Territories Tables - The Living Hive</title>
     <meta charset="utf-8">
     <meta name="description" content="Territory house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Recommended by W3Schools for responsive design. -->
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
   </head>
+  
+  <!-- Body contains all content to be displayed on screen. -->
   <body>
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
-        <div class="logosmall">
-          <h1>THE LIVING HIVE</h1>
-        </div>
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -48,10 +49,11 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-
+    
+    <!-- Semantic element for main content of website. -->
     <main>
       <h2>Territories</h2>
-      <section class="clearfix">
+      <div class="clearfix">
         <div class="dropdown floatright">
           <!-- Screenshot from Necromunda: Underhive Wars, 2018, Rogue Factor, accessed 15/07/18, <http://necromunda-underhivewars.com/en/media> -->
           <img src="img/powercabletap.jpg" alt="Two gangs fighting over some valuable territory" style="width: 400px">
@@ -59,7 +61,7 @@
         </div>
         <p>These modified territory tables were created as part of a map-based campaign system I was working on.</p>
         <p>The most significant difference from the official tables is the addition of two new tables for law-abiding gangs: Mining Outpost territories and Settlement territories. Rather than rolling five times on the standard table, the Arbitrator might allow players to spend some of their rolls on these new tables, giving them more control over whether their gang's power base is resources or people.</p>
-      </section>
+      </div>
       
       <section id="miningoutpost">
         <h3>Underhive Mining Outpost Territories Table</h3>
@@ -778,6 +780,7 @@
               <details>
                 <summary>If you roll more than 2D6 </summary>
                 <p>and you roll any doubles, abandon the territory.</p>
+              </details>
             </td>
           </tr>
           <tr>
@@ -1353,7 +1356,8 @@
         </table>
       </section>
     </main>
-
+    
+    <!-- Semantic element for webpage footer. -->
     <footer>
       <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="territories.html" class="currentpage">Territory Tables</a></p>

@@ -1,29 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-  <!--  -->
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>The Living Hive - House Rules for Necromunda LRB</title>
-    <meta charset="utf-8">
+    <meta charset="utf-8"> <!-- UTF-8 is the common standard for character encoding, replacing dozens of local standards. -->
     <meta name="description" content="House rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Recommended by W3Schools for responsive design. -->
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil"> <!-- External style sheet provided by Google Fonts. -->
   </head>
+  
+  <!-- Body contains all content to be displayed on screen. -->
   <body class="hiveprimus">
+    <!-- Semantic element for document header. -->
     <header>
       <div class="logo">
         <h1>THE LIVING HIVE</h1>
       </div>
     </header>
     
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
+        <!-- Alternative small logo
         <div class="logosmall">
           <h1>THE LIVING HIVE</h1>
-        </div>
+        </div> -->
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="#" class="currentpage">Home</a></li>
@@ -46,6 +52,7 @@
       <div class="navedge hazardstripes"></div>
     </nav>
     
+    <!-- Semantic element for main content of website. -->
     <main>
       <!--Hidden radio buttons used to flag CSS rules.-->
       <input type="radio" name="display" id="radionecromunda">
@@ -60,7 +67,7 @@
         </div>
       </div>
       
-      <!--Following sections hidden using CSS rules unless sibling of the right checked radio button.-->
+      <!--Following sections hidden using CSS rules unless sibling of the correct checked radio button. Without CSS all are displayed in sequence.-->
       <section id="aboutnecromunda" class="clearfix">
         <h3>What is Necromunda?</h3>
         <img src="img/rulebookcovers.png" alt="Necromunda rulebooks" style="width:371px;" class="floatleft">
@@ -82,12 +89,13 @@
       </section>
     </main>
     
+    <!-- Semantic element for webpage footer. -->
     <footer>
-      <hr>
-      <p id="breadcrumb"><a href="index.html" class="currentpage">Home</a></p>
+      <hr> <!-- Horizontal rule used to visually denote end of main content. -->
+      <p id="breadcrumb"><a href="index.html" class="currentpage">Home</a></p> <!-- Breadcrumb used to provide easy navigation up site tree. -->
       <p>&copy; Alex Holker, 2018</p>
-      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
-      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+      <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p> <!-- Legal disclaimer for non-assignment use of website. -->
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p> <!-- Required disclaimer for assignment. -->
     </footer>
   </body>
 </html>

@@ -23,7 +23,7 @@ body {
 body.hiveprimus {
   /*background: linear-gradient(#5B554F, #5B554F), url("../img/hiveprimus.jpg");
   background-blend-mode: multiply;*/
-  background: url("../img/hiveprimus.jpg");
+  background: url("../img/hiveprimus.jpg"), black;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -40,11 +40,12 @@ body.hiveprimus {
 }
 
 .logosmall {
+  display: block;
   background: lightgrey;
-  border: aliceblue 1px outset;
+  border: aliceblue 2px ridge;
   border-radius: 5px;
-  font-size: 0.3em;
   margin: auto;
+  padding: 5px 20px;
   max-width: 200px;
 }
 
@@ -254,11 +255,13 @@ hr {
   position: relative;
 }
 
+/* Hides element by default... */
 /*.dropdown ul,*/
 .tooltiptext {
   display: none;
 }
 
+/* ...until the user mouses over the parent element.*/
 /*.dropdown:hover ul,*/
 .dropdown:hover .tooltiptext,
 .tooltip:hover .tooltiptext,
@@ -304,7 +307,8 @@ hr {
 }
 
 /* Automated addition of tooltips for worked values and looted values in
- * territory tables.
+ * territory tables. Reduces redundancy and messiness in territories.html by not
+ * repeating the same tooltip HTML a hundred times.
  */
 .workedvalue::after {
   content: "Worked value";

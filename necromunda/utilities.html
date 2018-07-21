@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>Utilities - The Living Hive</title>
     <meta charset="utf-8">
@@ -8,15 +9,13 @@
     <meta name="author" content="Alex Holker">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura">
   </head>
   <body>
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
-        <div class="logosmall">
-          <h1>THE LIVING HIVE</h1>
-        </div>
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -44,7 +43,8 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-
+    
+    <!-- Semantic element for main content of website. -->
     <main>
       <h2>Utilities for Necromunda</h2>
       <section id="randomhiredgun" class="clearfix">
@@ -54,7 +54,8 @@
         <p>Running the JAR file and selecting a hired gun type will automatically select weapons, skills and a name for a new Hired Gun of the chosen type. The result can also be exported to a text file.</p>
       </section>
     </main>
-
+    
+    <!-- Semantic element for webpage footer. -->
     <footer>
       <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="utilities.html" class="currentpage">Utilities for Necromunda</a></p>

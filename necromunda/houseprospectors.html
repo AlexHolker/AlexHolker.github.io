@@ -1,22 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> <!-- Differentiates between HTML and XML. -->
+<html lang="en"> <!-- "en" lang attribute applied to all child elements unless overridden. -->
+  <!-- Head contains metadata for webpage. Not displayed. -->
   <head>
     <title>House Prospector Team - The Living Hive</title>
     <meta charset="utf-8">
     <meta name="description" content="Prospector Team house rules for Necromunda">
     <meta name="keywords" content="Necromunda">
     <meta name="author" content="Alex Holker">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/web.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura|Allerta+Stencil">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Recommended by W3Schools for responsive design. -->
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
   </head>
+  
+  <!-- Body contains all content to be displayed on screen. -->
   <body>
-    <!-- Without PHP, nav element copied-and-pasted between html files. -->
+    <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
-        <div class="logosmall">
-          <h1>THE LIVING HIVE</h1>
-        </div>
+        <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -45,7 +46,8 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-
+    
+    <!-- Semantic element for main content of website. -->
     <main>
       <h2>House Prospector Team</h2>
       <p>This is my modified take on the House Prospector Team created by Chris Ward, Stuart Witter and Rob Atkins for the Ash Wastes setting.</p>
@@ -363,7 +365,8 @@
       <h3>Guild Law</h3>
       <p>As representatives of their House, a Prospector team may not jeopardise their relationship with the Guild by committing illegal acts. If you hire an outlaw hired gun, halve your income from finds after the next battle. If you attack a Guilder, you earn no income from finds after the next 1D3 battles.</p>
     </main>
-
+    
+    <!-- Semantic element for webpage footer. -->
     <footer>
       <hr>
       <p id="breadcrumb"><a href="index.html">Home</a> &gt; Gang Rules &gt; <a href="houseprospectors.html" class="currentpage">House Prospector Team</a></p>

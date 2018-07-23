@@ -11,8 +11,12 @@ body {
   background-color: black;
   color: aliceblue;
   font-family: "Jura", sans-serif;
-  max-width: 800px;
   padding-left: 280px;
+  max-width: 960px;
+}
+
+.centercolumn {
+  max-width: 800px;
 }
 
 /* Background first implemented using greyscale image with colour added with
@@ -53,6 +57,8 @@ body.hiveprimus {
   visibility: hidden;
 }
 
+/* FONTS */
+/* Website Title */
 h1 {
   font-family: "Allerta Stencil", sans-serif;
   font-size: 4em;
@@ -63,18 +69,22 @@ h1 {
   transform: rotate(4deg);
 }
 
+/* Page Title */
 h2 {
   text-shadow: -1px -1px grey;
 }
 
+/* Section Title */
 h3 {
   margin: 30px 0px 10px 0px;
 }
 
+/* Inline Title */
 h4 {
   margin: 5px 0px;
 }
 
+/* Clickable Links */
 a:link, a:visited, label {
   color: gold;
   cursor: pointer;
@@ -82,20 +92,24 @@ a:link, a:visited, label {
   text-shadow: 0px 0px 10px orangered;
 }
 
+/* Clickable Links on mouseover */
 a:hover, label:hover {
   color: orangered;
   text-shadow: none;
 }
 
+/* Link to current page in navbar. */
 a.currentpage {
   color: aliceblue;
   text-shadow: 0px 0px 10px gold, 0px 0px 20px orangered;
 }
 
+/* Italicised in-setting flavour text. */
 .flavourtext {
   font-style: italic;
   margin-top: 0px;
 }
+/* END FONTS */
 
 nav {
   background-color: #292d33;
@@ -140,6 +154,7 @@ nav a {
   border-right: 1px solid darkgrey;
 }
 
+/* MAIN-ONLY CSS*/
 main {
   min-height: 450px;
 }
@@ -199,14 +214,14 @@ div.equipmenttable {
   vertical-align: top;
 }
 
-summary h4 {
-  display: inline-block;
-}
-
 .territorytable ul {
   /*margin-top: 0px;*/
   margin: 0px 0px 7px 0px;
   padding: 0px;
+}
+
+summary h4 {
+  display: inline-block;
 }
 
 /* Adds "..." when a details element is closed to indicate more text.*/
@@ -224,7 +239,9 @@ details:not([open=""]) summary::after {
 .statstable th {
   min-width: 6%;
 }
+/* END MAIN-ONLY CSS*/
 
+/* FOOTER-ONLY CSS */
 footer {
   margin-top: 50px;
   padding: 20px 0px;
@@ -237,6 +254,7 @@ hr {
 #breadcrumb {
   font-weight: bold;
 }
+/* END FOOTER-ONLY CSS*/
 
 /* Tooltips implemented using method taught in Web Programming for drop-down
  * menus.
@@ -331,7 +349,10 @@ hr {
  * Based on method described here:
  * Frederic Kizar, 2013, JSFiddle, https://jsfiddle.net/khnNe/
  */
-input, #aboutnecromunda, #aboutsite, #aboutnew {
+input,
+#aboutnecromunda,
+#aboutsite,
+#aboutnew {
   display: none;
 }
 

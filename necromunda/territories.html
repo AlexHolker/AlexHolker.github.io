@@ -12,12 +12,13 @@
     <link rel="stylesheet" type="text/css" href="css/print.css"> <!-- External style sheet -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Jura"> <!-- External style sheet provided by Google Fonts. -->
   </head>
-  
-  <!-- Body contains all content to be displayed on screen. -->
+
+  <!-- Body contains all content to be displayed on screen. Territories page only applies centercolumn class to nested elements so that tables can be wider. -->
   <body>
     <!-- Semantic element for navigation sidebar. -->
     <nav>
       <a href="index.html">
+        <!-- Modified Imperial Eagle by Holker, A. 2018, Spider Aquila. Author's collection. -->
         <img src="img/spideraquilasmall.png" class="logosmall" alt="The Living Hive">
       </a>
       <ul>
@@ -50,20 +51,23 @@
       </ul>
       <div class="navedge hazardstripes"></div>
     </nav>
-    
+
     <!-- Semantic element for main content of website. -->
     <main>
-      <h2>Territories</h2>
-      <div class="clearfix">
-        <div class="dropdown floatright">
-          <!-- Screenshot from Necromunda: Underhive Wars, 2018, Rogue Factor, accessed 15/07/18, <http://necromunda-underhivewars.com/en/media> -->
-          <img src="img/powercabletap.jpg" alt="Two gangs fighting over some valuable territory" style="width: 400px">
-          <span class="tooltiptext">&copy;Rogue Factor, 2018. <a href="http://necromunda-underhivewars.com/en/media">Source</a></span>
+      <div class="centercolumn">
+        <!-- Holker, A, 2016, Territory Tables, Alex Edition v0.3, Author's collection. -->
+        <h2>Territories</h2>
+        <div class="clearfix">
+          <div class="dropdown floatright">
+            <!-- Screenshot from Necromunda: Underhive Wars, 2018, Rogue Factor, accessed 15/07/18, <http://necromunda-underhivewars.com/en/media> -->
+            <img src="img/powercabletap.jpg" alt="Two gangs fighting over some valuable territory" style="width: 400px">
+            <span class="tooltiptext">&copy;Rogue Factor, 2018. <a href="http://necromunda-underhivewars.com/en/media">Source</a></span>
+          </div>
+          <p>These modified territory tables were created as part of a map-based campaign system I was working on.</p>
+          <p>The most significant difference from the official tables is the addition of two new tables for law-abiding gangs: Mining Outpost territories and Settlement territories. Rather than rolling five times on the standard table, the Arbitrator might allow players to spend some of their rolls on these new tables, giving them more control over whether their gang's power base is resources or people.</p>
         </div>
-        <p>These modified territory tables were created as part of a map-based campaign system I was working on.</p>
-        <p>The most significant difference from the official tables is the addition of two new tables for law-abiding gangs: Mining Outpost territories and Settlement territories. Rather than rolling five times on the standard table, the Arbitrator might allow players to spend some of their rolls on these new tables, giving them more control over whether their gang's power base is resources or people.</p>
       </div>
-      
+
       <section id="miningoutpost">
         <h3>Underhive Mining Outpost Territories Table</h3>
         <table class="territorytable">
@@ -706,6 +710,16 @@
             <th>5</th>
             <td rowspan="2">
               <h4>Chem Pit</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">2D6</p>
+                  <p class="tooltip lootedvalue">0</p>
+                </div>
+              </div>
+              <ul>
+                <li>Underhive</li>
+              </ul>
+              <p>If a double is rolled for income, no income is gained. The fighter working the territory receives Horrible Scars.</p>
             </td>
             <td rowspan="2">
               <h4>Mine Workings</h4>
@@ -831,9 +845,32 @@
             </td>
             <td rowspan="2">
               <h4>Outlaw Settlement</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">15</p>
+                  <p class="tooltip lootedvalue">30</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+              <p>If a gang seizes this territory, they must loot or abandon it instead.</p>
+              <p>After each battle, roll a D6: on a 6, you may add a Juve or equivalent fighter to your roster.</p>
             </td>
             <td rowspan="2">
               <h4>Outlands Workshop</h4>
+              <div class="divtable">
+                <div>
+                  <p class="tooltip workedvalue">D6x10</p>
+                  <p class="tooltip lootedvalue">120</p>
+                </div>
+              </div>
+              <ul>
+                <li>Outlands</li>
+                <li>Underhive</li>
+              </ul>
+              <p>Once per battle, you may ignore a failed Ammo roll.</p>
             </td>
             <td rowspan="4">
               <h4>Sludge Sea</h4>
@@ -1357,11 +1394,11 @@
         </table>
       </section>
     </main>
-    
+
     <!-- Semantic element for webpage footer. -->
-    <footer>
+    <footer class="centercolumn">
       <hr>
-      <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="territories.html" class="currentpage">Territory Tables</a></p>
+      <p id="breadcrumb"><a href="index.html">Home</a> &gt; Campaign Rules &gt; <a href="territories.html" class="currentpage">Territory Tables</a></p> <!-- Breadcrumb used to provide easy navigation up site tree. -->
       <p>&copy; Alex Holker, 2018</p>
       <p>Games Workshop, Specialist Games, Necromunda, Warhammer 40,000, and the associated factions, settings and weapons are the trademarks of Games Workshop Ltd.</p>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

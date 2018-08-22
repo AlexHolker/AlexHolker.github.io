@@ -11,8 +11,8 @@ body {
   background-color: black;
   color: aliceblue;
   font-family: "Jura", sans-serif;
-  padding-left: 280px;
   max-width: 960px;
+  margin: auto;
 }
 
 .centercolumn {
@@ -53,8 +53,8 @@ body.hiveprimus {
   max-width: 200px;
 }
 
-.hiveprimus .logosmall {
-  visibility: hidden;
+.hidden {
+  display: none;
 }
 
 /* FONTS */
@@ -111,15 +111,11 @@ a.currentpage {
 }
 /* END FONTS */
 
+/* NAVBAR-ONLY CSS */
 nav {
+  position: relative;
   background-color: #292d33;
-  height: 100%;
-  width: 260px;
-  overflow: auto;
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  padding-top: 10px;
+  padding: 10px 0px;
   box-shadow: 0px 0px 20px black;
 }
 
@@ -136,8 +132,10 @@ nav li li {
   margin: 0px;
 }
 
-nav a {
-  display: block;
+/* Responsive design rule - used for top navbar on narrow screens. */
+nav div {
+  display: inline-block;
+  vertical-align: top;
 }
 
 /* Hazard stripes on navbar uses CSS gradient with steep edges.*/
@@ -146,15 +144,50 @@ nav a {
 }
 
 .navedge {
-  height: 100%;
-  width: 10px;
+  height: 10px;
+  width: 100%;
   position: absolute;
   right: 0px;
-  top: 0px;
-  border-right: 1px solid darkgrey;
+  bottom: 0px;
+  border-bottom: 1px solid darkgrey;
 }
 
-/* MAIN-ONLY CSS*/
+/* END NAVBAR-ONLY CSS */
+
+/* Responsive design rules - if the screen is too narrow to display the website
+ * as intended, navbar will be displayed as block element.*/
+@media only screen and (min-width: 1240px) {
+  body {
+    padding-left: 280px;
+  }
+  
+  .hidden {
+    display: block;
+    visibility: hidden;
+  }
+  
+  nav {
+    height: 100%;
+    width: 260px;
+    overflow: auto;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+  }
+  
+  nav a,
+  nav div {
+    display: block;
+  }
+  
+  .navedge {
+    height: 100%;
+    width: 10px;
+    border-right: 1px solid darkgrey;
+  }
+}
+
+/* MAIN-ONLY CSS */
 main {
   min-height: 450px;
 }
@@ -197,9 +230,13 @@ div.equipmenttable {
   columns: 250px 3;
 }
 
+/* break-inside rule used to ensure consistent behaviour on all browsers.*/
 .equipmenttable>table {
   margin-top: 0px;
   width: 100%;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .territorytable {
@@ -215,7 +252,6 @@ div.equipmenttable {
 }
 
 .territorytable ul {
-  /*margin-top: 0px;*/
   margin: 0px 0px 7px 0px;
   padding: 0px;
 }

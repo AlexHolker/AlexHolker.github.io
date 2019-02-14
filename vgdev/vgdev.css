@@ -4,6 +4,7 @@ body {
   max-width: 960px;
   margin: auto;
   background-color: whitesmoke;
+  counter-reset: line;
 }
 
 h1 {
@@ -37,6 +38,10 @@ nav ul li a {
 
 nav ul li a:hover {
   background-color: lightgreen;
+}
+
+p {
+  text-indent: 1em;
 }
 
 section {

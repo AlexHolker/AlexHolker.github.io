@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- English language in this and child elements. -->
+  <head> <!-- Non-visible elements only. -->
+    <title>Diffie-Hellman Key Exchange Demo</title>
+    <meta charset="utf-8"> <!-- Standard character encoding for the modern internet. -->
+    <meta name="description" content="Programming for Digital Design - Assignment 3">
+    <meta name="author" content="Alex Holker">
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <script src="js/javascript.js"></script>
+  </head>
+  <body>
+    <div id="topbar">
+      <header>
+        <h1>Introduction to Cryptography</h1>
+        <h3>Interactive demonstrations of cryptographic principles</h3>
+      </header>
+      <nav>
+        <h2 onclick="toggleVisibility('navList')">Navigation +</h2>
+        <div id="navList" class="hidden">
+          <h3>Select a page:</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+            <li><a href="blockchain.html">Blockchains</a></li>
+          </ul>
+          <button onclick="toggleVisibility('navList')">Back</button>
+        </div>
+      </nav>
+    </div>
+    <main>
+      <div class="divTable">
+        <div class="divTableBody">
+          <div class="divTableRow">
+            <div class="divTableCell"> <!-- Alice data -->
+              ALICE DATA
+            </div>
+            <div class="divTableCell"> <!-- Attacker and data -->
+              ATTACKER
+            </div>
+            <div class="divTableCell"> <!-- Bob data-->
+              BOB DATA
+            </div>
+          </div>
+          <div class="divTableRow"> <!-- Users modified from Female Profile Silhouette #1383013. Retrieved from http://clipart-library.com/clipart/6cyXxg4Ei.htm -->
+            <div class="divTableCell"> <!-- Alice -->
+              <img src="img/alice.png" alt="Alice" width="90">
+            </div>
+            <div class="divTableCell"> <!-- Channel -->
+              CHANNEL
+            </div>
+            <div class="divTableCell"> <!-- Bob -->
+              <img src="img/bob.png" alt="Bob" width="90">
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="column">
+      <p>&copy; Alex Holker, 2019</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+    </footer>
+  </body>
+</html>

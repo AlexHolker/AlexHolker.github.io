@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- English language in this and child elements. -->
+  <head> <!-- Non-visible elements only. -->
+    <title>Blockchain Demo</title>
+    <meta charset="utf-8"> <!-- Standard character encoding for the modern internet. -->
+    <meta name="description" content="Programming for Digital Design - Assignment 3">
+    <meta name="author" content="Alex Holker">
+    <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
+    <script src="js/javascript.js"></script>
+  </head>
+  <body onload="setBlockchainDemo()">
+    <div id="topbar">
+      <header>
+        <h1>Introduction to Cryptography</h1>
+        <h3>Interactive demonstrations of cryptographic principles</h3>
+      </header>
+      <nav>
+        <h2 onclick="toggleVisibility('navList')">Navigation +</h2>
+        <div id="navList" class="hidden">
+          <h3>Select a page:</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+            <li><a href="blockchain.html">Blockchains</a></li>
+          </ul>
+          <button onclick="toggleVisibility('navList')">Back</button>
+        </div>
+      </nav>
+    </div>
+    <main class="column">
+      <div class="divTable">
+        <div class="divTableRow">
+          <div class="divTableCell"><h4>Generation</h4></div>
+          <div class="divTableCell"><h4>Previous Hash</h4></div>
+          <div class="divTableCell"><h4>Transactions</h4></div>
+          <div class="divTableCell"><h4>New Hash</h4></div>
+        </div>
+        <input type="number" id="newhash0" class="hidden" value="0">
+        <div class="divTableRow" id="block1">
+          <div class="divTableCell">1</div>
+          <div class="divTableCell"><input type="number" id="oldhash1"></div>
+          <div class="divTableCell">
+            <textarea id="transactions1" rows="2" cols="40">$1 from mining to Alice</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash1"></div>
+          <div class="divTableCell"><button onclick="updateBlock(1, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block2">
+          <div class="divTableCell">2</div>
+          <div class="divTableCell"><input type="number" id="oldhash2"></div>
+          <div class="divTableCell">
+            <textarea id="transactions2" rows="2" cols="40">$1 from mining to Bob</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash2"></div>
+          <div class="divTableCell"><button onclick="updateBlock(2, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block3">
+          <div class="divTableCell">3</div>
+          <div class="divTableCell"><input type="number" id="oldhash3"></div>
+          <div class="divTableCell">
+            <textarea id="transactions3" rows="2" cols="40">$1 from mining to Alice</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash3"></div>
+          <div class="divTableCell"><button onclick="updateBlock(3, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block4">
+          <div class="divTableCell">4</div>
+          <div class="divTableCell"><input type="number" id="oldhash4"></div>
+          <div class="divTableCell">
+            <textarea id="transactions4" rows="2" cols="40">$1 from mining to Alice</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash4"></div>
+          <div class="divTableCell"><button onclick="updateBlock(4, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block5">
+          <div class="divTableCell">5</div>
+          <div class="divTableCell"><input type="number" id="oldhash5"></div>
+          <div class="divTableCell">
+            <textarea id="transactions5" rows="2" cols="40">$1 from mining to Alice</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash5"></div>
+          <div class="divTableCell"><button onclick="updateBlock(5, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block6">
+          <div class="divTableCell">6</div>
+          <div class="divTableCell"><input type="number" id="oldhash6"></div>
+          <div class="divTableCell">
+            <textarea id="transactions6" rows="2" cols="40">$1 from mining to Bob</textarea>
+          </div>
+          <div class="divTableCell"><input type="number" id="newhash6"></div>
+          <div class="divTableCell"><button onclick="updateBlock(6, true)">Update Block</button></div>
+        </div>
+        <div class="divTableRow" id="block7">
+          <div class="divTableCell">7</div>
+          <div class="divTableCell"><input type="number" id="oldhash7"></div>
+          <div class="divTableCell">...</div>
+          <div class="divTableCell">...</div>
+          <div class="divTableCell"></div>
+        </div>
+      </div>
+      <p>Somebody trying to add, remove or modify a transaction from an old block must generate a new hash not just for that block, but also every subsequent block.</p>
+      <p>As long as the hashing process is not trivial, such a forgery becomes increasingly difficult.</p>
+    </main>
+    <footer class="column">
+      <p>&copy; Alex Holker, 2019</p>
+      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+    </footer>
+  </body>
+</html>

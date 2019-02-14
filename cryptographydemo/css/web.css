@@ -1,0 +1,92 @@
+h1, h2, h3 {
+  text-align: center;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0.35;
+  z-index: -2;
+}
+
+.column {
+  max-width: 960px;
+  margin: auto;
+}
+
+header, nav {
+  display: inline-block;
+  margin: 0px 10%;
+}
+
+nav div {
+  display: inline-block;
+  padding: 10px;
+  border: 3px solid black;
+  background: white;
+  width: 50%;
+  height: 50%;
+  
+  position: fixed;
+  top: 25%;
+  left: 25%;
+}
+
+main {
+  padding-bottom: 100px;
+}
+
+.hidden {
+  display: none;
+}
+
+.subjectbox {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 20px;
+  width: 50%;
+}
+
+.divTable {
+  display: table;
+  width: 100%;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableCell {
+  display: table-cell;
+}
+
+.clockDemo
+{
+  display: inline-block;
+  width: 45%;
+}
+
+.clockFaceContainer
+{
+  position: relative;
+  width: 382px;
+}
+
+#clockHand1, #clockHand2
+{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -140px;
+  margin-left: -17px;
+  z-index: 10;
+}
+
+footer {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 90%;
+  z-index: -1;
+}

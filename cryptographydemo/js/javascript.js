@@ -28,27 +28,39 @@ function setBlockchainDemo()
 // Generates a hash for the given block and inserts it into the table.
 function updateBlock(generation, checkContinuity)
 {
+  var prevGenString = (generation - 1).toString();
   var genString = generation.toString();
+  var nextGenString = (generation + 1).toString();
+  
   var inputString = genString +
           document.getElementById("oldhash" + genString).value.toString() +
           document.getElementById("transactions" + genString).value;
   var outHash = hashCode(inputString);
   document.getElementById("newhash" + genString).value = outHash;
   
-  var nextGenString = (generation + 1).toString();
+  var genBlock = document.getElementById("block" + genString);
   var nextGenBlock = document.getElementById("block" + nextGenString);
+  
   if (checkContinuity)
   {
-    console.log(outHash.toString() + ", " + document.getElementById("oldhash" + nextGenString).value.toString());
+    var prevHash = document.getElementById("newhash" + prevGenString).value;
+    
+    if (prevHash == document.getElementById("oldhash" + genString).value)
+    {
+      genBlock.style.setProperty("background-color", "lightgreen");
+    }
+    else
+    {
+      genBlock.style.setProperty("background-color", "pink");
+    }
+    
     if (outHash == document.getElementById("oldhash" + nextGenString).value)
     {
       nextGenBlock.style.setProperty("background-color", "lightgreen");
-      console.log("Match!");
     }
     else
     {
       nextGenBlock.style.setProperty("background-color", "pink");
-      console.log("No match!");
     }
   }
   else
@@ -70,4 +82,45 @@ function hashCode(inputString)
     hash = hash & hash; // Convert to 32bit integer
   }
   return hash;
+}
+
+function calculateDH1(actor)
+{
+  var publicNum = diffieHellman("publicG", actor+"Exponent");
+  document.getElementById(actor+"Public").value = publicNum;
+  document.getElementById(actor+"TriggeredButton").classList.remove("hidden");
+}
+
+function calculateDH2(actor, otherActor)
+{
+  var sharedSecretNum = diffieHellman(otherActor+"Public", actor+"Exponent");
+  document.getElementById(actor+"SharedSecret").value = sharedSecretNum;
+}
+
+function diffieHellman(baseSource, exponentSource)
+{
+  var base = document.getElementById(baseSource).value;
+  var exponent = document.getElementById(exponentSource).value;
+  var modulus = document.getElementById("publicP").value;
+  
+  return modularExponentiate(base, exponent, modulus);
+}
+
+// Modular exponentiation function for Diffie-Hellman key exchange
+function modularExponentiate(base, exponent, modulus)
+{
+  return Math.pow(base, exponent) % modulus;
+}
+
+function finiteFieldDemo()
+{
+  var rawInput = document.getElementById("finiteFieldInput").value;
+  var rotation1 = ((rawInput%12)*5);
+  var rotation2 = (rawInput*5);
+  
+  var clockHand1 = document.getElementById("clockHand1");
+  var clockHand2 = document.getElementById("clockHand2");
+  
+  clockHand1.style.setProperty("transform", "rotate("+(rotation1*30)+"deg)");
+  clockHand2.style.setProperty("transform", "rotate("+(rotation2*30)+"deg)");
 }

@@ -15,19 +15,30 @@
         <h3>Interactive demonstrations of cryptographic principles</h3>
       </header>
       <nav>
-        <h2 onclick="toggleVisibility('navList')">Navigation +</h2>
+        <h2 onclick="toggleVisibility('navList')" class="clickable">Navigation +</h2>
         <div id="navList" class="hidden">
-          <h3>Select a page:</h3>
+          <h2>Select a page:</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
-            <li><a href="blockchain.html">Blockchains</a></li>
+            <li><a href="index.html">Homepage</a>
+              <ul>
+                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li><a href="blockchain.html">Blockchains</a></li>
+              </ul>
+            </li>
           </ul>
           <button onclick="toggleVisibility('navList')">Back</button>
         </div>
       </nav>
     </div>
     <main class="column">
+      <h2>Blockchain Demo</h2>
+      <p>A blockchain is a ledger in which each entry contains a unique fingerprint - the hash - of the previous entry. This hash also affects the next block's own hash, which is included in the block after that, and so on, ensuring that any change to an early block can easily be detected.</p>
+      <h3>How To Use This Page</h3>
+      <p>Every row represents a single block in the blockchain. Changing the transactions in a block and pressing "Update Block" will generate a new hash for that block, using its generation, previous hash and transactions.</p>
+      <p>Because the new hash does not match the subsequent block's copy of that block's hash, it is flagged as being invalid.</p>
+      <p>By copying the hash to the next block and re-hashing that block, it is possible to generate a new valid blockchain.</p>
+      
+      <!-- The interactive space used to simulate the blockchain. -->
       <div class="divTable">
         <div class="divTableRow">
           <div class="divTableCell"><h4>Generation</h4></div>
@@ -42,7 +53,7 @@
           <div class="divTableCell">
             <textarea id="transactions1" rows="2" cols="40">$1 from mining to Alice</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash1"></div>
+          <div class="divTableCell"><input type="number" id="newhash1" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(1, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block2">
@@ -51,7 +62,7 @@
           <div class="divTableCell">
             <textarea id="transactions2" rows="2" cols="40">$1 from mining to Bob</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash2"></div>
+          <div class="divTableCell"><input type="number" id="newhash2" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(2, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block3">
@@ -60,7 +71,7 @@
           <div class="divTableCell">
             <textarea id="transactions3" rows="2" cols="40">$1 from mining to Alice</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash3"></div>
+          <div class="divTableCell"><input type="number" id="newhash3" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(3, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block4">
@@ -69,7 +80,7 @@
           <div class="divTableCell">
             <textarea id="transactions4" rows="2" cols="40">$1 from mining to Alice</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash4"></div>
+          <div class="divTableCell"><input type="number" id="newhash4" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(4, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block5">
@@ -78,7 +89,7 @@
           <div class="divTableCell">
             <textarea id="transactions5" rows="2" cols="40">$1 from mining to Alice</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash5"></div>
+          <div class="divTableCell"><input type="number" id="newhash5" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(5, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block6">
@@ -87,7 +98,7 @@
           <div class="divTableCell">
             <textarea id="transactions6" rows="2" cols="40">$1 from mining to Bob</textarea>
           </div>
-          <div class="divTableCell"><input type="number" id="newhash6"></div>
+          <div class="divTableCell"><input type="number" id="newhash6" readonly></div>
           <div class="divTableCell"><button onclick="updateBlock(6, true)">Update Block</button></div>
         </div>
         <div class="divTableRow" id="block7">
@@ -98,8 +109,9 @@
           <div class="divTableCell"></div>
         </div>
       </div>
+      
       <p>Somebody trying to add, remove or modify a transaction from an old block must generate a new hash not just for that block, but also every subsequent block.</p>
-      <p>As long as the hashing process is not trivial, such a forgery becomes increasingly difficult.</p>
+      <p>As long as the hashing process is not trivial, such a forgery becomes increasingly difficult as the blockchain grows.</p>
     </main>
     <footer class="column">
       <p>&copy; Alex Holker, 2019</p>

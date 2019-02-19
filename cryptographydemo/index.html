@@ -16,15 +16,18 @@
         <h3>Interactive demonstrations of cryptographic principles</h3>
       </header>
       <nav>
-        <h2 onclick="toggleVisibility('navList')">Navigation +</h2>
+        <h2 onclick="toggleVisibility('navList')" class="clickable">Navigation +</h2>
         <div id="navList" class="hidden">
-          <h3>Select a page:</h3>
+          <h2>Select a page:</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
-            <li><a href="blockchain.html">Blockchains</a></li>
+            <li><a href="index.html">Homepage</a>
+              <ul>
+                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li><a href="blockchain.html">Blockchains</a></li>
+              </ul>
+            </li>
           </ul>
-          <button onclick="toggleVisibility('navList')">Back</button>
+          <button class="center" onclick="toggleVisibility('navList')">Back</button>
         </div>
       </nav>
     </div>
@@ -32,12 +35,12 @@
       <div class="divTable">
         <div class="divTableRow">
           <div class="divTableCell subjectbox" onmouseover="setBackground('computernetworking')">
-          <!-- Applies background image: Computer Networking in Business. Image retrieved from https://www.inspiredtechs.com.au/computer-networking/ -->
+            <!-- Applies background image: Computer Networking in Business. Image retrieved from https://www.inspiredtechs.com.au/computer-networking/ -->
             <h2><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></h2>
             <p>How do you share a session key without anyone listening being able to make a copy?</p>
           </div>
           <div class="divTableCell subjectbox" onmouseover="setBackground('cryptocurrencymining')">
-          <!-- Applies background image: Cryptocurrency Mining Farm. Image retrieved from https://commons.wikimedia.org/wiki/File:Cryptocurrency_Mining_Farm.jpg -->
+            <!-- Applies background image: Cryptocurrency Mining Farm. Image retrieved from https://commons.wikimedia.org/wiki/File:Cryptocurrency_Mining_Farm.jpg -->
             <h2><a href="blockchain.html">Blockchains</a></h2>
             <p>How do you stop someone tampering with a public ledger?</p>
           </div>

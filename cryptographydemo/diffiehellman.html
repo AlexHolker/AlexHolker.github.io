@@ -15,45 +15,97 @@
         <h3>Interactive demonstrations of cryptographic principles</h3>
       </header>
       <nav>
-        <h2 onclick="toggleVisibility('navList')">Navigation +</h2>
+        <h2 onclick="toggleVisibility('navList')" class="clickable">Navigation +</h2>
         <div id="navList" class="hidden">
-          <h3>Select a page:</h3>
+          <h2>Select a page:</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
-            <li><a href="blockchain.html">Blockchains</a></li>
+            <li><a href="index.html">Homepage</a>
+              <ul>
+                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li><a href="blockchain.html">Blockchains</a></li>
+              </ul>
+            </li>
           </ul>
-          <button onclick="toggleVisibility('navList')">Back</button>
+          <button class="center" onclick="toggleVisibility('navList')">Back</button>
         </div>
       </nav>
     </div>
     <main>
+      <section class="column">
+        <h2>Diffie-Hellman Key Exchange Demo</h2>
+        <p>The Diffie-Hellman key exchange is a method of generating the same pseudorandom number in two or more places without broadcasting sufficient information to replicate the process. Whenever you visit a page using HTTPS, your browser and the server use the Diffie-Hellman algorithm to generate a shared key.</p>
+        <h3>How To Use This Page</h3>
+        <p>Choose values for a, b, g and p, or keep the default values.</p>
+        <p>Calculate g<sup>a</sup> mod p and g<sup>b</sup> mod p and send the result to the other actor.</p>
+        <p>Calculate B<sup>a</sup> mod p or A<sup>b</sup> mod p without sending the result to the other actor.</p>
+        <p>Even though an eavesdropper may know g, p, g<sup>a</sup> mod p and g<sup>a</sup> mod p, <span class="clickable" onclick="toggleVisibility('whyItWorks')">they cannot use these numbers to calculate g<sup>ab</sup> mod p.</span></p>
+      </section>
+      
+      <!-- The interactive space used to perform the Diffie-Hellman simulation. -->
       <div class="divTable">
-        <div class="divTableBody">
-          <div class="divTableRow">
-            <div class="divTableCell"> <!-- Alice data -->
-              ALICE DATA
-            </div>
-            <div class="divTableCell"> <!-- Attacker and data -->
-              ATTACKER
-            </div>
-            <div class="divTableCell"> <!-- Bob data-->
-              BOB DATA
-            </div>
+        <div class="divTableRow">
+          <div class="divTableCell invertColor"> <!-- Alice data -->
+            <h4>Alice's Private Numbers</h4>
+            <p><input id="aliceExponent" type="number" value="4"> - Alice's secret number (a)<br>
+              <input id="aliceSharedSecret" type="number" readonly> - Shared secret</p>
+            <button onclick="calculateDH1('alice')">Calculate g<sup>a</sup> mod p</button>
+            <button id="bobTriggeredButton" class="hidden" onclick="calculateDH2('alice', 'bob')">Calculate B<sup>a</sup> mod p</button>
           </div>
-          <div class="divTableRow"> <!-- Users modified from Female Profile Silhouette #1383013. Retrieved from http://clipart-library.com/clipart/6cyXxg4Ei.htm -->
-            <div class="divTableCell"> <!-- Alice -->
-              <img src="img/alice.png" alt="Alice" width="90">
-            </div>
-            <div class="divTableCell"> <!-- Channel -->
-              CHANNEL
-            </div>
-            <div class="divTableCell"> <!-- Bob -->
-              <img src="img/bob.png" alt="Bob" width="90">
-            </div>
+          <div class="divTableCell"> <!-- Public data -->
+            <h4>Alice and Bob's Public Numbers</h4>
+            <p><input id="publicG" type="number" value="5"> - Base (g)<br>
+              <input id="publicP" type="number" value="23"> - Modulo (p)<br>
+              <input id="alicePublic" type="number" readonly> - Alice's public number (A)<br>
+              <input id="bobPublic" type="number" readonly> - Bob's public number (B)</p>
+          </div>
+          <div class="divTableCell invertColor"> <!-- Bob data-->
+            <h4>Bob's Private Numbers</h4>
+            <p><input id="bobExponent" type="number" value="3"> - Bob's secret number (b)<br>
+              <input id="bobSharedSecret" type="number" readonly> - Shared secret</p>
+            <button onclick="calculateDH1('bob')">Calculate g<sup>b</sup> mod p</button>
+            <button id="aliceTriggeredButton" class="hidden" onclick="calculateDH2('bob', 'alice')">Calculate A<sup>b</sup> mod p</button>
+          </div>
+        </div>
+        <div class="divTableRow"> <!-- Users modified from Female Profile Silhouette #1383013. Retrieved from http://clipart-library.com/clipart/6cyXxg4Ei.htm -->
+          <div class="divTableCell invertColor"> <!-- Alice -->
+            <img class="center" src="img/alice_w.png" alt="Alice" width="90">
+          </div>
+          <div class="divTableCell"> <!-- Channel -->
+            <div id="channel"></div>
+          </div>
+          <div class="divTableCell invertColor"> <!-- Bob -->
+            <img class="center" src="img/bob_w.png" alt="Bob" width="90">
           </div>
         </div>
       </div>
+      
+      <aside id="whyItWorks" class="hidden">
+        <h2>Why does it work?</h2>
+        <p>The modulo function - the remainder when dividing by the modulus - discards some information, preventing an eavesdropper from working back to the secret inputs.</p>
+        <p>This is similar to the way that a clock repeats itself every 12 hours, and doesn't tell you if it's morning or evening or which day it is.</p>
+        <p>Even though information is lost during the modulo function certain mathematical properties still apply; g<sup>ab</sup> still equals g<sup>ba</sup> within the finite field.</p>
+        <h4>Enter a number between 13 and 50:</h4>
+        <input id="finiteFieldInput" type="number">
+        <button onclick="finiteFieldDemo()">Run Multiplication Demonstration</button>
+        <div>
+          <div class="clockDemo">
+            <h4>((N modulo 12) * 5) modulo 12</h4>
+            <div class="clockFaceContainer">
+              <img src="img/clockface.png">
+              <img id="clockHand1" src="img/clockhand.png">
+            </div>
+          </div>
+          <div class="clockDemo">
+            <h4>(N * 5) modulo 12</h4>
+            <div class="clockFaceContainer">
+              <img src="img/clockface.png">
+              <img id="clockHand2" src="img/clockhand.png">
+            </div>
+          </div>
+        </div>
+        <button class="center" onclick="toggleVisibility('whyItWorks')">Back</button>
+      </aside>
+      
     </main>
     <footer class="column">
       <p>&copy; Alex Holker, 2019</p>

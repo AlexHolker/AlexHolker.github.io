@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/web.css"> <!-- External style sheet -->
     <script src="js/javascript.js"></script>
   </head>
-  <body>
+  <body onload="openSubWindow()"> <!-- Opens Finite Field section if anchor link is used. -->
     <div id="topbar">
       <header>
         <h1>Introduction to Cryptography</h1>
@@ -21,7 +21,12 @@
           <ul>
             <li><a href="index.html">Homepage</a>
               <ul>
-                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li>
+                  <a href="diffiehellman.html">Diffie-Hellman Key Exchange</a>
+                  <ul>
+                    <li><a href="diffiehellman.html#whyitworks">Finite Fields</a></li>
+                  </ul>
+                </li>
                 <li><a href="blockchain.html">Blockchains</a></li>
               </ul>
             </li>
@@ -38,7 +43,6 @@
         <p>Choose values for a, b, g and p, or keep the default values.</p>
         <p>Calculate g<sup>a</sup> mod p and g<sup>b</sup> mod p and send the result to the other actor.</p>
         <p>Calculate B<sup>a</sup> mod p or A<sup>b</sup> mod p without sending the result to the other actor.</p>
-        <p>Even though an eavesdropper may know g, p, g<sup>a</sup> mod p and g<sup>a</sup> mod p, <span class="clickable" onclick="toggleVisibility('whyItWorks')">they cannot use these numbers to calculate g<sup>ab</sup> mod p.</span></p>
       </section>
       
       <!-- The interactive space used to perform the Diffie-Hellman simulation. -->
@@ -78,8 +82,12 @@
           </div>
         </div>
       </div>
+      <div class="column">
+        <p>Even though an eavesdropper may know all the numbers that are transmitted between the two actors (g, p, g<sup>a</sup> mod p and g<sup>a</sup> mod p), they cannot use these numbers to calculate g<sup>ab</sup> mod p. <span class="clickable" onclick="toggleVisibility('whyItWorks')">For more information on the finite fields , click here.</span></p>
+      </div>
       
-      <aside id="whyItWorks" class="hidden">
+      <div id="whyItWorks" class="popupbackground cover hidden"> <!-- Transparent layer covers page when pop-up is displayed. -->
+      <aside> <!-- Pop-up window about finite fields. -->
         <h2>Why does it work?</h2>
         <p>The modulo function - the remainder when dividing by the modulus - discards some information, preventing an eavesdropper from working back to the secret inputs.</p>
         <p>This is similar to the way that a clock repeats itself every 12 hours, and doesn't tell you if it's morning or evening or which day it is.</p>
@@ -91,20 +99,21 @@
           <div class="clockDemo">
             <h4>((N modulo 12) * 5) modulo 12</h4>
             <div class="clockFaceContainer">
-              <img src="img/clockface.png">
-              <img id="clockHand1" src="img/clockhand.png">
+              <img src="img/clockface.png" alt="Clock Face">
+              <img id="clockHand1" src="img/clockhand.png" alt="Clock Hand">
             </div>
           </div>
           <div class="clockDemo">
             <h4>(N * 5) modulo 12</h4>
             <div class="clockFaceContainer">
-              <img src="img/clockface.png">
-              <img id="clockHand2" src="img/clockhand.png">
+              <img src="img/clockface.png" alt="Clock Face">
+              <img id="clockHand2" src="img/clockhand.png" alt="Clock Hand">
             </div>
           </div>
         </div>
         <button class="center" onclick="toggleVisibility('whyItWorks')">Back</button>
       </aside>
+      </div>
       
     </main>
     <footer class="column">

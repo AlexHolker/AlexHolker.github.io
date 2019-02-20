@@ -1,22 +1,33 @@
 h1, h2, h3, h4 {
+  font-family: "Verdana", sans-serif;
   text-align: center;
 }
 
-#background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
+#indexbackground {
   opacity: 0.35;
   z-index: -2;
 }
 
+.popupbackground {
+  background-color: rgba(128,128,128, 0.5);
+  z-index: 9;
+}
+
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Used for elements with restricted width. */
 .column {
   max-width: 960px;
   margin: auto;
 }
 
+/* Container for header and nav elements. */
 #topbar {
   background-color: black;
   color: lightgreen;
@@ -31,18 +42,20 @@ header, nav {
   margin: 0px 10%;
 }
 
+/* Helps to identify active elements by using same cursor as links. */
 button, .clickable {
   cursor: pointer;
-}
-
-button {
-  border-radius: 2px;
 }
 
 span.clickable {
   text-decoration: underline;
 }
 
+button {
+  border-radius: 2px;
+}
+
+/* Navigation pop-up. */
 nav div {
   font-size: 1.2em;
   line-height: 1.5em;
@@ -57,6 +70,7 @@ nav div {
   position: fixed;
   top: 25%;
   left: 25%;
+  z-index: 10;
 }
 
 nav li li {
@@ -76,12 +90,14 @@ main {
   margin: auto;
 }
 
+/* Used on homepage for link boxes. */
 .subjectbox {
   background: rgba(255, 255, 255, 0.5);
   padding: 20px;
   width: 50%;
 }
 
+/* Used for CSS-based tables as described at https://divtable.com/ */
 .divTable {
   display: table;
   width: 100%;
@@ -100,16 +116,19 @@ input {
   width: 100px;
 }
 
-.invertColor {
-  background: black;
-  color: white;
-}
-
+/* Centers the element.*/
 .center {
   display: block;
   margin: auto;
 }
 
+/* Depicts hidden zones in Diffie-Hellman demo. */
+.invertColor {
+  background: black;
+  color: white;
+}
+
+/* Cosmetic element adds dashed line to Diffie-Hellman demo. */
 #channel {
   border-bottom: 6px dashed black;
   
@@ -117,6 +136,7 @@ input {
   margin: 50px 0px;
 }
 
+/* Finite Field pop-up. */
 aside {
   color: black;
   display: inline-block;
@@ -128,6 +148,7 @@ aside {
   position: fixed;
   top: 5%;
   left: 12%;
+  z-index: 10;
 }
 
 .clockDemo {

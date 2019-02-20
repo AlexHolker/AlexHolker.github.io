@@ -21,7 +21,12 @@
           <ul>
             <li><a href="index.html">Homepage</a>
               <ul>
-                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li>
+                  <a href="diffiehellman.html">Diffie-Hellman Key Exchange</a>
+                  <ul>
+                    <li><a href="diffiehellman.html#whyitworks">Finite Fields</a></li>
+                  </ul>
+                </li>
                 <li><a href="blockchain.html">Blockchains</a></li>
               </ul>
             </li>
@@ -33,6 +38,7 @@
     <main class="column">
       <h2>Blockchain Demo</h2>
       <p>A blockchain is a ledger in which each entry contains a unique fingerprint - the hash - of the previous entry. This hash also affects the next block's own hash, which is included in the block after that, and so on, ensuring that any change to an early block can easily be detected.</p>
+      <img class="center" src="img/bitcoinblockdata.png" alt="Bitcoin Block Data"> <!-- Wander, M. 2013. Bitcoin Block Data Retrieved from https://en.wikipedia.org/wiki/File:Bitcoin_Block_Data.svg -->
       <h3>How To Use This Page</h3>
       <p>Every row represents a single block in the blockchain. Changing the transactions in a block and pressing "Update Block" will generate a new hash for that block, using its generation, previous hash and transactions.</p>
       <p>Because the new hash does not match the subsequent block's copy of that block's hash, it is flagged as being invalid.</p>

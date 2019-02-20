@@ -9,12 +9,12 @@ function toggleVisibility(elementId)
 function setBackground(imageName)
 {
   var imageLocation = "url('img/" + imageName + ".jpg')";
-  var background = document.getElementById("background");
+  var background = document.getElementById("indexbackground");
   background.style.setProperty("background-image", imageLocation);
   background.style.setProperty("background-size", "cover");
 }
 
-//
+// Initialises hashes in blockchain demo.
 function setBlockchainDemo()
 {
   document.getElementById("oldhash1").value = document.getElementById("newhash0").value;
@@ -26,6 +26,8 @@ function setBlockchainDemo()
 }
 
 // Generates a hash for the given block and inserts it into the table.
+// If checkContinuity is true, hashes will be compared between blocks.
+// If checkContinuity is false, hashes will be copied between blocks.
 function updateBlock(generation, checkContinuity)
 {
   var prevGenString = (generation - 1).toString();
@@ -84,6 +86,16 @@ function hashCode(inputString)
   return hash;
 }
 
+// Allows direct link to finite fields section
+function openSubWindow()
+{
+  if(window.location.hash)
+  {
+    toggleVisibility("whyItWorks");
+  }
+}
+
+// Handler for first round of exponentiation.
 function calculateDH1(actor)
 {
   var publicNum = diffieHellman("publicG", actor+"Exponent");
@@ -91,12 +103,14 @@ function calculateDH1(actor)
   document.getElementById(actor+"TriggeredButton").classList.remove("hidden");
 }
 
+// Handler for second round of exponentiation.
 function calculateDH2(actor, otherActor)
 {
   var sharedSecretNum = diffieHellman(otherActor+"Public", actor+"Exponent");
   document.getElementById(actor+"SharedSecret").value = sharedSecretNum;
 }
 
+// Takes input ids, performs exponentiation, returns result.
 function diffieHellman(baseSource, exponentSource)
 {
   var base = document.getElementById(baseSource).value;
@@ -112,6 +126,7 @@ function modularExponentiate(base, exponent, modulus)
   return Math.pow(base, exponent) % modulus;
 }
 
+// Uses input to control clocks for finite field demo.
 function finiteFieldDemo()
 {
   var rawInput = document.getElementById("finiteFieldInput").value;

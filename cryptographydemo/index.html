@@ -9,7 +9,7 @@
     <script src="js/javascript.js"></script>
   </head>
   <body>
-    <div id="background"></div> <!-- Empty div provides greater control of background layer. -->
+    <div id="indexbackground" class="cover"></div> <!-- Empty div provides greater control of background layer. -->
     <div id="topbar">
       <header>
         <h1>Introduction to Cryptography</h1>
@@ -22,7 +22,12 @@
           <ul>
             <li><a href="index.html">Homepage</a>
               <ul>
-                <li><a href="diffiehellman.html">Diffie-Hellman Key Exchange</a></li>
+                <li>
+                  <a href="diffiehellman.html">Diffie-Hellman Key Exchange</a>
+                  <ul>
+                    <li><a href="diffiehellman.html#whyitworks">Finite Fields</a></li>
+                  </ul>
+                </li>
                 <li><a href="blockchain.html">Blockchains</a></li>
               </ul>
             </li>
@@ -40,7 +45,7 @@
             <p>How do you share a session key without anyone listening being able to make a copy?</p>
           </div>
           <div class="divTableCell subjectbox" onmouseover="setBackground('cryptocurrencymining')">
-            <!-- Applies background image: Cryptocurrency Mining Farm. Image retrieved from https://commons.wikimedia.org/wiki/File:Cryptocurrency_Mining_Farm.jpg -->
+            <!-- Applies background image: Krohn, M. 2014. Cryptocurrency Mining Farm. Image retrieved from https://commons.wikimedia.org/wiki/File:Cryptocurrency_Mining_Farm.jpg -->
             <h2><a href="blockchain.html">Blockchains</a></h2>
             <p>How do you stop someone tampering with a public ledger?</p>
           </div>

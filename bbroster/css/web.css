@@ -1,0 +1,26 @@
+.bg-test {
+  display: inline-block;
+  height: 400px;
+  width: 400px;
+}
+
+.blue-base {
+  background-color: blue;
+}
+
+.red-base {
+  background-color: red;
+}
+
+.pitch-background {
+  background-image: linear-gradient(#9cbbcf, #a8b1c8 20%, #879188 20%, rgba(135, 145, 135, 60%) 60%, rgba(135, 145, 135, 45%) 60%, rgba(135, 145, 135, 45%) 70%, #7c825e 70%, #4e4d1f 100%);
+  //background-image: linear-gradient(#9cbbcf, #a8b1c8 20%, #879188 20%, #845b4e 60%, #a96262 60%, #a96262 70%, #7c825e 70%, #4e4d1f 100%);
+}
+
+.error {
+  color: red;
+}
+
+.hidden {
+  display: none;
+}

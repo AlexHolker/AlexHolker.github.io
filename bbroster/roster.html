@@ -9,12 +9,14 @@
     <script src="js/namedefinitions.js"></script>
     <script src="js/teamdefinitions.js"></script>
     <script src="js/roster.js"></script>
+    <script src="js/jscolor.js"></script>
     <link rel="stylesheet" type="text/css" href="css/web.css">
   </head>
   <body>
     <main>
-      <h2 id="rosterTitle"><input id="rosterTitleName" type="text" oninput="updateTeamName(this.value)"><span id="rosterTitleRace"></span></h2>
+      <h2 id="rosterTitle"><input id="rosterTitleName" type="text" oninput="updateTeamName(this.value)"><span id="rosterTitleRace"> - Race</span></h2>
       <h3>Treasury: <span id="rosterGold"></span> GP</h3>
+      <input id="colourPicker" class="jscolor" onchange="storeColour(this.jscolor)">
       <table id="staffContainer"></table>
       <table id="roster">
         <tr>
@@ -22,17 +24,25 @@
           <th>Name</th>
           <th>Position</th>
           <th>Salary</th>
-          <th>MV</th>
-          <th>ST</th>
-          <th>AG</th>
-          <th>AV</th>
+          <th><div class="tooltipParent">MV<div class="tooltip">Move</div></div></th>
+          <th><div class="tooltipParent">ST<div class="tooltip">Strength</div></div></th>
+          <th><div class="tooltipParent">AG<div class="tooltip">Agility</div></div></th>
+          <th><div class="tooltipParent">AV<div class="tooltip">Armour Value</div></div></th>
           <th>Skills</th>
         </tr>
       </table>
       <div id="addPlayerContainer"></div>
       <p id="addPlayerError" class="error"></p>
       <button onclick="saveTeam()">Save Roster</button>
-      <button onclick="unsetTeam()">Delete Roster</button>
+      <button onclick="unsetRace()">Delete Roster</button>
+      
+      <svg width="200" height="200">
+        <filter id="teamColourFilter">
+          <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+        </filter>
+        <image x="0" y="0" width="200" height="200" xlink:href="img/filtertest.png" filter="url(#teamColourFilter)"/>
+      </svg>
+      <img class="teamColour" src="img/filtertest.png" alt="Filter Test">
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

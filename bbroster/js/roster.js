@@ -18,16 +18,19 @@ function initialiseRoster()
     {
       var JSONActiveTeam = localStorage.getItem("bbTeamRoster");
       activeTeam = JSON.parse(JSONActiveTeam);
-      
-      for (var player in activeTeam.players)
-      {
-        addPlayerToRoster(playerDefs[activeTeam.players[player].playerTypeId], activeTeam.players[player]);
-      }
+    }
+    
+    for (var player in activeTeam.players)
+    {
+      addPlayerToRoster(playerDefs[activeTeam.players[player].playerTypeId], activeTeam.players[player]);
     }
     
     document.getElementById("rosterTitleName").value = activeTeam.name;
     document.getElementById("rosterTitleRace").innerHTML = " - " + teamDefs[raceId].race;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+    
+    /* Kluge for timing issues surrounding jscolor. */
+    setTimeout(function() {document.getElementById("colourPicker").jscolor.fromString(activeTeam.colour)}, 10);
     populateStaff();
     populateAddPlayerButtons();
   }
@@ -37,6 +40,7 @@ function createNewTeam(raceId)
 {
   activeTeam.raceId = raceId;
   activeTeam.name = teamDefs[raceId].defaultName;
+  activeTeam.colour = teamDefs[raceId].defaultColour;
   activeTeam.gold = 1000000;
   activeTeam.staff = {};
   activeTeam.players = [];
@@ -275,4 +279,14 @@ function removePlayerFromRoster(player, rosterRow)
 {
   activeTeam.players.splice(activeTeam.players.indexOf(player), 1);
   document.getElementById("roster").removeChild(rosterRow);
+}
+
+function storeColour(picker)
+{
+  activeTeam.colour = picker.toHEXString();
+  
+  console.log(Math.round(picker.hsv[0]) + "," + Math.round(picker.hsv[1]) + "," + Math.round(picker.hsv[2]));
+  var body = document.getElementsByTagName('body')[0];
+  body.style.cssText = "--teamColourFilter: hue-rotate(" + picker.hsv[0] + "deg) saturate(" + picker.hsv[1] + "%) brightness(" + picker.hsv[2] + "%)";
+  document.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
 }

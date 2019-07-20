@@ -1,5 +1,5 @@
 
-function setTeam(raceId)
+function setRace(raceId)
 {
   localStorage.setItem("bbRaceId", raceId);
   localStorage.removeItem("bbTeamRoster");
@@ -7,7 +7,7 @@ function setTeam(raceId)
   window.location.href = "roster.html";
 }
 
-function unsetTeam()
+function unsetRace()
 {
   localStorage.removeItem("bbRaceId");
   localStorage.removeItem("bbTeamRoster");

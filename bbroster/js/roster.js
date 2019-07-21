@@ -30,7 +30,12 @@ function initialiseRoster()
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
     
     /* Kluge for timing issues surrounding jscolor. */
-    setTimeout(function() {document.getElementById("colourPicker").jscolor.fromString(activeTeam.colour)}, 10);
+    setTimeout(function()
+    {
+      var picker = document.getElementById("colourPicker").jscolor
+      picker.fromString(activeTeam.colour);
+      document.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
+    }, 10);
     populateStaff();
     populateAddPlayerButtons();
   }
@@ -200,27 +205,33 @@ function addIfNotFull(playerType)
 
 function addPlayerToRoster(playerType, playerData)
 {
+  var roster = document.getElementById("roster");
+  var rosterRow = document.createElement("tr");
+  roster.appendChild(rosterRow);
+  var cells = [];
+  for (var i = 0; i < 11; i++)
+  {
+    cells.push(document.createElement("td"));
+    rosterRow.appendChild(cells[i]);
+  }
+  
   var thisPlayer;
   
   if (playerData == null)
   {
     activeTeam.lastJerseyNumber++;
-    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "playerTypeId":playerType.id};
+    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "starPlayerPoints":0, "statIncreases":[0,0,0,0], "skills":{}, "playerTypeId":playerType.id};
     activeTeam.players.push(thisPlayer);
+    
+    var playerUndoCell = document.createElement("td");
+    rosterRow.appendChild(playerUndoCell);
+    var playerUndoButton = document.createElement("button");
+    playerUndoButton.innerHTML = "Undo";
+    playerUndoCell.appendChild(playerUndoButton);
   }
   else
   {
     thisPlayer = playerData;
-  }
-  
-  var roster = document.getElementById("roster");
-  var rosterRow = document.createElement("tr");
-  roster.appendChild(rosterRow);
-  var cells = [];
-  for (var i = 0; i < 10; i++)
-  {
-    cells.push(document.createElement("td"));
-    rosterRow.appendChild(cells[i]);
   }
   
   cells[0].innerHTML = thisPlayer.jerseyNumber;
@@ -238,11 +249,12 @@ function addPlayerToRoster(playerType, playerData)
   cells[6].innerHTML = playerType.AG;
   cells[7].innerHTML = playerType.AV;
   cells[8].innerHTML = skillsToString(thisPlayer);
+  cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
   
   var removePlayerButton = document.createElement("button");
   removePlayerButton.onclick = function() {removePlayerFromRoster(thisPlayer, rosterRow);};
   removePlayerButton.innerHTML = "Fire";
-  cells[9].appendChild(removePlayerButton);
+  cells[10].appendChild(removePlayerButton);
 }
 
 function getPlayerName(race)
@@ -275,6 +287,22 @@ function skillsToString(playerData)
   return skillsString;
 }
 
+function SPPToString(points)
+{
+  SPPString = points.toString();
+  
+  var SPPThresholds = [6,16,31,51,76,176];
+  var i = 0;
+  while ((i < SPPThresholds.length) && (SPPThresholds[i] <= points))
+  {
+    i++;
+  }
+  console.log(points + "," + i);
+  SPPString += "/" + SPPThresholds[i].toString();
+  
+  return SPPString;
+}
+
 function removePlayerFromRoster(player, rosterRow)
 {
   activeTeam.players.splice(activeTeam.players.indexOf(player), 1);
@@ -284,9 +312,5 @@ function removePlayerFromRoster(player, rosterRow)
 function storeColour(picker)
 {
   activeTeam.colour = picker.toHEXString();
-  
-  console.log(Math.round(picker.hsv[0]) + "," + Math.round(picker.hsv[1]) + "," + Math.round(picker.hsv[2]));
-  var body = document.getElementsByTagName('body')[0];
-  body.style.cssText = "--teamColourFilter: hue-rotate(" + picker.hsv[0] + "deg) saturate(" + picker.hsv[1] + "%) brightness(" + picker.hsv[2] + "%)";
   document.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
 }

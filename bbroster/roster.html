@@ -29,6 +29,7 @@
           <th><div class="tooltipParent">AG<div class="tooltip">Agility</div></div></th>
           <th><div class="tooltipParent">AV<div class="tooltip">Armour Value</div></div></th>
           <th>Skills</th>
+          <th><div class="tooltipParent">SPP<div class="tooltip">Star Player Points</div></div></th>
         </tr>
       </table>
       <div id="addPlayerContainer"></div>
@@ -36,13 +37,22 @@
       <button onclick="saveTeam()">Save Roster</button>
       <button onclick="unsetRace()">Delete Roster</button>
       
-      <svg width="200" height="200">
+      <svg width="420" height="480" style="background-color:black">
         <filter id="teamColourFilter">
-          <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+          <!-- Filter matrix initialised to default colour. -->
+          <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
         </filter>
-        <image x="0" y="0" width="200" height="200" xlink:href="img/filtertest.png" filter="url(#teamColourFilter)"/>
+        <image x="5" y="97" width="180" height="200" xlink:href="img/humanleftarm00.png"/>
+        <image x="5" y="97" width="180" height="200" xlink:href="img/humanleftarm00team.png" filter="url(#teamColourFilter)" />
+        <image x="235" y="97" width="180" height="200" xlink:href="img/humanrightarm00.png"/>
+        <image x="235" y="97" width="180" height="200" xlink:href="img/humanrightarm00team.png" filter="url(#teamColourFilter)" />
+        <image x="95" y="25" width="230" height="250" xlink:href="img/humantorso00.png" />
+        <image x="95" y="25" width="230" height="250" xlink:href="img/humantorso00team.png" filter="url(#teamColourFilter)" />
+        <image x="12" y="200" width="400" height="300" xlink:href="img/humanlegs00.png" />
+        <image x="12" y="200" width="400" height="300" xlink:href="img/humanlegs00team.png" filter="url(#teamColourFilter)" />
+        <image x="138" y="0" width="144" height="150" xlink:href="img/humanhead00.png" />
+        <image x="138" y="0" width="144" height="150" xlink:href="img/humanhead00team.png" filter="url(#teamColourFilter)" />
       </svg>
-      <img class="teamColour" src="img/filtertest.png" alt="Filter Test">
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

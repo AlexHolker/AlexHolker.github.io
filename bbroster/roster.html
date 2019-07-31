@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Blood Bowl Online Roster</title>
     <meta charset="UTF-8">
@@ -7,6 +7,7 @@
     <!-- Local external JavaScript files. -->
     <script src="js/persistence.js"></script>
     <script src="js/namedefinitions.js"></script>
+    <script src="js/skilldefinitions.js"></script>
     <script src="js/teamdefinitions.js"></script>
     <script src="js/roster.js"></script>
     <script src="js/jscolor.js"></script>
@@ -16,6 +17,7 @@
     <main>
       <h2 id="rosterTitle"><input id="rosterTitleName" type="text" oninput="updateTeamName(this.value)"><span id="rosterTitleRace"> - Race</span></h2>
       <h3>Treasury: <span id="rosterGold"></span> GP</h3>
+      <h3>Team Value: <span id="teamValue"></span> GP</h3>
       <input id="colourPicker" class="jscolor" onchange="storeColour(this.jscolor)">
       <table id="staffContainer"></table>
       <table id="roster">
@@ -37,22 +39,35 @@
       <button onclick="saveTeam()">Save Roster</button>
       <button onclick="unsetRace()">Delete Roster</button>
       
-      <svg width="420" height="480" style="background-color:black">
-        <filter id="teamColourFilter">
-          <!-- Filter matrix initialised to default colour. -->
-          <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
-        </filter>
-        <image x="5" y="97" width="180" height="200" xlink:href="img/humanleftarm00.png"/>
-        <image x="5" y="97" width="180" height="200" xlink:href="img/humanleftarm00team.png" filter="url(#teamColourFilter)" />
-        <image x="235" y="97" width="180" height="200" xlink:href="img/humanrightarm00.png"/>
-        <image x="235" y="97" width="180" height="200" xlink:href="img/humanrightarm00team.png" filter="url(#teamColourFilter)" />
-        <image x="95" y="25" width="230" height="250" xlink:href="img/humantorso00.png" />
-        <image x="95" y="25" width="230" height="250" xlink:href="img/humantorso00team.png" filter="url(#teamColourFilter)" />
-        <image x="12" y="200" width="400" height="300" xlink:href="img/humanlegs00.png" />
-        <image x="12" y="200" width="400" height="300" xlink:href="img/humanlegs00team.png" filter="url(#teamColourFilter)" />
-        <image x="138" y="0" width="144" height="150" xlink:href="img/humanhead00.png" />
-        <image x="138" y="0" width="144" height="150" xlink:href="img/humanhead00team.png" filter="url(#teamColourFilter)" />
-      </svg>
+      <object id="playerPortrait" type="image/svg+xml" data="img/human00.svg">
+        <param id="playerPortraitWorkaround" name="src" value="img/human00.svg">
+      </object>
+      
+      <div id="SPPPopup" class="hidden popup">
+        <input id="addSPPValue" type="number">
+        <button id="addSPPButton">Add SPP</button>
+      </div>
+      
+      <div id="skillsPopup" class="hidden popup">
+        <form id="skillsForm">
+          <h3>Stat Increases</h3>
+          <input id="skillsFormMV" type="radio" name="skillRadio" value="0">
+          <label for="skillsFormMV">Move Value</label>
+          <input id="skillsFormST" type="radio" name="skillRadio" value="1">
+          <label for="skillsFormST">Strength</label>
+          <input id="skillsFormAG" type="radio" name="skillRadio" value="2">
+          <label for="skillsFormAG">Agility</label>
+          <input id="skillsFormAV" type="radio" name="skillRadio" value="3">
+          <label for="skillsFormAV">Armour Value</label>
+          <h3>Skills</h3>
+          <div id="skillsContainer"></div>
+          <h3>Doubles Skills</h3>
+          <div id="skillsDoublesContainer"></div>
+          <div id="skillsUnavailableContainer" class="hidden"></div>
+        </form>
+        <button id="skillSelect">Select</button>
+        <p id="skillSelectError" class="error"></p>
+      </div>
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

@@ -1,5 +1,6 @@
 var raceId;
 var activeTeam = {};
+var playerPortraitContent;
 
 function initialiseRoster()
 {
@@ -10,7 +11,7 @@ function initialiseRoster()
   }
   else
   {
-    if (localStorage.getItem("bbTeamRoster") == null)
+    if (localStorage.getItem("bbTeamRoster") === null)
     {
       createNewTeam(raceId);
     }
@@ -29,16 +30,45 @@ function initialiseRoster()
     document.getElementById("rosterTitleRace").innerHTML = " - " + teamDefs[raceId].race;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
     
-    /* Kluge for timing issues surrounding jscolor. */
-    setTimeout(function()
+    /* Fix for timing issues regarding creating of jscolor element. */
+    window.addEventListener("load", function()
     {
-      var picker = document.getElementById("colourPicker").jscolor
+      var picker = document.getElementById("colourPicker").jscolor;
       picker.fromString(activeTeam.colour);
-      document.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
-    }, 10);
+      
+      playerPortraitContent = document.getElementById("playerPortrait").contentDocument;
+      playerPortraitContent.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
+    });
+    
     populateStaff();
     populateAddPlayerButtons();
+    initialiseSkillSelection();
+    setTeamValue();
   }
+}
+
+/* Calculates and displays the value of all staff and all players who aren't
+ * currently out of action.*/
+function setTeamValue()
+{
+  var teamValue = 0;
+  
+  for (var i in teamDefs[activeTeam.raceId].staff)
+  {
+    var staffType = teamDefs[activeTeam.raceId].staff[i];
+    teamValue += staffType.cost * activeTeam.staff[staffType.staffId];
+  }
+  
+  for (var i in activeTeam.players)
+  {
+    if (activeTeam.players[i].isAvailable)
+    {
+      teamValue += getPlayerCost(playerDefs[activeTeam.players[i].playerTypeId], activeTeam.players[i]);
+    }
+  }
+  
+  document.getElementById("teamValue").innerHTML = teamValue;
+  return teamValue;
 }
 
 function createNewTeam(raceId)
@@ -134,6 +164,7 @@ function hireStaff(staffUndo, staffQuantity, staffType)
     
     activeTeam.gold -= staffType.cost;
     activeTeam.staff[staffType.staffId]++;
+    setTeamValue();
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
     staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
     addPlayerError.innerHTML = "";
@@ -147,6 +178,7 @@ function undoHireStaff(resetQtyTo, staffType)
   {
     activeTeam.gold += staffType.cost * staffToRemove;
     activeTeam.staff[staffType.staffId] = resetQtyTo;
+    setTeamValue();
   }
 }
 
@@ -217,11 +249,12 @@ function addPlayerToRoster(playerType, playerData)
   
   var thisPlayer;
   
-  if (playerData == null)
+  if (playerData === null)
   {
     activeTeam.lastJerseyNumber++;
-    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "starPlayerPoints":0, "statIncreases":[0,0,0,0], "skills":{}, "playerTypeId":playerType.id};
+    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "starPlayerPoints":0, "statIncreases":[0,0,0,0], "skills":[], "skillsDouble":[], "injuries":[], "playerTypeId":playerType.id, "isAvailable":true};
     activeTeam.players.push(thisPlayer);
+    setTeamValue();
     
     var playerUndoCell = document.createElement("td");
     rosterRow.appendChild(playerUndoCell);
@@ -243,18 +276,48 @@ function addPlayerToRoster(playerType, playerData)
   cells[1].appendChild(playerNameBox);
   
   cells[2].innerHTML = playerType.name;
-  cells[3].innerHTML = playerType.cost;
-  cells[4].innerHTML = playerType.MA;
-  cells[5].innerHTML = playerType.ST;
-  cells[6].innerHTML = playerType.AG;
-  cells[7].innerHTML = playerType.AV;
-  cells[8].innerHTML = skillsToString(thisPlayer);
+  displayPlayerCost(playerType, thisPlayer, cells[3]);
+  
+  var injuryPenalties = displayInjuries(thisPlayer, rosterRow);
+  
+  cells[4].innerHTML = playerType.MA + thisPlayer.statIncreases[0] + injuryPenalties[0];
+  cells[5].innerHTML = playerType.ST + thisPlayer.statIncreases[1] + injuryPenalties[1];
+  cells[6].innerHTML = playerType.AG + thisPlayer.statIncreases[2] + injuryPenalties[2];
+  cells[7].innerHTML = playerType.AV + thisPlayer.statIncreases[3] + injuryPenalties[3];
+  displaySkills(thisPlayer, cells[8]);
+  
   cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
+  
+  var selectSPPButton = document.createElement("button");
+  selectSPPButton.onclick = function() {selectSPP(thisPlayer, cells);};
+  selectSPPButton.innerHTML = "Add SPP";
+  cells[10].appendChild(selectSPPButton);
   
   var removePlayerButton = document.createElement("button");
   removePlayerButton.onclick = function() {removePlayerFromRoster(thisPlayer, rosterRow);};
   removePlayerButton.innerHTML = "Fire";
   cells[10].appendChild(removePlayerButton);
+  
+  addLevelUpButton(thisPlayer, cells[10]);
+}
+
+function selectSPP(thisPlayer, output)
+{
+  var SPPPopup = document.getElementById("SPPPopup");
+  SPPPopup.classList.remove("hidden");
+  
+  document.getElementById("addSPPButton").onclick = function() {addSPP(thisPlayer, output);};
+}
+
+function addSPP(thisPlayer, output)
+{
+  document.getElementById("SPPPopup").classList.add("hidden");
+  var addSPPValue = parseInt(document.getElementById("addSPPValue").value);
+  if ((!isNaN(addSPPValue)) && (0 < addSPPValue))
+  {
+    thisPlayer.starPlayerPoints += addSPPValue;
+    output[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
+  }
 }
 
 function getPlayerName(race)
@@ -269,48 +332,269 @@ function getPlayerName(race)
   return name;
 }
 
-function skillsToString(playerData)
+function getPlayerCost(playerType, playerData)
+{
+  var salary = playerType.cost
+          + 20000 * playerData.skills.length
+          + 30000 * playerData.skillsDouble.length
+          + 30000 * playerData.statIncreases[0]
+          + 50000 * playerData.statIncreases[1]
+          + 40000 * playerData.statIncreases[2]
+          + 30000 * playerData.statIncreases[3];
+  return salary;
+}
+
+function displayPlayerCost(playerType, playerData, output)
+{
+  var salary = getPlayerCost(playerType, playerData);
+  output.innerHTML = salary;
+}
+
+function displaySkills(playerData, output)
 {
   var baseSkills = playerDefs[playerData.playerTypeId].skills;
   var skillsString = "";
   
-  if (0 < baseSkills.length)
+  var firstSkill = true;
+  
+  for (var i = 0; i < baseSkills.length; i++)
   {
-    skillsString = baseSkills[0];
-    
-    for (var i = 1; i < baseSkills.length; i++)
+    if (firstSkill)
     {
-      skillsString += ", " + baseSkills[i];
+      firstSkill = false;
     }
+    else
+    {
+      skillsString += ", ";
+    }
+    skillsString += baseSkills[i];
   }
   
-  return skillsString;
+  for (var i = 0; i < playerData.skills.length; i++)
+  {
+    if (firstSkill)
+    {
+      firstSkill = false;
+    }
+    else
+    {
+      skillsString += ", ";
+    }
+    skillsString += playerData.skills[i];
+  }
+  
+  for (var i = 0; i < playerData.skillsDouble.length; i++)
+  {
+    if (firstSkill)
+    {
+      firstSkill = false;
+    }
+    else
+    {
+      skillsString += ", ";
+    }
+    skillsString += playerData.skillsDouble[i];
+  }
+  
+  output.innerHTML = skillsString;
 }
 
 function SPPToString(points)
 {
   SPPString = points.toString();
   
-  var SPPThresholds = [6,16,31,51,76,176];
+  var level = getLevel(points);
+  
+  SPPString += "/" + SPPThresholds[level].toString();
+  
+  return SPPString;
+}
+
+function getLevel(points)
+{
   var i = 0;
   while ((i < SPPThresholds.length) && (SPPThresholds[i] <= points))
   {
     i++;
   }
-  console.log(points + "," + i);
-  SPPString += "/" + SPPThresholds[i].toString();
   
-  return SPPString;
+  return i;
+}
+
+function getAssignedLevels(playerData)
+{
+  var count = playerData.statIncreases[0] + playerData.statIncreases[1]
+      + playerData.statIncreases[2] + playerData.statIncreases[3]
+      + playerData.skills.length + playerData.skillsDouble.length;
+  
+  return count;
+}
+
+function initialiseSkillSelection()
+{
+  var skillsUnavailableContainer = document.getElementById("skillsUnavailableContainer");
+  
+  for (var category in skillDefs)
+  {
+    var categoryContainer = document.createElement("div");
+    categoryContainer.id = skillDefs[category].id+"skills";
+    skillsUnavailableContainer.appendChild(categoryContainer);
+    for (var skill in skillDefs[category].skills)
+    {
+      var skillName = skillDefs[category].skills[skill];
+      var radioButton = document.createElement("input");
+      radioButton.id = "skillsForm" + skillName.replace(/\s+/g, '');
+      radioButton.type = "radio";
+      radioButton.name = "skillRadio";
+      radioButton.value = skillName;
+      categoryContainer.appendChild(radioButton);
+      
+      var radioLabel = document.createElement("label");
+      radioLabel.setAttribute("for", "skillsForm" + skillName.replace(/\s+/g, ''));
+      radioLabel.innerHTML = skillName;
+      categoryContainer.appendChild(radioLabel);
+    }
+  }
+}
+
+function displayInjuries(playerData, output)
+{
+  var injuryPenalties = [0,0,0,0];
+  for (var injury in playerData.injuries)
+  {
+    switch (playerData.injuries[injury])
+    {
+      case "Broken Ribs":
+      case "Groin Strain":
+      case "Gouged Eye":
+      case "Broken Jaw":
+      case "Fractured Arm":
+      case "Fractured Leg":
+      case "Smashed Hand":
+      case "Pinched Nerve":
+        playerData.isAvailable = false;
+        output.classList.add("missNextGame");
+        break;
+      case "Damaged Back":
+      case "Smashed Knee":
+        break;
+      case "Smashed Hip":
+      case "Smashed Ankle":
+        injuryPenalties[0] -= 1;
+        break;
+      case "SeriousConcussion":
+      case "Fractured Skull":
+        injuryPenalties[3] -= 1;
+      case "Broken Neck":
+        injuryPenalties[2] -= 1;
+        break;
+      case "Smashed Collar Bone":
+        injuryPenalties[1] -= 1;
+        break;
+      case "Dead!":
+        playerData.isAvailable = false;
+        output.classList.add("missNextGame");
+    }
+  }
+  
+  return injuryPenalties;
 }
 
 function removePlayerFromRoster(player, rosterRow)
 {
+  /* Removes player without leaving a gap in the array.*/
   activeTeam.players.splice(activeTeam.players.indexOf(player), 1);
+  setTeamValue();
   document.getElementById("roster").removeChild(rosterRow);
+}
+
+function addLevelUpButton(playerData, output)
+{
+  if (getAssignedLevels(playerData) < getLevel(playerData.starPlayerPoints))
+  {
+    var levelUpButton = document.createElement("button");
+    levelUpButton.onclick = function() {selectSkill(playerData, levelUpButton);};
+    levelUpButton.innerHTML = "Level Up!";
+    output.appendChild(levelUpButton);
+  }
+}
+
+function selectSkill(playerData, levelUpButton)
+{
+  var playerType = playerDefs[playerData.playerTypeId];
+  
+  var skillsPopup = document.getElementById("skillsPopup");
+  skillsPopup.classList.remove("hidden");
+  var skillsContainer = document.getElementById("skillsContainer");
+  var skillsDoublesContainer = document.getElementById("skillsDoublesContainer");
+  var skillsUnavailableContainer = document.getElementById("skillsUnavailableContainer");
+  
+  for (var category in playerType.Normal)
+  {
+    var skillsNode = document.getElementById(playerType.Normal[category]+"skills");
+    skillsContainer.appendChild(skillsNode);
+  }
+  for (var category in playerType.Double)
+  {
+    var skillsNode = document.getElementById(playerType.Double[category]+"skills");
+    skillsDoublesContainer.appendChild(skillsNode);
+  }
+  for (var category in playerType.Unavailable)
+  {
+    var skillsNode = document.getElementById(playerType.Unavailable[category]+"skills");
+    skillsUnavailableContainer.appendChild(skillsNode);
+  }
+  
+  var skillSelectButton = document.getElementById("skillSelect");
+  skillSelectButton.onclick = function() {addSkill(playerData, levelUpButton, skillsPopup);};
+}
+
+function addSkill(playerData, levelUpButton, skillsPopup)
+{
+  var skillName = document.querySelector('input[name="skillRadio"]:checked').value;
+  var skillSelectError = document.getElementById("skillSelectError");
+  var playerType = playerDefs[playerData.playerTypeId];
+  
+  if (playerType.skills.includes(skillName) || playerData.skills.includes(skillName) || playerData.skillsDouble.includes(skillName))
+  {
+    // Skill has already been chosen, must choose a new skill.
+    skillSelectError.innerHTML = "Player already has that skill, please choose another.";
+  }
+  else
+  {
+    skillsPopup.classList.add("hidden");
+    skillSelectError.innerHTML = "";
+    var skillNumber = parseInt(skillName);
+    if (!isNaN(skillNumber))
+    {
+      playerData.statIncreases[skillNumber]++;
+    }
+    else 
+    {
+      var isNormalSkill = false;
+    
+      for (var category in playerType.Normal)
+      {
+        if (skillDefs[playerType.Normal[category]].skills.includes(skillName))
+        {
+          isNormalSkill = true;
+        }
+      }
+      
+      if (isNormalSkill)
+      {
+        playerData.skills.push(skillName);
+      }
+      else
+      {
+        playerData.skillsDouble.push(skillName);
+      }
+    }
+  }
 }
 
 function storeColour(picker)
 {
   activeTeam.colour = picker.toHEXString();
-  document.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
+  playerPortraitContent.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
 }

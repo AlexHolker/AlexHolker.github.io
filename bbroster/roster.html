@@ -38,13 +38,14 @@
       <p id="addPlayerError" class="error"></p>
       <button onclick="saveTeam()">Save Roster</button>
       <button onclick="unsetRace()">Delete Roster</button>
+      <button onclick="goToSetup()">Set Up Formations</button>
       
       <object id="playerPortrait" type="image/svg+xml" data="img/human00.svg">
         <param id="playerPortraitWorkaround" name="src" value="img/human00.svg">
       </object>
       
       <div id="SPPPopup" class="hidden popup">
-        <input id="addSPPValue" type="number">
+        <input id="addSPPValue" type="number" min="0">
         <button id="addSPPButton">Add SPP</button>
       </div>
       

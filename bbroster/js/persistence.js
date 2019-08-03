@@ -10,12 +10,12 @@ function setRace(raceId)
 function unsetRace()
 {
   localStorage.removeItem("bbRaceId");
-  localStorage.removeItem("bbTeamRoster");
+  localStorage.removeItem("bbTeamRosters");
   window.location.href = "index.html";
 }
 
 function saveTeam()
 {
-  var JSONActiveTeam = JSON.stringify(activeTeam);
-  localStorage.setItem("bbTeamRoster", JSONActiveTeam);
+  var JSONAllTeams = JSON.stringify(allTeams);
+  localStorage.setItem("bbTeamRosters", JSONAllTeams);
 }

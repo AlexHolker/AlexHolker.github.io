@@ -3,6 +3,10 @@ main {
   margin: auto;
 }
 
+.button {
+  cursor: pointer;
+}
+
 .bgTest {
   display: inline-block;
   height: 400px;
@@ -22,11 +26,13 @@ main {
 }
 
 #colourPicker {
-  min-height: 25px;
-  min-width: 25px;
+  height: 30px;
+  width: 60px;
+  text-align: center;
 }
 
-.missNextGame {
+.missNextGame,
+.rosterFull {
   color: darkgray;
 }
 
@@ -38,7 +44,7 @@ main {
   position: relative;
 }
 
-.hidden, .tooltip {
+.hidden {
   display: none;
 }
 
@@ -52,11 +58,70 @@ main {
   transform: translate(-50%, -50%);
 }
 
-.tooltipParent:hover>.tooltip {
+.tooltip {
+  color: black;
+  font: 14px serif;
+  text-shadow: none;
   background-color: white;
   padding: 2px;
-  display: block;
+  display: none;
   position: absolute;
   top: 100%;
   left: 20%;
+}
+
+.tooltipParent:hover>.tooltip {
+  display: block;
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.pitchSection, touchdownRow {
+  display: inline-block;
+  border: solid 1px white;
+}
+
+#pitchLeft, #pitchRight {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+#pitchCentre {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto auto;
+}
+
+#reserves {
+  background: lightgray;
+  min-height: 70px;
+}
+
+.pitchSquare {
+  background: olivedrab;
+  border: dashed 1px white;
+  height: 50px;
+  width: 50px;
+}
+
+.jerseyNumber {
+  cursor: grab;
+  float: left;
+  color: white;
+  font: 30px "Trebuchet MS", sans-serif;
+  padding: 7px 0px;
+  text-align: center;
+  text-shadow: 1px 1px black, -1px -1px black;
+  vertical-align: central;
+  width: 50px;
+}
+
+#touchdownZone {
+  background: oliveDrab;
+  border: solid 1px white;
+  height: 50px;
+  width: 784px;
 }

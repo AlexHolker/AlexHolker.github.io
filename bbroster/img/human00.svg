@@ -4,6 +4,12 @@
     <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
   </filter>
   <g>
+    <animateTransform attributeType="XML"
+                      attributeName="transform"
+                      type="translate"
+                      values="0,0; 0,6; 0,0"
+                      dur="4s"
+                      repeatCount="indefinite"/>
     <g id="leftArm">
       <animateTransform attributeType="XML"
                         attributeName="transform"
@@ -14,21 +20,27 @@
       <image x="5" y="97" width="180" height="200" xlink:href="humanleftarm00.png"/>
       <image x="5" y="97" width="180" height="200" xlink:href="humanleftarm00team.png" filter="url(#teamColourFilter)" />
     </g>
-    <g transform="translate(235 97)">
-      <image width="180" height="200" xlink:href="humanrightarm00.png"/>
-      <image width="180" height="200" xlink:href="humanrightarm00team.png" filter="url(#teamColourFilter)" />
+    <g id="rightArm">
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="rotate"
+                        values="2 280 110;-2 280 110;2 280 110"
+                        dur="5s"
+                        repeatCount="indefinite"/>
+      <image x="235" y="97" width="180" height="200" xlink:href="humanrightarm00.png"/>
+      <image x="235" y="97" width="180" height="200" xlink:href="humanrightarm00team.png" filter="url(#teamColourFilter)" />
     </g>
-    <g transform="translate(95 25)">
-      <image width="230" height="250" xlink:href="humantorso00.png" />
-      <image width="230" height="250" xlink:href="humantorso00team.png" filter="url(#teamColourFilter)" />
+    <g id="torso">
+      <image x="95" y="25" width="230" height="250" xlink:href="humantorso00.png" />
+      <image x="95" y="25" width="230" height="250" xlink:href="humantorso00team.png" filter="url(#teamColourFilter)" />
     </g>
     <g id="head">
       <image x="138" y="0" width="144" height="150" xlink:href="humanhead00.png" />
       <image x="138" y="0" width="144" height="150" xlink:href="humanhead00team.png" filter="url(#teamColourFilter)" />
     </g>
   </g>
-  <g transform="translate(12 200)">
-    <image width="400" height="300" xlink:href="humanlegs00.png" />
-    <image width="400" height="300" xlink:href="humanlegs00team.png" filter="url(#teamColourFilter)" />
+  <g id="legs">
+    <image x="12" y="200" width="400" height="300" xlink:href="humanlegs00.png" />
+    <image x="12" y="200" width="400" height="300" xlink:href="humanlegs00team.png" filter="url(#teamColourFilter)" />
   </g>
 </svg>

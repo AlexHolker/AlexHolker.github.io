@@ -1,4 +1,5 @@
 var raceId;
+var allTeams = [];
 var activeTeam = {};
 var playerPortraitContent;
 
@@ -11,14 +12,15 @@ function initialiseRoster()
   }
   else
   {
-    if (localStorage.getItem("bbTeamRoster") === null)
+    if (localStorage.getItem("bbTeamRosters") === null)
     {
       createNewTeam(raceId);
     }
     else
     {
-      var JSONActiveTeam = localStorage.getItem("bbTeamRoster");
-      activeTeam = JSON.parse(JSONActiveTeam);
+      var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+      allTeams = JSON.parse(JSONAllTeams);
+      activeTeam = allTeams[0];
     }
     
     for (var player in activeTeam.players)
@@ -73,6 +75,8 @@ function setTeamValue()
 
 function createNewTeam(raceId)
 {
+  allTeams.push(activeTeam);
+  
   activeTeam.raceId = raceId;
   activeTeam.name = teamDefs[raceId].defaultName;
   activeTeam.colour = teamDefs[raceId].defaultColour;
@@ -195,6 +199,7 @@ function populateAddPlayerButtons()
 function addPlayerButton(addPlayerContainer, playerType)
 {
   var addPlayerButton = document.createElement("button");
+  addPlayerButton.id = playerType.id + "Button";
   addPlayerButton.onclick = function() {addIfNotFull(teamDefs[raceId].players[playerType]);};
   addPlayerButton.innerHTML = "Recruit " + teamDefs[raceId].players[playerType].name;
   
@@ -252,7 +257,7 @@ function addPlayerToRoster(playerType, playerData)
   if (playerData === null)
   {
     activeTeam.lastJerseyNumber++;
-    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "starPlayerPoints":0, "statIncreases":[0,0,0,0], "skills":[], "skillsDouble":[], "injuries":[], "playerTypeId":playerType.id, "isAvailable":true};
+    thisPlayer = {"jerseyNumber":activeTeam.lastJerseyNumber, "playerName":getPlayerName(playerType.race), "starPlayerPoints":0, "statIncreases":[0,0,0,0], "skills":[], "skillsDouble":[], "injuries":[], "playerTypeId":playerType.id, "isAvailable":true, "position":["reserves", "reserves"]};
     activeTeam.players.push(thisPlayer);
     setTeamValue();
     
@@ -278,18 +283,13 @@ function addPlayerToRoster(playerType, playerData)
   cells[2].innerHTML = playerType.name;
   displayPlayerCost(playerType, thisPlayer, cells[3]);
   
-  var injuryPenalties = displayInjuries(thisPlayer, rosterRow);
-  
-  cells[4].innerHTML = playerType.MA + thisPlayer.statIncreases[0] + injuryPenalties[0];
-  cells[5].innerHTML = playerType.ST + thisPlayer.statIncreases[1] + injuryPenalties[1];
-  cells[6].innerHTML = playerType.AG + thisPlayer.statIncreases[2] + injuryPenalties[2];
-  cells[7].innerHTML = playerType.AV + thisPlayer.statIncreases[3] + injuryPenalties[3];
+  displayStats(thisPlayer, rosterRow, cells);
   displaySkills(thisPlayer, cells[8]);
   
   cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
   
   var selectSPPButton = document.createElement("button");
-  selectSPPButton.onclick = function() {selectSPP(thisPlayer, cells);};
+  selectSPPButton.onclick = function() {selectSPP(thisPlayer, rosterRow, cells);};
   selectSPPButton.innerHTML = "Add SPP";
   cells[10].appendChild(selectSPPButton);
   
@@ -298,25 +298,27 @@ function addPlayerToRoster(playerType, playerData)
   removePlayerButton.innerHTML = "Fire";
   cells[10].appendChild(removePlayerButton);
   
-  addLevelUpButton(thisPlayer, cells[10]);
+  addLevelUpButton(thisPlayer, rosterRow, cells);
 }
 
-function selectSPP(thisPlayer, output)
+function selectSPP(thisPlayer, rosterRow, cells)
 {
   var SPPPopup = document.getElementById("SPPPopup");
   SPPPopup.classList.remove("hidden");
   
-  document.getElementById("addSPPButton").onclick = function() {addSPP(thisPlayer, output);};
+  document.getElementById("addSPPButton").onclick = function() {addSPP(thisPlayer, rosterRow, cells);};
 }
 
-function addSPP(thisPlayer, output)
+function addSPP(thisPlayer, rosterRow, cells)
 {
   document.getElementById("SPPPopup").classList.add("hidden");
   var addSPPValue = parseInt(document.getElementById("addSPPValue").value);
   if ((!isNaN(addSPPValue)) && (0 < addSPPValue))
   {
     thisPlayer.starPlayerPoints += addSPPValue;
-    output[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
+    cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
+    
+    addLevelUpButton(thisPlayer, rosterRow, cells);
   }
 }
 
@@ -348,6 +350,16 @@ function displayPlayerCost(playerType, playerData, output)
 {
   var salary = getPlayerCost(playerType, playerData);
   output.innerHTML = salary;
+}
+
+function displayStats(thisPlayer, rosterRow, cells)
+{
+  var injuryPenalties = displayInjuries(thisPlayer, rosterRow);
+  var playerType = playerDefs[thisPlayer.playerTypeId];
+  cells[4].innerHTML = playerType.MA + thisPlayer.statIncreases[0] + injuryPenalties[0];
+  cells[5].innerHTML = playerType.ST + thisPlayer.statIncreases[1] + injuryPenalties[1];
+  cells[6].innerHTML = playerType.AG + thisPlayer.statIncreases[2] + injuryPenalties[2];
+  cells[7].innerHTML = playerType.AV + thisPlayer.statIncreases[3] + injuryPenalties[3];
 }
 
 function displaySkills(playerData, output)
@@ -397,6 +409,49 @@ function displaySkills(playerData, output)
   }
   
   output.innerHTML = skillsString;
+}
+
+function displayInjuries(playerData, output)
+{
+  var injuryPenalties = [0,0,0,0];
+  for (var injury in playerData.injuries)
+  {
+    switch (playerData.injuries[injury])
+    {
+      case "Broken Ribs":
+      case "Groin Strain":
+      case "Gouged Eye":
+      case "Broken Jaw":
+      case "Fractured Arm":
+      case "Fractured Leg":
+      case "Smashed Hand":
+      case "Pinched Nerve":
+        playerData.isAvailable = false;
+        output.classList.add("missNextGame");
+        break;
+      case "Damaged Back":
+      case "Smashed Knee":
+        break;
+      case "Smashed Hip":
+      case "Smashed Ankle":
+        injuryPenalties[0] -= 1;
+        break;
+      case "SeriousConcussion":
+      case "Fractured Skull":
+        injuryPenalties[3] -= 1;
+      case "Broken Neck":
+        injuryPenalties[2] -= 1;
+        break;
+      case "Smashed Collar Bone":
+        injuryPenalties[1] -= 1;
+        break;
+      case "Dead!":
+        playerData.isAvailable = false;
+        output.classList.add("missNextGame");
+    }
+  }
+  
+  return injuryPenalties;
 }
 
 function SPPToString(points)
@@ -457,49 +512,6 @@ function initialiseSkillSelection()
   }
 }
 
-function displayInjuries(playerData, output)
-{
-  var injuryPenalties = [0,0,0,0];
-  for (var injury in playerData.injuries)
-  {
-    switch (playerData.injuries[injury])
-    {
-      case "Broken Ribs":
-      case "Groin Strain":
-      case "Gouged Eye":
-      case "Broken Jaw":
-      case "Fractured Arm":
-      case "Fractured Leg":
-      case "Smashed Hand":
-      case "Pinched Nerve":
-        playerData.isAvailable = false;
-        output.classList.add("missNextGame");
-        break;
-      case "Damaged Back":
-      case "Smashed Knee":
-        break;
-      case "Smashed Hip":
-      case "Smashed Ankle":
-        injuryPenalties[0] -= 1;
-        break;
-      case "SeriousConcussion":
-      case "Fractured Skull":
-        injuryPenalties[3] -= 1;
-      case "Broken Neck":
-        injuryPenalties[2] -= 1;
-        break;
-      case "Smashed Collar Bone":
-        injuryPenalties[1] -= 1;
-        break;
-      case "Dead!":
-        playerData.isAvailable = false;
-        output.classList.add("missNextGame");
-    }
-  }
-  
-  return injuryPenalties;
-}
-
 function removePlayerFromRoster(player, rosterRow)
 {
   /* Removes player without leaving a gap in the array.*/
@@ -508,18 +520,18 @@ function removePlayerFromRoster(player, rosterRow)
   document.getElementById("roster").removeChild(rosterRow);
 }
 
-function addLevelUpButton(playerData, output)
+function addLevelUpButton(playerData, rosterRow, cells)
 {
   if (getAssignedLevels(playerData) < getLevel(playerData.starPlayerPoints))
   {
     var levelUpButton = document.createElement("button");
-    levelUpButton.onclick = function() {selectSkill(playerData, levelUpButton);};
+    levelUpButton.onclick = function() {selectSkill(playerData, rosterRow, cells, levelUpButton);};
     levelUpButton.innerHTML = "Level Up!";
-    output.appendChild(levelUpButton);
+    cells[10].appendChild(levelUpButton);
   }
 }
 
-function selectSkill(playerData, levelUpButton)
+function selectSkill(playerData, rosterRow, cells, levelUpButton)
 {
   var playerType = playerDefs[playerData.playerTypeId];
   
@@ -546,10 +558,10 @@ function selectSkill(playerData, levelUpButton)
   }
   
   var skillSelectButton = document.getElementById("skillSelect");
-  skillSelectButton.onclick = function() {addSkill(playerData, levelUpButton, skillsPopup);};
+  skillSelectButton.onclick = function() {addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup);};
 }
 
-function addSkill(playerData, levelUpButton, skillsPopup)
+function addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup)
 {
   var skillName = document.querySelector('input[name="skillRadio"]:checked').value;
   var skillSelectError = document.getElementById("skillSelectError");
@@ -562,12 +574,14 @@ function addSkill(playerData, levelUpButton, skillsPopup)
   }
   else
   {
+    cells[10].removeChild(levelUpButton);
     skillsPopup.classList.add("hidden");
     skillSelectError.innerHTML = "";
     var skillNumber = parseInt(skillName);
     if (!isNaN(skillNumber))
     {
       playerData.statIncreases[skillNumber]++;
+      displayStats(playerData, rosterRow, cells);
     }
     else 
     {
@@ -584,12 +598,19 @@ function addSkill(playerData, levelUpButton, skillsPopup)
       if (isNormalSkill)
       {
         playerData.skills.push(skillName);
+        playerData.skills.sort();
       }
       else
       {
         playerData.skillsDouble.push(skillName);
+        playerData.skillsDouble.sort();
       }
+      
+      displaySkills(playerData, cells[8]);
     }
+    
+    displayPlayerCost(playerType, playerData, cells[3]);
+    setTeamValue();
   }
 }
 
@@ -597,4 +618,10 @@ function storeColour(picker)
 {
   activeTeam.colour = picker.toHEXString();
   playerPortraitContent.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
+}
+
+function goToSetup()
+{
+  saveTeam();
+  window.location.href = "setup.html";
 }

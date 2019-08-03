@@ -2,13 +2,17 @@ function populateTeamSelect()
 {
   var teamSelectContainer = document.getElementById("teamSelectContainer");
   
-  var JSONActiveTeam = localStorage.getItem("bbTeamRoster");
-  if (JSONActiveTeam !== null)
+  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+  if (JSONAllTeams !== null)
   {
-    var loadTeamLink = document.createElement("a");
-    loadTeamLink.href = "roster.html";
-    loadTeamLink.innerHTML = "Load existing team.";
-    teamSelectContainer.appendChild(loadTeamLink);
+    var allTeams = JSON.parse(JSONAllTeams);
+    for (var team in allTeams)
+    {
+      var loadTeamLink = document.createElement("a");
+      loadTeamLink.href = "roster.html";
+      loadTeamLink.innerHTML = "Load " + allTeams[team].name + " roster.";
+      teamSelectContainer.appendChild(loadTeamLink);
+    }
   }
   
   for (var team in teamDefs)
@@ -21,12 +25,18 @@ function populateTeamSelect()
 function addTeamSelect(teamSelectContainer, team)
 {
   var teamSelect = document.createElement("div");
+  teamSelectContainer.appendChild(teamSelect);
+  
   var teamSelectTitle = document.createElement("h1");
+  teamSelectTitle.innerHTML = teamDefs[team].race;
+  teamSelect.appendChild(teamSelectTitle);
+  
+  var teamSelectDescription = document.createElement("p");
+  teamSelectDescription.innerHTML = teamDefs[team].description;
+  teamSelect.appendChild(teamSelectDescription);
+  
   var teamSelectButton = document.createElement("button");
   teamSelectButton.onclick = function() {setRace(team);};
   teamSelectButton.innerHTML = "Create " + teamDefs[team].race + " Team";
-  teamSelectTitle.innerHTML = teamDefs[team].race;
-  teamSelectContainer.appendChild(teamSelect);
-  teamSelect.appendChild(teamSelectTitle);
   teamSelect.appendChild(teamSelectButton);
 }

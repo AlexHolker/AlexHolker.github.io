@@ -1,4 +1,3 @@
-var allTeams;
 var activeTeam;
 var selectedPlayer = null;
 var selectedPlayerDisplay = null;
@@ -6,15 +5,16 @@ var isOffense = true;
 
 function initialiseSetup()
 {
-  if (localStorage.getItem("bbTeamRosters") === null)
+  var rosterNo = Number.parseInt(localStorage.getItem("bbRosterNo"));
+  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+  if (rosterNo === null || JSONAllTeams === null)
   {
     window.location.href = "index.html";
   }
   else
   {
-    var JSONAllTeams = localStorage.getItem("bbTeamRosters");
-    allTeams = JSON.parse(JSONAllTeams);
-    activeTeam = allTeams[0];
+    var allTeams = JSON.parse(JSONAllTeams);
+    activeTeam = allTeams[rosterNo];
     
     createPitch();
     

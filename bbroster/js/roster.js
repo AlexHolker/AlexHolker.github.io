@@ -1,26 +1,32 @@
 var raceId;
-var allTeams = [];
 var activeTeam = {};
 var playerPortraitContent;
 
 function initialiseRoster()
 {
-  raceId = localStorage.getItem("bbRaceId");
-  if (raceId === null)
+  var rosterNo = Number.parseInt(localStorage.getItem("bbRosterNo"));
+  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+  if (rosterNo === null || JSONAllTeams === null)
   {
     window.location.href = "index.html";
   }
   else
   {
-    if (localStorage.getItem("bbTeamRosters") === null)
+    var allTeams = JSON.parse(JSONAllTeams);
+    
+    if (rosterNo === allTeams.length)
     {
-      createNewTeam(raceId);
+      raceId = localStorage.getItem("bbRaceId");
+      if (raceId === null)
+      {
+        window.location.href = "index.html";
+      }
+      createNewTeam();
     }
     else
     {
-      var JSONAllTeams = localStorage.getItem("bbTeamRosters");
-      allTeams = JSON.parse(JSONAllTeams);
-      activeTeam = allTeams[0];
+      activeTeam = allTeams[rosterNo];
+      raceId = activeTeam.raceId;
     }
     
     for (var player in activeTeam.players)
@@ -31,6 +37,7 @@ function initialiseRoster()
     document.getElementById("rosterTitleName").value = activeTeam.name;
     document.getElementById("rosterTitleRace").innerHTML = " - " + teamDefs[raceId].race;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+    document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
     
     /* Fix for timing issues regarding creating of jscolor element. */
     window.addEventListener("load", function()
@@ -73,10 +80,8 @@ function setTeamValue()
   return teamValue;
 }
 
-function createNewTeam(raceId)
+function createNewTeam()
 {
-  allTeams.push(activeTeam);
-  
   activeTeam.raceId = raceId;
   activeTeam.name = teamDefs[raceId].defaultName;
   activeTeam.colour = teamDefs[raceId].defaultColour;
@@ -84,6 +89,7 @@ function createNewTeam(raceId)
   activeTeam.staff = {};
   activeTeam.players = [];
   activeTeam.lastJerseyNumber = 0;
+  activeTeam.fanFactor = 0;
   
   for (var staffType in teamDefs[raceId].staff)
   {
@@ -494,6 +500,11 @@ function initialiseSkillSelection()
     var categoryContainer = document.createElement("div");
     categoryContainer.id = skillDefs[category].id+"skills";
     skillsUnavailableContainer.appendChild(categoryContainer);
+    
+    var categoryTitle = document.createElement("h4");
+    categoryTitle.innerHTML = skillDefs[category].name;
+    categoryContainer.appendChild(categoryTitle);
+    
     for (var skill in skillDefs[category].skills)
     {
       var skillName = skillDefs[category].skills[skill];
@@ -535,6 +546,8 @@ function selectSkill(playerData, rosterRow, cells, levelUpButton)
 {
   var playerType = playerDefs[playerData.playerTypeId];
   
+  document.getElementById("improvementRollDisplay").innerHTML = improvementRollToString();
+  
   var skillsPopup = document.getElementById("skillsPopup");
   skillsPopup.classList.remove("hidden");
   var skillsContainer = document.getElementById("skillsContainer");
@@ -559,6 +572,34 @@ function selectSkill(playerData, rosterRow, cells, levelUpButton)
   
   var skillSelectButton = document.getElementById("skillSelect");
   skillSelectButton.onclick = function() {addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup);};
+}
+
+function improvementRollToString()
+{
+  var rollOne = Math.floor(Math.random() * 6) + 1;
+  var rollTwo = Math.floor(Math.random() * 6) + 1;
+  var improvementRoll = "Improvement Roll: (" + rollOne + "," + rollTwo + "): Select ";
+  
+  switch (rollOne + rollTwo)
+  {
+    case 10:
+      improvementRoll += "+1 Move OR +1 Armour OR a new skill"
+      break;
+    case 11:
+      improvementRoll += "+1 Agility OR a new skill";
+      break;
+    case 12:
+      improvementRoll += "+1 Strength OR a new skill";
+      break;
+    default:
+      improvementRoll += "a new skill";
+  }
+  if (rollOne === rollTwo)
+  {
+    improvementRoll += " OR a new Doubles skill";
+  }
+  
+  return improvementRoll;
 }
 
 function addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup)
@@ -624,4 +665,80 @@ function goToSetup()
 {
   saveTeam();
   window.location.href = "setup.html";
+}
+
+function selectUpdateTreasury()
+{
+  var treasuryPopup = document.getElementById("treasuryPopup");
+  treasuryPopup.classList.remove("hidden");
+}
+
+function updateTreasury()
+{
+  var updateTreasuryValue = parseInt(document.getElementById("updateTreasuryValue").value);
+  var updateTreasuryError = document.getElementById("updateTreasuryError");
+  
+  if (activeTeam.gold + updateTreasuryValue < 0)
+  {
+    updateTreasuryError.innerHTML = "Treasury cannot go into debt.";
+  }
+  else
+  {
+    activeTeam.gold += updateTreasuryValue;
+    document.getElementById("treasuryPopup").classList.add("hidden");
+    updateTreasuryError.innerHTML = "";
+    
+    document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+  }
+}
+
+function selectUpdateFanFactor()
+{
+  var fanFactorPopup = document.getElementById("fanFactorPopup");
+  fanFactorPopup.classList.remove("hidden");
+  
+}
+
+function buyFanFactor()
+{
+  var updateFanFactorValue = parseInt(document.getElementById("updateFanFactorValue").value);
+  var updateFanFactorError = document.getElementById("updateFanFactorError");
+  
+  if (updateFanFactorValue < 0)
+  {
+    updateFanFactorError.innerHTML = "Cannot sell Fan Factor.";
+  }
+  else if (activeTeam.gold < updateFanFactorValue * 10000)
+  {
+    updateFanFactorError.innerHTML = "Cannot afford to purchase Fan Factor.";
+  }
+  else
+  {
+    activeTeam.fanFactor += updateFanFactorValue;
+    activeTeam.gold -= updateFanFactorValue * 10000;
+    
+    document.getElementById("fanFactorPopup").classList.add("hidden");
+    updateFanFactorError.innerHTML = "";
+    
+    document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
+    document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+  }
+}
+
+function updateFanFactor()
+{
+  var updateFanFactorValue = parseInt(document.getElementById("updateFanFactorValue").value);
+  var updateFanFactorError = document.getElementById("updateFanFactorError");
+  
+  if (updateFanFactorValue + activeTeam.fanFactor < 0)
+  {
+    updateFanFactorError.innerHTML = "Fan Factor cannot be less than 0";
+  }
+  else
+  {
+    document.getElementById("fanFactorPopup").classList.add("hidden");
+    updateFanFactorError.innerHTML = "";
+    
+    document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
+  }
 }

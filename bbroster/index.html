@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Blood Bowl Online Roster</title>
+    <title>Team Selection - Blood Bowl Online Roster</title>
     <meta charset="UTF-8">
+    <meta name="description" content="A JavaScript-based interactive roster for Blood Bowl.">
+    <meta name="keywords"  content="Blood Bowl">
+    <meta name="author" content="Alex Holker">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Local external JavaScript files. -->
     <script src="js/persistence.js"></script>
@@ -10,7 +14,7 @@
     <script src="js/teamselect.js"></script>
     <link rel="stylesheet" type="text/css" href="css/web.css">
   </head>
-  <body>
+  <body onload="populateTeamSelect()">
     <header>
       <div class="bgTest pitchBackground"></div>
       <div class="bgTest blueBase pitchBackground"></div>
@@ -23,8 +27,5 @@
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
       <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
     </footer>
-    <script>
-      populateTeamSelect();
-    </script>
   </body>
 </html>

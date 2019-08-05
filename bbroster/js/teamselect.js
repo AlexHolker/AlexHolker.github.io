@@ -1,42 +1,56 @@
 function populateTeamSelect()
 {
-  var teamSelectContainer = document.getElementById("teamSelectContainer");
-  
   var JSONAllTeams = localStorage.getItem("bbTeamRosters");
-  if (JSONAllTeams !== null)
+  var noOfRosters = 0;
+  
+  // If new user, save empty roster array.
+  if (JSONAllTeams === null)
   {
+    localStorage.setItem("bbTeamRosters", "[]");
+  }
+  else
+  {
+    // Loop through all existing teams, creating a button to access each roster.
     var allTeams = JSON.parse(JSONAllTeams);
-    for (var team in allTeams)
+    noOfRosters = allTeams.length;
+    
+    for (var teamNo in allTeams)
     {
-      var loadTeamLink = document.createElement("a");
-      loadTeamLink.href = "roster.html";
-      loadTeamLink.innerHTML = "Load " + allTeams[team].name + " roster.";
-      teamSelectContainer.appendChild(loadTeamLink);
+      addLoadTeamButton(allTeams[teamNo].name, teamNo)
     }
   }
   
-  for (var team in teamDefs)
+  for (var teamId in teamDefs)
   {
-    addTeamSelect(teamSelectContainer, team);
+    addTeamSelect(teamId, noOfRosters);
   }
 }
 
 /* Workaround for JavaScript scope issues only using final value of team.*/
-function addTeamSelect(teamSelectContainer, team)
+function addLoadTeamButton(teamName, teamNo)
+{
+  var loadTeamButton = document.createElement("button");
+  loadTeamButton.onclick = function() {openExistingRoster(teamNo)};
+  loadTeamButton.innerHTML = "Open " + teamName + " roster.";
+  document.getElementById("teamSelectContainer").appendChild(loadTeamButton);
+}
+
+/* Workaround for JavaScript scope issues only using final value of team.*/
+function addTeamSelect(teamId, newRosterNo)
 {
   var teamSelect = document.createElement("div");
-  teamSelectContainer.appendChild(teamSelect);
+  document.getElementById("teamSelectContainer").appendChild(teamSelect);
   
   var teamSelectTitle = document.createElement("h1");
-  teamSelectTitle.innerHTML = teamDefs[team].race;
+  teamSelectTitle.innerHTML = teamDefs[teamId].race;
   teamSelect.appendChild(teamSelectTitle);
   
   var teamSelectDescription = document.createElement("p");
-  teamSelectDescription.innerHTML = teamDefs[team].description;
+  teamSelectDescription.innerHTML = teamDefs[teamId].description;
   teamSelect.appendChild(teamSelectDescription);
   
   var teamSelectButton = document.createElement("button");
-  teamSelectButton.onclick = function() {setRace(team);};
-  teamSelectButton.innerHTML = "Create " + teamDefs[team].race + " Team";
+  teamSelectButton.onclick = function() {createNewRoster(teamId, newRosterNo);};
+  teamSelectButton.innerHTML = "Create " + teamDefs[teamId].race + " Team";
   teamSelect.appendChild(teamSelectButton);
 }

@@ -15,7 +15,11 @@ function createNewRoster(raceId, newRosterNo)
 
 function deleteRoster()
 {
+  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+  var allTeams = JSON.parse(JSONAllTeams);
   allTeams.splice(localStorage.getItem("bbRosterNo"), 1);
+  JSONAllTeams = JSON.stringify(allTeams);
+  localStorage.setItem("bbTeamRosters", JSONAllTeams);
   localStorage.removeItem("bbRosterNo");
   window.location.href = "index.html";
 }
@@ -26,6 +30,6 @@ function saveTeam()
   var JSONAllTeams = localStorage.getItem("bbTeamRosters");
   var allTeams = JSON.parse(JSONAllTeams);
   allTeams[rosterNo] = activeTeam;
-  var newJSONAllTeams = JSON.stringify(allTeams);
-  localStorage.setItem("bbTeamRosters", newJSONAllTeams);
+  JSONAllTeams = JSON.stringify(allTeams);
+  localStorage.setItem("bbTeamRosters", JSONAllTeams);
 }

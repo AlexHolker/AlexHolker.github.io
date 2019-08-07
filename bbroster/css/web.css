@@ -32,7 +32,8 @@ main {
 }
 
 .missNextGame,
-.rosterFull {
+.rosterFull,
+.invalidImprovement {
   color: darkgray;
 }
 

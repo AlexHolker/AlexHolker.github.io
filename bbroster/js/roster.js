@@ -60,7 +60,7 @@ function initialiseRoster()
  * currently out of action.*/
 function setTeamValue()
 {
-  var teamValue = 0;
+  var teamValue = activeTeam.fanFactor * 10000;
   
   for (var i in teamDefs[activeTeam.raceId].staff)
   {
@@ -580,23 +580,50 @@ function improvementRollToString()
   var rollTwo = Math.floor(Math.random() * 6) + 1;
   var improvementRoll = "Improvement Roll: (" + rollOne + "," + rollTwo + "): Select ";
   
+  var skillsMAContainer = document.getElementById("skillsMAContainer");
+  var skillsSTContainer = document.getElementById("skillsSTContainer");
+  var skillsAGContainer = document.getElementById("skillsAGContainer");
+  var skillsAVContainer = document.getElementById("skillsAVContainer");
+  var skillsDoublesContainer = document.getElementById("skillsDoublesContainer");
+  
   switch (rollOne + rollTwo)
   {
     case 10:
-      improvementRoll += "+1 Move OR +1 Armour OR a new skill"
+      improvementRoll += "+1 Move OR +1 Armour OR a new skill";
+      skillsMAContainer.classList.remove("invalidImprovement");
+      skillsSTContainer.classList.add("invalidImprovement");
+      skillsAGContainer.classList.add("invalidImprovement");
+      skillsAVContainer.classList.remove("invalidImprovement");
       break;
     case 11:
       improvementRoll += "+1 Agility OR a new skill";
+      skillsMAContainer.classList.add("invalidImprovement");
+      skillsSTContainer.classList.add("invalidImprovement");
+      skillsAGContainer.classList.remove("invalidImprovement");
+      skillsAVContainer.classList.add("invalidImprovement");
       break;
     case 12:
       improvementRoll += "+1 Strength OR a new skill";
+      skillsMAContainer.classList.add("invalidImprovement");
+      skillsSTContainer.classList.remove("invalidImprovement");
+      skillsAGContainer.classList.add("invalidImprovement");
+      skillsAVContainer.classList.add("invalidImprovement");
       break;
     default:
       improvementRoll += "a new skill";
+      skillsMAContainer.classList.add("invalidImprovement");
+      skillsSTContainer.classList.add("invalidImprovement");
+      skillsAGContainer.classList.add("invalidImprovement");
+      skillsAVContainer.classList.add("invalidImprovement");
   }
   if (rollOne === rollTwo)
   {
     improvementRoll += " OR a new Doubles skill";
+    skillsDoublesContainer.classList.remove("invalidImprovement");
+  }
+  else
+  {
+    skillsDoublesContainer.classList.add("invalidImprovement");
   }
   
   return improvementRoll;
@@ -722,6 +749,7 @@ function buyFanFactor()
     
     document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+    setTeamValue();
   }
 }
 
@@ -736,9 +764,12 @@ function updateFanFactor()
   }
   else
   {
+    activeTeam.fanFactor += updateFanFactorValue;
+    
     document.getElementById("fanFactorPopup").classList.add("hidden");
     updateFanFactorError.innerHTML = "";
     
     document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
+    setTeamValue();
   }
 }

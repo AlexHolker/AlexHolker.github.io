@@ -75,14 +75,22 @@
         <h4 id="improvementRollDisplay">PLACEHOLDER</h4>
         <form id="skillsForm">
           <h3>Stat Increases</h3>
-          <input id="skillsFormMA" type="radio" name="skillRadio" value="0">
-          <label for="skillsFormMA">Movement Allowance</label>
-          <input id="skillsFormST" type="radio" name="skillRadio" value="1">
-          <label for="skillsFormST">Strength</label>
-          <input id="skillsFormAG" type="radio" name="skillRadio" value="2">
-          <label for="skillsFormAG">Agility</label>
-          <input id="skillsFormAV" type="radio" name="skillRadio" value="3">
-          <label for="skillsFormAV">Armour Value</label>
+          <span id="skillsMAContainer">
+            <input id="skillsFormMA" type="radio" name="skillRadio" value="0">
+            <label for="skillsFormMA">Movement Allowance</label>
+          </span>
+          <span id="skillsSTContainer">
+            <input id="skillsFormST" type="radio" name="skillRadio" value="1">
+            <label for="skillsFormST">Strength</label>
+          </span>
+          <span id="skillsAGContainer">
+            <input id="skillsFormAG" type="radio" name="skillRadio" value="2">
+            <label for="skillsFormAG">Agility</label>
+          </span>
+          <span id="skillsAVContainer">
+            <input id="skillsFormAV" type="radio" name="skillRadio" value="3">
+            <label for="skillsFormAV">Armour Value</label>
+          </span>
           <h3>Skills</h3>
           <div id="skillsContainer"></div>
           <h3>Doubles Skills</h3>

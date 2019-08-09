@@ -53,6 +53,7 @@ function initialiseRoster()
     populateAddPlayerButtons();
     initialiseSkillSelection();
     setTeamValue();
+    displayPortrait();
   }
 }
 
@@ -772,4 +773,21 @@ function updateFanFactor()
     document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
     setTeamValue();
   }
+}
+
+function displayPortrait()
+{
+  var playerPortraitContainer = document.getElementById("playerPortraitContainer");
+  var playerPortrait = document.createElement("object");
+  playerPortrait.id = "playerPortrait";
+  playerPortrait.type = "image/svg+xml";
+  playerPortrait.data = "img/" + teamDefs[raceId].players[0].portrait;
+  playerPortrait.height = "240";
+  playerPortraitContainer.appendChild(playerPortrait);
+  
+  var playerPortraitWorkaround = document.createElement("param");
+  playerPortraitWorkaround.id = "playerPortraitWorkaround";
+  playerPortraitWorkaround.name = "src";
+  playerPortraitWorkaround.value = "img/" + teamDefs[raceId].players[0].portrait;
+  playerPortrait.appendChild(playerPortraitWorkaround);
 }

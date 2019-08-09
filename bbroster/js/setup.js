@@ -75,7 +75,7 @@ function createPlayer(playerNum)
   var playerDisplay = document.createElement("div");
   playerDisplay.id = "player" + playerNum;
   playerDisplay.className = "jerseyNumber tooltipParent";
-  playerDisplay.style.background = "url('img/" + thisPlayer.playerTypeId + ".gif') no-repeat center";
+  playerDisplay.style.background = "url('img/setup/" + thisPlayer.playerTypeId + ".gif') no-repeat center";
   playerDisplay.innerHTML = ("0" + thisPlayer.jerseyNumber).slice(-2);
   playerDisplay.onclick = function() {clickPlayer(thisPlayer, playerDisplay);};
   placePlayer(thisPlayer, playerDisplay);

@@ -7,18 +7,12 @@ main {
   cursor: pointer;
 }
 
-.bgTest {
-  display: inline-block;
-  height: 400px;
-  width: 400px;
-}
-
-.blueBase {
+.empireBase {
   background-color: blue;
 }
 
-.redBase {
-  background-color: red;
+.orcsBase {
+  background-color: yellow;
 }
 
 .pitchBackground {
@@ -73,6 +67,10 @@ main {
 
 .tooltipParent:hover>.tooltip {
   display: block;
+}
+
+.floatRight {
+  float: right;
 }
 
 .clearfix::after {

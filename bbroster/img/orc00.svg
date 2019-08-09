@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 630 390">
+  <filter id="teamColourFilter">
+    <!-- Filter matrix initialised to default colour. -->
+    <feColorMatrix id="teamColourFilterValues" in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"/>
+  </filter>
+  <g id="legs">
+    <image x="140" y="170" width="400" height="220" xlink:href="orclegs00.png"/>
+    <image x="140" y="170" width="400" height="220" xlink:href="orclegs00team.png" filter="url(#teamColourFilter)" />
+  </g>
+  <g>
+    <animateTransform attributeType="XML"
+                      attributeName="transform"
+                      type="translate"
+                      values="0,0; 0,5; 0,0"
+                      dur="4s"
+                      repeatCount="indefinite"/>
+    <g id="leftArm">
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="rotate"
+                        values="3 260 150;-2 260 150;3 260 150"
+                        dur="5s"
+                        repeatCount="indefinite"
+                        additive="sum"/>
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="translate"
+                        values="0,0;30,0;0,0"
+                        dur="5s"
+                        repeatCount="indefinite"
+                        additive="sum"/>
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="scale"
+                        values="1,1;0.9,1;1,1"
+                        dur="5s"
+                        repeatCount="indefinite"
+                        additive="sum"/>
+      <image x="5" y="80" width="290" height="200" xlink:href="orcleftarm00.png"/>
+      <image x="5" y="80" width="290" height="200" xlink:href="orcleftarm00team.png" filter="url(#teamColourFilter)" />
+    </g>
+    <g id="rightArm">
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="rotate"
+                        values="-2 420 150;5 420 150;-2 420 150"
+                        dur="5s"
+                        repeatCount="indefinite"/>
+      <image x="405" y="97" width="220" height="220" xlink:href="orcrightarm00.png"/>
+      <image x="405" y="97" width="220" height="220" xlink:href="orcrightarm00team.png" filter="url(#teamColourFilter)" />
+    </g>
+    <g id="torso">
+      <image x="203" y="0" width="320" height="300" xlink:href="orctorso00.png" />
+      <image x="203" y="0" width="320" height="300" xlink:href="orctorso00team.png" filter="url(#teamColourFilter)" />
+    </g>
+    <g id="head">
+      <animateTransform attributeType="XML"
+                        attributeName="transform"
+                        type="rotate"
+                        values="0 345 90; -3 345 90; 8 345 90; -12 345 90; 10 345 90; 0 345 90"
+                        keyTimes="0; 0.95; 0.96; 0.975; 0.99; 1"
+                        dur="10s"
+                        repeatCount="indefinite"/>
+      <image x="285" y="40" width="120" height="150" xlink:href="orchead00.png" />
+      <image x="285" y="40" width="120" height="150" xlink:href="orchead00team.png" filter="url(#teamColourFilter)" />
+    </g>
+  </g>
+</svg>

@@ -16,9 +16,14 @@
   </head>
   <body onload="populateTeamSelect()">
     <header>
-      <div class="bgTest pitchBackground"></div>
-      <div class="bgTest blueBase pitchBackground"></div>
-      <div class="bgTest redBase pitchBackground"></div>
+      <div id="heroImage" class="pitchBackground">
+        <object id="empirePortrait" type="image/svg+xml" data="img/human00.svg" width="378" height="432">
+          <param id="empirePortraitWorkaround" name="src" value="img/human00.svg">
+        </object>
+        <object id="orcsPortrait" type="image/svg+xml" data="img/orc00.svg" width="630" height="390">
+          <param id="orcsPortraitWorkaround" name="src" value="img/orc00.svg">
+        </object>
+      </div>
     </header>
     <main>
       <div id="teamSelectContainer"></div>

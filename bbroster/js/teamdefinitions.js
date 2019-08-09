@@ -27,7 +27,7 @@ var playerDefs = {
     "goblin":{"id":"goblin", "race":"orc", "name":"Goblin", "max":4, "cost":40000,
         "MA":6, "ST":2, "AG":3, "AV":7, "skills":["Right Stuff", "Dodge", "Stunty"], "Normal":["A"], "Double":["G","S","P"], "Unavailable": ["M"]},
     
-    "humanLineman":{"id":"humanLineman", "race":"empire", "name":"Lineman", "max":16, "cost":50000,
+    "humanLineman":{"id":"humanLineman", "race":"empire", "portrait":"human00.svg", "name":"Lineman", "max":16, "cost":50000,
         "MA":6, "ST":3, "AG":3, "AV":8, "skills":[], "Normal":["G"], "Double":["A","S","P"], "Unavailable": ["M"]},
     "humanCatcher":{"id":"humanCatcher", "race":"empire", "name":"Catcher", "max":4, "cost":70000,
         "MA":8, "ST":2, "AG":3, "AV":7, "skills":["Catch", "Dodge"], "Normal":["G","A"], "Double":["S","P"], "Unavailable": ["M"]},
@@ -48,7 +48,7 @@ var playerDefs = {
     "ogreLoner":{"id":"ogreLoner", "race":"ogre", "name":"Ogre", "max":1, "cost":140000,
         "MA":5, "ST":5, "AG":2, "AV":9, "skills":["Loner", "Bone-head", "Mighty Blow", "Thick Skull", "Throw Team-Mate"], "Normal":["S"], "Double":["G","A","P"], "Unavailable": ["M"]},
     
-    "orcLineman":{"id":"orcLineman", "race":"orc", "name":"Lineman", "max":16, "cost":50000,
+    "orcLineman":{"id":"orcLineman", "race":"orc", "portrait":"orc00.svg", "name":"Lineman", "max":16, "cost":50000,
         "MA":5, "ST":3, "AG":3, "AV":9, "skills":[], "Normal":["G"], "Double":["A","S","P"], "Unavailable": ["M"]},
     "orcThrower":{"id":"orcThrower", "race":"orc", "name":"Thrower", "max":2, "cost":70000,
         "MA":5, "ST":3, "AG":3, "AV":8, "skills":["Sure Hands", "Pass"], "Normal":["G","P"], "Double":["A","S"], "Unavailable": ["M"]},
@@ -106,7 +106,7 @@ var teamDefs = {
     "empire":{"id":"empire", "race":"Empire", "defaultName":"Reikland Reavers", "defaultColour":"0000FF", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
         "players":[playerDefs.humanLineman, playerDefs.humanCatcher, playerDefs.humanThrower, playerDefs.humanBlitzer, playerDefs.ogreLoner],
         "description":"A Jack-of-all-Trades team capable of passing, running or bashing but excelling in none of these."},
-    "orcs":{"id":"orcs", "race":"Orcs", "defaultName":"Orcland Raiders", "defaultColour":"FFFF00", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
+    "orcs":{"id":"orcs", "race":"Orcs", "defaultName":"Orcland Raiders", "defaultColour":"DDD000", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
         "players":[playerDefs.orcLineman, playerDefs.orcThrower, playerDefs.orcBlocker, playerDefs.orcBlitzer, playerDefs.goblin, playerDefs.trollLoner],
         "description":"A bash-heavy team that relies on running the ball up the pitch to score."},
     /*"woodElves":{"id":"woodElves", "race":"Wood Elves", "defaultName":"Athelorn Avengers", "defaultColour":"9ACD32", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],

@@ -39,6 +39,8 @@ function addLoadTeamButton(teamName, teamNo)
 function addTeamSelect(teamId, newRosterNo)
 {
   var teamSelect = document.createElement("div");
+  teamSelect.onmouseenter = function() {teamMouseEnter(teamId);};
+  teamSelect.onmouseout = function() {teamMouseOut(teamId);};
   document.getElementById("teamSelectContainer").appendChild(teamSelect);
   
   var teamSelectTitle = document.createElement("h1");
@@ -53,4 +55,26 @@ function addTeamSelect(teamId, newRosterNo)
   teamSelectButton.onclick = function() {createNewRoster(teamId, newRosterNo);};
   teamSelectButton.innerHTML = "Create " + teamDefs[teamId].race + " Team";
   teamSelect.appendChild(teamSelectButton);
+}
+
+function teamMouseEnter(teamId)
+{
+  document.getElementById("heroImage").classList.add(teamId + "Base");
+  
+  /*var portrait = document.getElementById(teamId + "Portrait");
+  if (portrait !== null)
+  {
+    portrait.contentDocument.rootElement.unpauseAnimations();
+  }*/
+}
+
+function teamMouseOut(teamId)
+{
+  document.getElementById("heroImage").classList.remove(teamId + "Base");
+  
+  /*var portrait = document.getElementById(teamId + "Portrait");
+  if (portrait !== null)
+  {
+    portrait.contentDocument.rootElement.pauseAnimations();
+  }*/
 }

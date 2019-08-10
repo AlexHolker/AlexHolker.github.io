@@ -36,10 +36,9 @@ function populateTeamSelect()
 /* Add HTML to allow opening an existing roster. */
 function addLoadTeamButton(thisTeam, teamNo)
 {
-  console.log(thisTeam.colour);
   var rosterOpen = document.createElement("div");
   rosterOpen.classList.add("teamBox");
-  rosterOpen.style.background = thisTeam.colour + "60";
+  rosterOpen.style.background = thisTeam.colour + "80";
   document.getElementById("rosterOpenContainer").appendChild(rosterOpen);
   
   var loadTeamButton = document.createElement("button");

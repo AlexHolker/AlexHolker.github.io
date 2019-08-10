@@ -34,6 +34,7 @@ function initialiseRoster()
       addPlayerToRoster(playerDefs[activeTeam.players[player].playerTypeId], activeTeam.players[player]);
     }
     
+    document.getElementById("pageTitle").innerHTML = activeTeam.name + " - Blood Bowl Online Roster";
     document.getElementById("rosterTitleName").value = activeTeam.name;
     document.getElementById("rosterTitleRace").innerHTML = " - " + teamDefs[raceId].race;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
@@ -106,6 +107,7 @@ function createNewTeam()
 function updateTeamName(teamName)
 {
   activeTeam.name = teamName;
+  document.getElementById("pageTitle").innerHTML = activeTeam.name + " - Blood Bowl Online Roster";
 }
 
 function populateStaff()
@@ -126,21 +128,21 @@ function addStaffDisplay(staffContainer, staffIterator)
   staffContainer.appendChild(staffRow);
   var staffPosition = document.createElement("td");
   staffPosition.innerHTML = staffType.name;
-  staffContainer.appendChild(staffPosition);
+  staffRow.appendChild(staffPosition);
   
   var staffQuantity = document.createElement("td");
   staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
-  staffContainer.appendChild(staffQuantity);
+  staffRow.appendChild(staffQuantity);
   
   var staffButton = document.createElement("td");
   var staffUndo = document.createElement("td");
   
-  staffContainer.appendChild(staffButton);
+  staffRow.appendChild(staffButton);
   var addStaffButton = document.createElement("button");
   addStaffButton.onclick = function() {hireStaff(staffUndo, staffQuantity, staffType);};
   addStaffButton.innerHTML = "Hire " + staffType.name;
   staffButton.appendChild(addStaffButton);
-  staffContainer.appendChild(staffUndo);
+  staffRow.appendChild(staffUndo);
 }
 
 function hireStaff(staffUndo, staffQuantity, staffType)
@@ -274,6 +276,7 @@ function addPlayerToRoster(playerType, playerData)
     var playerUndoCell = document.createElement("td");
     rosterRow.appendChild(playerUndoCell);
     var playerUndoButton = document.createElement("button");
+    playerUndoButton.onclick = function() {playerUndo(thisPlayer, rosterRow);};
     playerUndoButton.innerHTML = "Undo";
     playerUndoCell.appendChild(playerUndoButton);
   }
@@ -281,7 +284,6 @@ function addPlayerToRoster(playerType, playerData)
   {
     thisPlayer = playerData;
   }
-  
   cells[0].innerHTML = thisPlayer.jerseyNumber;
   
   var playerNameBox = document.createElement("input");
@@ -318,8 +320,7 @@ function addPlayerToRoster(playerType, playerData)
   removePlayerButton.onclick = function() {removePlayerFromRoster(thisPlayer, rosterRow);};
   removePlayerButton.innerHTML = "Fire";
   cells[10].appendChild(removePlayerButton);
-  
-  addRemoveInjuriesButton(playerData, rosterRow, cells[10], injuriesContainer);
+  addRemoveInjuriesButton(thisPlayer, rosterRow, cells[11], injuriesContainer);
   addLevelUpButton(thisPlayer, rosterRow, cells);
 }
 
@@ -356,21 +357,21 @@ function getPlayerName(race)
   return name;
 }
 
-function getPlayerCost(playerType, playerData)
+function getPlayerCost(playerType, thisPlayer)
 {
   var salary = playerType.cost
-          + 20000 * playerData.skills.length
-          + 30000 * playerData.skillsDouble.length
-          + 30000 * playerData.statIncreases[0]
-          + 50000 * playerData.statIncreases[1]
-          + 40000 * playerData.statIncreases[2]
-          + 30000 * playerData.statIncreases[3];
+          + 20000 * thisPlayer.skills.length
+          + 30000 * thisPlayer.skillsDouble.length
+          + 30000 * thisPlayer.statIncreases[0]
+          + 50000 * thisPlayer.statIncreases[1]
+          + 40000 * thisPlayer.statIncreases[2]
+          + 30000 * thisPlayer.statIncreases[3];
   return salary;
 }
 
-function displayPlayerCost(playerType, playerData, output)
+function displayPlayerCost(playerType, thisPlayer, output)
 {
-  var salary = getPlayerCost(playerType, playerData);
+  var salary = getPlayerCost(playerType, thisPlayer);
   output.innerHTML = salary;
 }
 
@@ -403,9 +404,9 @@ function getStat(baseStat, statIncrease, injuryPenalty)
   }
 }
 
-function displaySkills(playerData, output)
+function displaySkills(thisPlayer, output)
 {
-  var baseSkills = playerDefs[playerData.playerTypeId].skills;
+  var baseSkills = playerDefs[thisPlayer.playerTypeId].skills;
   var skillsString = "";
   
   var firstSkill = true;
@@ -423,7 +424,7 @@ function displaySkills(playerData, output)
     skillsString += baseSkills[i];
   }
   
-  for (var i = 0; i < playerData.skills.length; i++)
+  for (var i = 0; i < thisPlayer.skills.length; i++)
   {
     if (firstSkill)
     {
@@ -433,10 +434,10 @@ function displaySkills(playerData, output)
     {
       skillsString += ", ";
     }
-    skillsString += playerData.skills[i];
+    skillsString += thisPlayer.skills[i];
   }
   
-  for (var i = 0; i < playerData.skillsDouble.length; i++)
+  for (var i = 0; i < thisPlayer.skillsDouble.length; i++)
   {
     if (firstSkill)
     {
@@ -446,10 +447,10 @@ function displaySkills(playerData, output)
     {
       skillsString += ", ";
     }
-    skillsString += playerData.skillsDouble[i];
+    skillsString += thisPlayer.skillsDouble[i];
   }
   
-  if (!firstSkill && 0 < playerData.injuries.length)
+  if (!firstSkill && 0 < thisPlayer.injuries.length)
   {
     skillsString += ", ";
   }
@@ -457,14 +458,14 @@ function displaySkills(playerData, output)
   output.innerHTML = skillsString;
 }
 
-function displayInjuries(playerData, rosterRow, injuriesContainer)
+function displayInjuries(thisPlayer, rosterRow, injuriesContainer)
 {
   var playerAvailable = true;
   var injuriesString = "";
   var injuryPenalties = [0,0,0,0];
-  for (var i = 0; i < playerData.injuries.length; i++)
+  for (var i = 0; i < thisPlayer.injuries.length; i++)
   {
-    switch (playerData.injuries[i])
+    switch (thisPlayer.injuries[i])
     {
       case "Broken Ribs":
       case "Groin Strain":
@@ -496,7 +497,7 @@ function displayInjuries(playerData, rosterRow, injuriesContainer)
         playerAvailable = false;
     }
     
-    playerData.isAvailable = playerAvailable;
+    thisPlayer.isAvailable = playerAvailable;
     if (playerAvailable)
     {
       rosterRow.classList.remove("missNextGame");
@@ -510,7 +511,7 @@ function displayInjuries(playerData, rosterRow, injuriesContainer)
     {
       injuriesString += ", ";
     }
-    injuriesString += playerData.injuries[i];
+    injuriesString += thisPlayer.injuries[i];
   }
   injuriesContainer.innerHTML = injuriesString;
   
@@ -539,11 +540,11 @@ function getLevel(points)
   return i;
 }
 
-function getAssignedLevels(playerData)
+function getAssignedLevels(thisPlayer)
 {
-  var count = playerData.statIncreases[0] + playerData.statIncreases[1]
-      + playerData.statIncreases[2] + playerData.statIncreases[3]
-      + playerData.skills.length + playerData.skillsDouble.length;
+  var count = thisPlayer.statIncreases[0] + thisPlayer.statIncreases[1]
+      + thisPlayer.statIncreases[2] + thisPlayer.statIncreases[3]
+      + thisPlayer.skills.length + thisPlayer.skillsDouble.length;
   
   return count;
 }
@@ -601,10 +602,21 @@ function initialiseInjurySelection()
   }
 }
 
-function removePlayerFromRoster(player, rosterRow)
+function playerUndo(thisPlayer, rosterRow)
+{
+  activeTeam.gold += playerDefs[thisPlayer.playerTypeId].cost;
+  if (thisPlayer.jerseyNumber === activeTeam.lastJerseyNumber)
+  {
+    activeTeam.lastJerseyNumber--;
+  }
+  document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+  removePlayerFromRoster(thisPlayer, rosterRow);
+}
+
+function removePlayerFromRoster(thisPlayer, rosterRow)
 {
   /* Removes player without leaving a gap in the array.*/
-  activeTeam.players.splice(activeTeam.players.indexOf(player), 1);
+  activeTeam.players.splice(activeTeam.players.indexOf(thisPlayer), 1);
   setTeamValue();
   document.getElementById("roster").removeChild(rosterRow);
 }
@@ -625,7 +637,7 @@ function addRemoveInjuriesButton(playerData, rosterRow, outputCell, injuriesCont
   if (!playerData.isAvailable && !playerData.injuries.includes("Dead!"))
   {
     var removeInjuriesButton = document.createElement("button");
-    removeInjuriesButton.onclick = function() {removeInjuries(playerData, rosterRow, injuriesContainer)};
+    removeInjuriesButton.onclick = function() {removeInjuries(playerData, rosterRow, injuriesContainer, outputCell, removeInjuriesButton)};
     removeInjuriesButton.innerHTML = "Miss game";
     outputCell.appendChild(removeInjuriesButton);
   }
@@ -825,7 +837,7 @@ function addInjury(playerData, rosterRow, cells, injuriesContainer)
   displayStats(playerData, rosterRow, cells, injuriesContainer);
 }
 
-function removeInjuries(playerData, rosterRow, injuriesContainer)
+function removeInjuries(playerData, rosterRow, injuriesContainer, outputCell, removeInjuriesButton)
 {
   for (var injuryNo in playerData.injuries)
   {
@@ -842,6 +854,7 @@ function removeInjuries(playerData, rosterRow, injuriesContainer)
         playerData.injuries.splice(injuryNo, 1);
     }
   }
+  outputCell.removeChild(removeInjuriesButton);
   displayInjuries(playerData, rosterRow, injuriesContainer);
   setTeamValue();
 }

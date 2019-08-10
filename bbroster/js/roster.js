@@ -258,7 +258,7 @@ function addPlayerToRoster(playerType, playerData)
   var rosterRow = document.createElement("tr");
   roster.appendChild(rosterRow);
   var cells = [];
-  for (var i = 0; i < 11; i++)
+  for (var i = 0; i < 12; i++)
   {
     cells.push(document.createElement("td"));
     rosterRow.appendChild(cells[i]);
@@ -273,12 +273,10 @@ function addPlayerToRoster(playerType, playerData)
     activeTeam.players.push(thisPlayer);
     setTeamValue();
     
-    var playerUndoCell = document.createElement("td");
-    rosterRow.appendChild(playerUndoCell);
     var playerUndoButton = document.createElement("button");
     playerUndoButton.onclick = function() {playerUndo(thisPlayer, rosterRow);};
     playerUndoButton.innerHTML = "Undo";
-    playerUndoCell.appendChild(playerUndoButton);
+    cells[11].appendChild(playerUndoButton);
   }
   else
   {
@@ -497,22 +495,23 @@ function displayInjuries(thisPlayer, rosterRow, injuriesContainer)
         playerAvailable = false;
     }
     
-    thisPlayer.isAvailable = playerAvailable;
-    if (playerAvailable)
-    {
-      rosterRow.classList.remove("missNextGame");
-    }
-    else
-    {
-      rosterRow.classList.add("missNextGame");
-    }
-    
     if (i !== 0)
     {
       injuriesString += ", ";
     }
     injuriesString += thisPlayer.injuries[i];
   }
+  
+  thisPlayer.isAvailable = playerAvailable;
+  if (playerAvailable)
+  {
+    rosterRow.classList.remove("missNextGame");
+  }
+  else
+  {
+    rosterRow.classList.add("missNextGame");
+  }
+    
   injuriesContainer.innerHTML = injuriesString;
   
   return injuryPenalties;
@@ -785,7 +784,6 @@ function addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup)
 
 function selectInjury(playerData, rosterRow, cells, injuriesContainer)
 {
-  console.log(injuriesContainer);
   document.getElementById("injuryRollDisplay").innerHTML = injuryRollToString();
   
   var injuriesPopup = document.getElementById("injuriesPopup");

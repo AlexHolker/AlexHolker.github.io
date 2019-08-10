@@ -43,6 +43,9 @@ function saveTeam()
 function importTeam()
 {
   var JSONTeam = document.getElementById("importValue").value;
+  /* Protection from script injection attacks. */
+  JSONTeam.replace("<", "&lt;");
+  JSONTeam.replace(">", "&gt;");
   var thisTeam = JSON.parse(JSONTeam);
   
   var JSONAllTeams = localStorage.getItem("bbTeamRosters");

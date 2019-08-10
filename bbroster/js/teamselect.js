@@ -17,8 +17,13 @@ function populateTeamSelect()
     
     for (var teamNo in allTeams)
     {
-      addLoadTeamButton(allTeams[teamNo].name, teamNo);
+      addLoadTeamButton(allTeams[teamNo], teamNo);
     }
+  }
+  
+  if (noOfRosters === 0)
+  {
+    document.getElementById("rosterOpenContainer").innerHTML = "You don't have any saved rosters.";
   }
   
   /* Loop through all supported teams, creating HTML elements for each. */
@@ -29,12 +34,22 @@ function populateTeamSelect()
 }
 
 /* Add HTML to allow opening an existing roster. */
-function addLoadTeamButton(teamName, teamNo)
+function addLoadTeamButton(thisTeam, teamNo)
 {
+  console.log(thisTeam.colour);
+  var rosterOpen = document.createElement("div");
+  rosterOpen.classList.add("teamBox");
+  rosterOpen.style.background = thisTeam.colour + "60";
+  document.getElementById("rosterOpenContainer").appendChild(rosterOpen);
+  
   var loadTeamButton = document.createElement("button");
   loadTeamButton.onclick = function() {openExistingRoster(teamNo)};
-  loadTeamButton.innerHTML = "Open " + teamName + " roster.";
-  document.getElementById("teamSelectContainer").appendChild(loadTeamButton);
+  loadTeamButton.innerHTML = "Open " + thisTeam.name + " roster";
+  rosterOpen.appendChild(loadTeamButton);
+  
+  var loadTeamDescription = document.createElement("p");
+  loadTeamDescription.innerHTML = thisTeam.teamValue.toLocaleString() + " TV " + teamDefs[thisTeam.raceId].race + " team";
+  rosterOpen.appendChild(loadTeamDescription);
 }
 
 /* Add HTML to allow creation of a new roster. */
@@ -44,7 +59,7 @@ function addTeamSelect(teamId, newRosterNo)
   teamSelect.classList.add("clearfix");
   teamSelect.onmouseenter = function() {teamMouseEnter(teamId);};
   teamSelect.onmouseout = function() {teamMouseOut(teamId);};
-  document.getElementById("teamSelectContainer").appendChild(teamSelect);
+  document.getElementById("rosterCreateContainer").appendChild(teamSelect);
   
   var teamSelectCrest = document.createElement("img");
   teamSelectCrest.classList.add("floatLeft");

@@ -52,6 +52,7 @@
       <div id="addPlayerContainer"><!-- Buttons for each player type inserted here using JavaScript. --></div>
       <p id="addPlayerError" class="error"><!-- Error messages displayed here. --></p>
       <button onclick="saveTeam()">Save Roster</button>
+      <button onclick="exportRoster()">Export Roster</button>
       <button onclick="deleteRoster()">Delete Roster</button>
       <button onclick="goToSetup()">Set Up Formations</button>
       
@@ -119,8 +120,13 @@
           <div id="injuriesContainer"></div>
         </form>
         <button id="injurySelect">Select</button>
-              </div>
+      </div>
       
+      <div id="exportPopup" class="hidden popup">
+        <textarea id="exportValue" rows="20" cols="120"></textarea>
+        <button onclick="exportToClipboard()">Copy to Clipboard</button>
+        <button onclick="closeExport()">Cancel</button>
+      </div>
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

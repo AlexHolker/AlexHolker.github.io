@@ -78,6 +78,7 @@ function setTeamValue()
     }
   }
   
+  activeTeam.teamValue = teamValue;
   document.getElementById("teamValue").innerHTML = teamValue;
   return teamValue;
 }
@@ -92,6 +93,7 @@ function createNewTeam()
   activeTeam.players = [];
   activeTeam.lastJerseyNumber = 0;
   activeTeam.fanFactor = 0;
+  activeTeam.teamValue = 0;
   
   for (var staffType in teamDefs[raceId].staff)
   {
@@ -961,4 +963,24 @@ function displayPortrait()
   playerPortraitWorkaround.name = "src";
   playerPortraitWorkaround.value = "img/portraits/" + teamDefs[raceId].players[0].portrait;
   playerPortrait.appendChild(playerPortraitWorkaround);
+}
+
+function exportRoster()
+{
+  var exportText = JSON.stringify(activeTeam);
+  document.getElementById("exportValue").innerHTML = exportText;
+  document.getElementById("exportPopup").classList.remove("hidden");
+}
+
+function exportToClipboard()
+{
+  var exportValue = document.getElementById("exportValue");
+  exportValue.select();
+  document.execCommand("copy");
+  document.getElementById("exportPopup").classList.add("hidden");
+}
+
+function closeExport()
+{
+  document.getElementById("exportPopup").classList.add("hidden");
 }

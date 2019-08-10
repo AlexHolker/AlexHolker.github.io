@@ -106,10 +106,10 @@ var staffDefs = {
         "description":""},
  */
 var teamDefs = {
-    "empire":{"id":"empire", "race":"Empire", "crest":"empire-sml.png", "defaultName":"Reikland Reavers", "defaultColour":"0000FF", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
+    "empire":{"id":"empire", "race":"Empire", "crest":"empire-sml.png", "defaultName":"Reikland Reavers", "defaultColour":"#0000FF", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
         "players":[playerDefs.humanLineman, playerDefs.humanCatcher, playerDefs.humanThrower, playerDefs.humanBlitzer, playerDefs.ogreLoner],
         "description":"A Jack-of-all-Trades team capable of passing, running or bashing but excelling in none of these."},
-    "orcs":{"id":"orcs", "race":"Orcs", "crest":"greenskins-sml.png", "defaultName":"Orcland Raiders", "defaultColour":"DDD000", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
+    "orcs":{"id":"orcs", "race":"Orcs", "crest":"greenskins-sml.png", "defaultName":"Orcland Raiders", "defaultColour":"#DDD000", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
         "players":[playerDefs.orcLineman, playerDefs.orcThrower, playerDefs.orcBlocker, playerDefs.orcBlitzer, playerDefs.goblin, playerDefs.trollLoner],
         "description":"A bash-heavy team that relies on running the ball up the pitch to score."},
     /*"woodElves":{"id":"woodElves", "race":"Wood Elves", "defaultName":"Athelorn Avengers", "defaultColour":"9ACD32", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],

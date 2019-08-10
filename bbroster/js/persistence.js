@@ -39,3 +39,17 @@ function saveTeam()
   JSONAllTeams = JSON.stringify(allTeams);
   localStorage.setItem("bbTeamRosters", JSONAllTeams);
 }
+
+function importTeam()
+{
+  var JSONTeam = document.getElementById("importValue").value;
+  var thisTeam = JSON.parse(JSONTeam);
+  
+  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
+  var allTeams = JSON.parse(JSONAllTeams);
+  allTeams.push(thisTeam);
+  JSONAllTeams = JSON.stringify(allTeams);
+  localStorage.setItem("bbTeamRosters", JSONAllTeams);
+  addLoadTeamButton(thisTeam, allTeams.length-1);
+  document.getElementById("importValue").value = "";
+}

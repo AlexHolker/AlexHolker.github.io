@@ -28,9 +28,22 @@
       </div>
     </header>
     <main>
-      <div id="teamSelectContainer"><!-- Buttons to select existing or new rosters inserted using JavaScript. --></div>
+      <section>
+        <h2>Open Roster</h2>
+        <div id="rosterOpenContainer"><!-- Buttons to select existing inserted using JavaScript. --></div>
+      </section>
+      <section>
+        <h2>Create Roster</h2>
+        <div id="rosterCreateContainer"><!-- Buttons to create new rosters inserted using JavaScript. --></div>
       <!-- Empire faction crest https://totalwarwarhammer.gamepedia.com/File:Empire.png
            Orc faction crest https://totalwarwarhammer.gamepedia.com/File:Greenskins.png -->
+      </section>
+      <section>
+        <h2>Import Roster</h2>
+        <p>Paste export data here to add it to your rosters.</p>
+        <textarea id="importValue" rows="4" cols="120"></textarea>
+        <button id="importButton" onclick="importTeam()">Import</button>
+      </section>
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

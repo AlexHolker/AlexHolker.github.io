@@ -3,6 +3,7 @@ var selectedPlayer = null;
 var selectedPlayerDisplay = null;
 var isOffense = true;
 
+/* Perform initial setup for setup.html. */
 function initialiseSetup()
 {
   var rosterNo = Number.parseInt(localStorage.getItem("bbRosterNo"));
@@ -25,6 +26,7 @@ function initialiseSetup()
   }
 }
 
+/* Populate pitch containers with the appropiate number of squares. */
 function createPitch()
 {
   var pitchLeft = document.getElementById("pitchLeft");
@@ -54,6 +56,7 @@ function createPitch()
     }
   }
   
+  /* Add onclick eventListener that does not call function if child element is clicked. */
   document.getElementById("reserves").addEventListener("click", function(e) {e = window.event || e; 
     if(this === e.target) {
         clickSquare(this);
@@ -69,6 +72,7 @@ function createCell(id, parent)
   parent.appendChild(cell);
 }
 
+/* Create HTML elements to display player on pitch. */
 function createPlayer(playerNum)
 {
   var thisPlayer = activeTeam.players[playerNum];
@@ -98,12 +102,16 @@ function placePlayer(thisPlayer, playerDisplay)
   }
 }
 
+/* Called when user clicks on any player. Stores currently selected player for
+ * future use. */
 function clickPlayer(thisPlayer, playerDisplay)
 {
   selectedPlayer = thisPlayer;
   selectedPlayerDisplay = playerDisplay;
 }
 
+/* Called when user clicks on any cell. If there is a selected player and the
+ *  cell can hold a player, move the player to that cell. */
 function clickSquare(cell)
 {
   console.log("Clicked Square: " + cell.id);
@@ -146,6 +154,7 @@ function switchSetup()
   }
 }
 
+/* Saves the current roster then sends browser to main roster page. */
 function goToRoster()
 {
   saveTeam();

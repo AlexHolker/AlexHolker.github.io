@@ -1,11 +1,13 @@
-//var allTeams;
-
+/* Store variables specifying which roster to open, then redirect to roster
+ * page. */
 function openExistingRoster(rosterNo)
 {
   localStorage.setItem("bbRosterNo", rosterNo);
   window.location.href = "roster.html";
 }
 
+/* Store variables specifying which roster to create, then redirect to roster
+ * page. */
 function createNewRoster(raceId, newRosterNo)
 {
   localStorage.setItem("bbRosterNo", newRosterNo);
@@ -13,6 +15,8 @@ function createNewRoster(raceId, newRosterNo)
   window.location.href = "roster.html";
 }
 
+/* Load rosters from localStorage, remove current roster, save rosters to
+ * localStorage, then redirect to homepage. */
 function deleteRoster()
 {
   var JSONAllTeams = localStorage.getItem("bbTeamRosters");
@@ -24,6 +28,8 @@ function deleteRoster()
   window.location.href = "index.html";
 }
 
+/* Load rosters from localStorage, replace current roster with working copy,
+ * save rosters back to localStorage. */
 function saveTeam()
 {
   var rosterNo = Number.parseInt(localStorage.getItem("bbRosterNo"));

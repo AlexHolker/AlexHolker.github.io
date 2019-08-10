@@ -14,19 +14,23 @@
     <script src="js/teamselect.js"></script>
     <link rel="stylesheet" type="text/css" href="css/web.css">
   </head>
-  <body onload="populateTeamSelect()">
+  <body id="homepage" onload="populateTeamSelect()">
     <header>
       <div id="heroImage" class="pitchBackground">
-        <object id="empirePortrait" type="image/svg+xml" data="img/human00.svg" width="378" height="432">
-          <param id="empirePortraitWorkaround" name="src" value="img/human00.svg">
-        </object>
-        <object id="orcsPortrait" type="image/svg+xml" data="img/orc00.svg" width="630" height="390">
-          <param id="orcsPortraitWorkaround" name="src" value="img/orc00.svg">
-        </object>
+        <div id="heroImagePortraitContainer">
+          <object id="empirePortrait" type="image/svg+xml" data="img/portraits/human00.svg" width="378" height="432">
+            <param id="empirePortraitWorkaround" name="src" value="img/portraits/human00.svg">
+          </object>
+          <object id="orcsPortrait" type="image/svg+xml" data="img/portraits/orc00.svg" width="630" height="390">
+            <param id="orcsPortraitWorkaround" name="src" value="img/portraits/orc00.svg">
+          </object>
+        </div>
       </div>
     </header>
     <main>
-      <div id="teamSelectContainer"></div>
+      <div id="teamSelectContainer"><!-- Buttons to select existing or new rosters inserted using JavaScript. --></div>
+      <!-- Empire faction crest https://totalwarwarhammer.gamepedia.com/File:Empire.png
+           Orc faction crest https://totalwarwarhammer.gamepedia.com/File:Greenskins.png -->
     </main>
     <footer>
       <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>

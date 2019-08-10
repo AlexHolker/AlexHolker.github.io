@@ -3,16 +3,30 @@ main {
   margin: auto;
 }
 
+#homepage {
+  background-color: olivedrab;
+}
+
 .button {
   cursor: pointer;
 }
 
+#heroImage {
+  background-color: white;
+  text-align: center;
+  width: 100%;
+}
+
+#heroImagePortraitContainer {
+  display: inline-block;
+}
+
 .empireBase {
-  background-color: blue;
+  background-color: blue !important;
 }
 
 .orcsBase {
-  background-color: yellow;
+  background-color: yellow !important;
 }
 
 .pitchBackground {
@@ -31,7 +45,8 @@ main {
   color: darkgray;
 }
 
-.error {
+.error,
+.injuries {
   color: red;
 }
 
@@ -69,8 +84,14 @@ main {
   display: block;
 }
 
+.floatLeft {
+  float: left;
+  padding-right: 5px;
+}
+
 .floatRight {
   float: right;
+  padding-left: 5px;
 }
 
 .clearfix::after {
@@ -79,7 +100,8 @@ main {
   display: table;
 }
 
-.pitchSection, touchdownRow {
+.pitchSection,
+#touchdownZone {
   display: inline-block;
   border: solid 1px white;
 }

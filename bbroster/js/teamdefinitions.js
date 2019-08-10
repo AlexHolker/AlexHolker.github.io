@@ -1,4 +1,5 @@
-/* Template for new player definitions:
+/* Definitions for all supported player types.
+ * Template for new player definitions:
     "":{"id":"", "race":"", "name":"", "max":16, "cost":0000,
         "MA":, "ST":, "AG":, "AV":, "skills":[""], "Normal":["G","A","S","P"], "Double":["G","A","S","P"], "Unavailable": ["M"]},
 */
@@ -88,6 +89,7 @@ var playerDefs = {
     "woodElfWardancer":{"id":"woodElfWardancer", "race":"elf", "name":"Wardancer", "max":2, "cost":120000,
         "MA":8, "ST":3, "AG":4, "AV":7, "skills":["Block", "Dodge", "Leap"], "Normal":["G","A"], "Double":["S","P"], "Unavailable": ["M"]}};
 
+/* Staff type definitions. */
 var staffDefs = {
     "coach":{"staffId":"coach", "name":"Assistant Coach", "namePlural":"Assistant Coaches", "cost":10000, "max":99},
     "cheerleader":{"staffId":"cheerleader", "name":"Cheerleader", "namePlural":"Cheerleaders", "cost":10000, "max":99},
@@ -97,16 +99,17 @@ var staffDefs = {
     "reroll60k":{"staffId":"reroll60k", "name":"Team Re-roll", "namePlural":"Team Re-rolls", "cost":60000, "max":8},
     "reroll70k":{"staffId":"reroll70k", "name":"Team Re-roll", "namePlural":"Team Re-rolls", "cost":70000, "max":8}};
 
-/* Template for new team definitions:
+/* Definitions for all supported teams.
+ * Template for new team definitions:
     "":{"id":"", "race":"", "defaultName":"", "defaultColour":"", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
         "players":[playerDefs.],
         "description":""},
  */
 var teamDefs = {
-    "empire":{"id":"empire", "race":"Empire", "defaultName":"Reikland Reavers", "defaultColour":"0000FF", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
+    "empire":{"id":"empire", "race":"Empire", "crest":"empire-sml.png", "defaultName":"Reikland Reavers", "defaultColour":"0000FF", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],
         "players":[playerDefs.humanLineman, playerDefs.humanCatcher, playerDefs.humanThrower, playerDefs.humanBlitzer, playerDefs.ogreLoner],
         "description":"A Jack-of-all-Trades team capable of passing, running or bashing but excelling in none of these."},
-    "orcs":{"id":"orcs", "race":"Orcs", "defaultName":"Orcland Raiders", "defaultColour":"DDD000", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
+    "orcs":{"id":"orcs", "race":"Orcs", "crest":"greenskins-sml.png", "defaultName":"Orcland Raiders", "defaultColour":"DDD000", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll60k],
         "players":[playerDefs.orcLineman, playerDefs.orcThrower, playerDefs.orcBlocker, playerDefs.orcBlitzer, playerDefs.goblin, playerDefs.trollLoner],
         "description":"A bash-heavy team that relies on running the ball up the pitch to score."},
     /*"woodElves":{"id":"woodElves", "race":"Wood Elves", "defaultName":"Athelorn Avengers", "defaultColour":"9ACD32", "staff":[staffDefs.coach, staffDefs.cheerleader, staffDefs.apothecary, staffDefs.reroll50k],

@@ -22,9 +22,11 @@
       <a href="index.html">Return to Team Selection</a>
     </nav>
     <main>
+      <!-- clearfix forces container to wrap correctly, removes float. -->
       <div class="clearfix">
         <div id="playerPortraitContainer" class="floatRight">
           <h3>Team Colour: <input id="colourPicker" class="jscolor" onchange="storeColour(this.jscolor)"></h3>
+          <!-- Player portrait inserted here using JavaScript. -->
         </div>
         <h2 id="rosterTitle"><input id="rosterTitleName" type="text" oninput="updateTeamName(this.value)"><span id="rosterTitleRace"> - Race</span></h2>
         <h3>Treasury: <span id="rosterGold"></span> GP <button onclick="selectUpdateTreasury()">Update Treasury</button></h3>
@@ -45,20 +47,22 @@
           <th>Skills</th>
           <th><div class="tooltipParent">SPP<div class="tooltip">Star Player Points</div></div></th>
         </tr>
+        <!-- New player rows inserted here using JavaScript as they are added to the roster. -->
       </table>
-      <div id="addPlayerContainer"></div>
-      <p id="addPlayerError" class="error"></p>
+      <div id="addPlayerContainer"><!-- Buttons for each player type inserted here using JavaScript. --></div>
+      <p id="addPlayerError" class="error"><!-- Error messages displayed here. --></p>
       <button onclick="saveTeam()">Save Roster</button>
       <button onclick="deleteRoster()">Delete Roster</button>
       <button onclick="goToSetup()">Set Up Formations</button>
       
-      <!-- Popups for various roster features. -->
+      <!-- Popup to add gold to treasury or correct errors. -->
       <div id="treasuryPopup" class="hidden popup">
         <input id="updateTreasuryValue" type="number" step="10000">
         <button onclick="updateTreasury()">Update Treasury</button>
         <p id="updateTreasuryError" class="error"></p>
       </div>
       
+      <!-- Popup to buy Fan Factor at the start of a season or update Fan Factor after games. -->
       <div id="fanFactorPopup" class="hidden popup">
         <input id="updateFanFactorValue" type="number">
         <button onclick="buyFanFactor()">Buy Fan Factor</button>
@@ -66,13 +70,16 @@
         <p id="updateFanFactorError" class="error"></p>
       </div>
       
+      <!-- Popup to update Star Player Points after games. -->
       <div id="SPPPopup" class="hidden popup">
         <input id="addSPPValue" type="number" min="0">
         <button id="addSPPButton">Add SPP</button>
       </div>
       
+      <!-- Popup to level up players. -->
       <div id="skillsPopup" class="hidden popup">
-        <h4 id="improvementRollDisplay">PLACEHOLDER</h4>
+        <h4>Improvement Roll</h4>
+        <p id="improvementRollDisplay"></p>
         <form id="skillsForm">
           <h3>Stat Increases</h3>
           <span id="skillsMAContainer">
@@ -95,11 +102,24 @@
           <div id="skillsContainer"></div>
           <h3>Doubles Skills</h3>
           <div id="skillsDoublesContainer"></div>
-          <div id="skillsUnavailableContainer" class="hidden"></div>
+          <div id="skillsUnavailableContainer" class="hidden">
+            <!-- Container to hide skill categories while not selectable without deleting them.
+            Skill radio buttons and labels inserted using JavaScript. -->
+          </div>
         </form>
         <button id="skillSelect">Select</button>
         <p id="skillSelectError" class="error"></p>
       </div>
+      
+      <div id="injuriesPopup" class="hidden popup">
+        <h4>Casualty Roll</h4>
+        <p id="injuryRollDisplay"></p>
+        <form id="injuriesForm">
+          <h3>Injuries</h3>
+          <div id="injuriesContainer"></div>
+        </form>
+        <button id="injurySelect">Select</button>
+              </div>
       
     </main>
     <footer>

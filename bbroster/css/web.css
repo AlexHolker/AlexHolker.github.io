@@ -1,3 +1,12 @@
+body {
+  margin: 0px;
+}
+
+nav,
+footer {
+  margin: 10px 50px;
+}
+
 main {
   max-width: 1200px;
   margin: auto;

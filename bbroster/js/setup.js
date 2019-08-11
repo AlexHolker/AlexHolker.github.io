@@ -76,18 +76,25 @@ function createCell(id, parent)
 function createPlayer(playerNum)
 {
   var thisPlayer = activeTeam.players[playerNum];
-  var playerDisplay = document.createElement("div");
-  playerDisplay.id = "player" + playerNum;
-  playerDisplay.className = "jerseyNumber tooltipParent";
-  playerDisplay.style.background = "url('img/setup/" + thisPlayer.playerTypeId + ".gif') no-repeat center";
-  playerDisplay.innerHTML = ("0" + thisPlayer.jerseyNumber).slice(-2);
-  playerDisplay.onclick = function() {clickPlayer(thisPlayer, playerDisplay);};
-  placePlayer(thisPlayer, playerDisplay);
-  
-  var playerTooltip = document.createElement("div");
-  playerTooltip.innerHTML = thisPlayer.playerName + " - " + playerDefs[thisPlayer.playerTypeId].name;
-  playerTooltip.className = "tooltip";
-  playerDisplay.appendChild(playerTooltip);
+  if (thisPlayer.isAvailable)
+  {
+    var playerDisplay = document.createElement("div");
+    playerDisplay.id = "player" + playerNum;
+    playerDisplay.className = "jerseyNumber tooltipParent";
+    playerDisplay.style.background = "url('img/setup/" + thisPlayer.playerTypeId + ".gif') no-repeat center";
+    playerDisplay.innerHTML = ("0" + thisPlayer.jerseyNumber).slice(-2);
+    playerDisplay.onclick = function() {clickPlayer(thisPlayer, playerDisplay);};
+    placePlayer(thisPlayer, playerDisplay);
+    
+    var playerTooltip = document.createElement("div");
+    playerTooltip.innerHTML = thisPlayer.playerName + " - " + playerDefs[thisPlayer.playerTypeId].name;
+    playerTooltip.className = "tooltip";
+    playerDisplay.appendChild(playerTooltip);
+  }
+  else
+  {
+    thisPlayer.position = ["reserves", "reserves"];
+  }
 }
 
 function placePlayer(thisPlayer, playerDisplay)

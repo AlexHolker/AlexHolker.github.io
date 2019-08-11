@@ -564,18 +564,22 @@ function initialiseSkillSelection()
     
     for (var skill in skillDefs[category].skills)
     {
+      var skillContainer = document.createElement("span");
+      skillContainer.classList.add("noSplit");
+      categoryContainer.appendChild(skillContainer);
+      
       var skillName = skillDefs[category].skills[skill];
       var radioButton = document.createElement("input");
       radioButton.id = "skillsForm" + skillName.replace(/\s+/g, '');
       radioButton.type = "radio";
       radioButton.name = "skillRadio";
       radioButton.value = skillName;
-      categoryContainer.appendChild(radioButton);
+      skillContainer.appendChild(radioButton);
       
       var radioLabel = document.createElement("label");
       radioLabel.setAttribute("for", "skillsForm" + skillName.replace(/\s+/g, ''));
       radioLabel.innerHTML = skillName;
-      categoryContainer.appendChild(radioLabel);
+      skillContainer.appendChild(radioLabel);
     }
   }
 }
@@ -586,18 +590,22 @@ function initialiseInjurySelection()
   
   for (var injuryNo in injuryDefs)
   {
+    var injuryContainer = document.createElement("span");
+    injuryContainer.classList.add("noSplit");
+    injuriesContainer.appendChild(injuryContainer);
+      
     var injuryName = injuryDefs[injuryNo];
     var radioButton = document.createElement("input");
     radioButton.id = "injuriesForm" + injuryName.replace(/\s+/g, '');
     radioButton.type = "radio";
     radioButton.name = "injuryRadio";
     radioButton.value = injuryName;
-    injuriesContainer.appendChild(radioButton);
+    injuryContainer.appendChild(radioButton);
     
     var radioLabel = document.createElement("label");
     radioLabel.setAttribute("for", "injuriesForm" + injuryName.replace(/\s+/g, ''));
     radioLabel.innerHTML = injuryName;
-    injuriesContainer.appendChild(radioLabel);
+    injuryContainer.appendChild(radioLabel);
   }
 }
 
@@ -991,7 +999,7 @@ function exportToClipboard()
   document.getElementById("exportPopup").classList.add("hidden");
 }
 
-function closeExport()
+function closePopup(popupId)
 {
-  document.getElementById("exportPopup").classList.add("hidden");
+  document.getElementById(popupId).classList.add("hidden");
 }

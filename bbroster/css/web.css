@@ -122,6 +122,10 @@ main {
   display: table;
 }
 
+.noSplit {
+  display: inline-block;
+}
+
 .pitchSection,
 #touchdownZone {
   display: inline-block;

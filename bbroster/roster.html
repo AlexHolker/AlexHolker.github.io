@@ -61,6 +61,7 @@
       <div id="treasuryPopup" class="hidden popup">
         <input id="updateTreasuryValue" type="number" step="10000">
         <button onclick="updateTreasury()">Update Treasury</button>
+        <button onclick="closePopup('treasuryPopup')">Cancel</button>
         <p id="updateTreasuryError" class="error"></p>
       </div>
       
@@ -70,12 +71,14 @@
         <button onclick="buyFanFactor()">Buy Fan Factor</button>
         <button onclick="updateFanFactor()">Update Fan Factor</button>
         <p id="updateFanFactorError" class="error"></p>
+        <button onclick="closePopup('fanFactorPopup')">Cancel</button>
       </div>
       
       <!-- Popup to update Star Player Points after games. -->
       <div id="SPPPopup" class="hidden popup">
         <input id="addSPPValue" type="number" min="0">
         <button id="addSPPButton">Add SPP</button>
+        <button onclick="closePopup('SPPPopup')">Cancel</button>
       </div>
       
       <!-- Popup to level up players. -->
@@ -110,6 +113,7 @@
           </div>
         </form>
         <button id="skillSelect">Select</button>
+        <button onclick="closePopup('skillsPopup')">Cancel</button>
         <p id="skillSelectError" class="error"></p>
       </div>
       
@@ -121,12 +125,13 @@
           <div id="injuriesContainer"></div>
         </form>
         <button id="injurySelect">Select</button>
+        <button onclick="closePopup('injuriesPopup')">Cancel</button>
       </div>
       
       <div id="exportPopup" class="hidden popup">
         <textarea id="exportValue" rows="20" cols="120"></textarea>
         <button onclick="exportToClipboard()">Copy to Clipboard</button>
-        <button onclick="closeExport()">Cancel</button>
+        <button onclick="closePopup('exportPopup')">Cancel</button>
       </div>
     </main>
     <footer>

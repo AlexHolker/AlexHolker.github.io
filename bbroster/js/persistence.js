@@ -38,6 +38,7 @@ function saveTeam()
   allTeams[rosterNo] = activeTeam;
   JSONAllTeams = JSON.stringify(allTeams);
   localStorage.setItem("bbTeamRosters", JSONAllTeams);
+  changesSaved = true;
 }
 
 function importTeam()
@@ -55,4 +56,18 @@ function importTeam()
   localStorage.setItem("bbTeamRosters", JSONAllTeams);
   addLoadTeamButton(thisTeam, allTeams.length-1);
   document.getElementById("importValue").value = "";
+}
+
+/* Interrupts leaving roster.html or setup.html if changes to roster have not
+ * been saved.*/
+function closeWithoutSaving()
+{
+  if (changesSaved)
+  {
+    return null;
+  }
+  else
+  {
+    return "Leave without saving changes?";
+  }
 }

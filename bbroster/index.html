@@ -17,6 +17,7 @@
   <body id="homepage" onload="populateTeamSelect()">
     <header>
       <div id="heroImage" class="pitchBackground">
+        <h1 id="heroImageTitle">Blood Bowl Online Roster</h1>
         <div id="heroImagePortraitContainer">
           <object id="empirePortrait" type="image/svg+xml" data="img/portraits/human00.svg" width="378" height="432">
             <param id="empirePortraitWorkaround" name="src" value="img/portraits/human00.svg">
@@ -41,13 +42,18 @@
       <section>
         <h2>Import Roster</h2>
         <p>Paste export data here to add it to your rosters.</p>
-        <textarea id="importValue" rows="4" cols="120"></textarea>
+        <textarea id="importValue" rows="4" cols="120"></textarea><br>
         <button id="importButton" onclick="importTeam()">Import</button>
       </section>
     </main>
     <footer>
-      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
-      <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
+      <div id="footerContainer">
+        <details>
+          <summary>Legal</summary>
+          <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+          <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
+        </details>
+      </div>
     </footer>
   </body>
 </html>

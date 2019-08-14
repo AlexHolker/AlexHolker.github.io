@@ -2,6 +2,7 @@ var activeTeam;
 var selectedPlayer = null;
 var selectedPlayerDisplay = null;
 var isOffense = true;
+var changesSaved = true;
 
 /* Perform initial setup for setup.html. */
 function initialiseSetup()
@@ -122,7 +123,7 @@ function clickPlayer(thisPlayer, playerDisplay)
 function clickSquare(cell)
 {
   console.log("Clicked Square: " + cell.id);
-  if (selectedPlayer !== null && (!cell.hasChildNodes() || cell.id == "reserves"))
+  if (selectedPlayer !== null && (!cell.hasChildNodes() || cell.id === "reserves"))
   {
     cell.appendChild(selectedPlayerDisplay);
     if (isOffense)
@@ -133,6 +134,8 @@ function clickSquare(cell)
     {
       selectedPlayer.position[1] = cell.id;
     }
+    
+    changesSaved = false;
   }
 }
 

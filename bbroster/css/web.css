@@ -2,9 +2,13 @@ body {
   margin: 0px;
 }
 
-nav,
-footer {
-  margin: 10px 50px;
+header,
+#homepage {
+  background-color: olivedrab;
+}
+
+nav {
+  padding: 10px 50px;
 }
 
 main {
@@ -12,30 +16,83 @@ main {
   margin: auto;
 }
 
-#homepage {
-  background-color: olivedrab;
+footer {
+  background: #103010;
+  color: lightgrey;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0px 50px;
 }
 
-.button {
+#footerContainer {
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 3em;
+  font-variant: small-caps;
+  margin: 0px;
+  padding: 15px 0px;
+  width: 100%;
+  text-align: center;
+}
+
+h2,
+summary {
+  font: 1.5em "Times New Roman";
+  font-variant: small-caps;
+}
+
+h2>input {
+  margin-left: 20px;
+  font: 1em "Times New Roman";
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  border: outset 1px black;
+  border-radius: 4px;
+  font: 1em "Times New Roman", serif;
   cursor: pointer;
+  margin: 5px 5px;
+}
+
+#staffTable button,
+#playersTable button {
+  margin: 0px;
+}
+
+button:hover {
+  border: inset 1px black;
 }
 
 #heroImage {
+  position: relative;
   background-color: white;
   text-align: center;
   width: 100%;
 }
 
+#heroImageTitle {
+  position: absolute;
+  top: 0px;
+  z-index: 99;
+}
+
 #heroImagePortraitContainer {
+  padding-top: 20px;
   display: inline-block;
+  vertical-align: bottom;
 }
 
-.empireBase {
-  background-color: blue !important;
-}
-
-.orcsBase {
-  background-color: yellow !important;
+#teamRoster {
+  background-color: #ffffff80;
+  margin: 30px 0px;
+  padding: 4px;
 }
 
 .pitchBackground {
@@ -43,7 +100,9 @@ main {
 }
 
 .teamBox {
-  padding: 10px;
+  padding: 12px 40px;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .teamBox button {
@@ -72,38 +131,16 @@ main {
   color: red;
 }
 
-.tooltipParent {
-  position: relative;
+.alignCentre {
+  text-align: center;
+}
+
+.alignRight {
+  text-align: right;
 }
 
 .hidden {
   display: none;
-}
-
-.popup {
-  background: white;
-  border: solid 2px black;
-  padding: 20px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.tooltip {
-  color: black;
-  font: 14px serif;
-  text-shadow: none;
-  background-color: white;
-  padding: 2px;
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 20%;
-}
-
-.tooltipParent:hover>.tooltip {
-  display: block;
 }
 
 .floatLeft {
@@ -126,6 +163,41 @@ main {
   display: inline-block;
 }
 
+.tooltipParent {
+  position: relative;
+}
+
+.popup {
+  background: white;
+  border: solid 2px black;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tooltip {
+  border: 1px solid black;
+  border-radius: 0px 5px 5px;
+  color: black;
+  font: 14px serif;
+  text-align: center;
+  text-shadow: none;
+  background-color: white;
+  padding: 2px 4px;
+  display: none;
+  min-width: 100px;
+  position: absolute;
+  top: 100%;
+  left: 20%;
+}
+
+.tooltipParent:hover>.tooltip {
+  display: block;
+}
+
+/* CSS Rules for setup.html. */
 .pitchSection,
 #touchdownZone {
   display: inline-block;

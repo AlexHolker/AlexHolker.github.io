@@ -1,6 +1,7 @@
 var raceId;
 var activeTeam = {};
 var playerPortraitContent;
+var changesSaved = true;
 
 function initialiseRoster()
 {
@@ -108,48 +109,59 @@ function updateTeamName(teamName)
 {
   activeTeam.name = teamName;
   document.getElementById("pageTitle").innerHTML = activeTeam.name + " - Blood Bowl Online Roster";
+  
+  changesSaved = false;
 }
 
 function populateStaff()
 {
-  var staffContainer = document.getElementById("staffContainer");
+  var staffTable = document.getElementById("staffTable");
   
   for (var staffIterator in teamDefs[raceId].staff)
   {
-    addStaffDisplay(staffContainer, staffIterator);
+    addStaffDisplay(staffTable, staffIterator);
   }
 }
 
-function addStaffDisplay(staffContainer, staffIterator)
+function addStaffDisplay(staffTable, staffIterator)
 {
   var staffType = teamDefs[raceId].staff[staffIterator];
   
   var staffRow = document.createElement("tr");
-  staffContainer.appendChild(staffRow);
+  staffTable.appendChild(staffRow);
   var staffPosition = document.createElement("td");
   staffPosition.innerHTML = staffType.name;
   staffRow.appendChild(staffPosition);
   
   var staffQuantity = document.createElement("td");
   staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
+  staffQuantity.classList.add("alignCentre");
   staffRow.appendChild(staffQuantity);
   
   var staffButton = document.createElement("td");
   var staffUndo = document.createElement("td");
-  
   staffRow.appendChild(staffButton);
-  var addStaffButton = document.createElement("button");
-  addStaffButton.onclick = function() {hireStaff(staffUndo, staffQuantity, staffType);};
-  addStaffButton.innerHTML = "Hire " + staffType.name;
-  staffButton.appendChild(addStaffButton);
   staffRow.appendChild(staffUndo);
+  
+  var staffFireButton = document.createElement("button");
+  staffFireButton.onclick = function() {fireStaff(staffFireButton, staffQuantity, staffType);};
+  staffFireButton.id = staffType.staffId + "FireButton";
+  staffFireButton.innerHTML = "Fire";
+  if (activeTeam.staff[staffType.staffId] === 0)
+  {
+    staffFireButton.classList.add("hidden");
+  }
+  staffUndo.appendChild(staffFireButton);
+  
+  var staffAddButton = document.createElement("button");
+  staffAddButton.onclick = function() {hireStaff(staffUndo, staffFireButton, staffQuantity, staffType);};
+  staffAddButton.innerHTML = "Hire " + staffType.name;
+  staffButton.appendChild(staffAddButton);
 }
 
-function hireStaff(staffUndo, staffQuantity, staffType)
+function hireStaff(staffUndo, staffFireButton, staffQuantity, staffType)
 {
   var addPlayerError = document.getElementById("addPlayerError");
-  
-  console.log(staffType);
   
   if (activeTeam.gold < staffType.cost)
   {
@@ -164,11 +176,12 @@ function hireStaff(staffUndo, staffQuantity, staffType)
     var staffUndoButton = document.getElementById(staffType.staffId + "UndoButton");
     if (staffUndoButton === null)
     {
-      var resetQtyTo = activeTeam.staff[staffType.staffId];
       staffUndoButton = document.createElement("button");
+      /* staffUndoButton.value holds the number of staff to reset to.*/
+      staffUndoButton.value = activeTeam.staff[staffType.staffId];
       staffUndoButton.onclick = function()
       {
-        undoHireStaff(resetQtyTo, staffType);
+        undoHireStaff(staffUndoButton.value, staffType);
         staffUndo.removeChild(staffUndoButton);
         document.getElementById("rosterGold").innerHTML = activeTeam.gold;
         staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
@@ -183,7 +196,33 @@ function hireStaff(staffUndo, staffQuantity, staffType)
     setTeamValue();
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
     staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
+    staffFireButton.classList.remove("hidden");
     addPlayerError.innerHTML = "";
+    
+    changesSaved = false;
+  }
+}
+
+function fireStaff(staffFireButton, staffQuantity, staffType)
+{
+  if (0 < activeTeam.staff[staffType.staffId])
+  {
+    activeTeam.staff[staffType.staffId]--;
+    
+    staffQuantity.innerHTML = activeTeam.staff[staffType.staffId];
+    
+    if (activeTeam.staff[staffType.staffId] === 0)
+    {
+      staffFireButton.classList.add("hidden");
+    }
+    
+    var staffUndoButton = document.getElementById(staffType.staffId + "UndoButton");
+    if (staffUndoButton !== null)
+    {
+      staffUndoButton.value = activeTeam.staff[staffType.staffId];
+    }
+    
+    changesSaved = false;
   }
 }
 
@@ -204,18 +243,18 @@ function populateAddPlayerButtons()
   
   for (var playerType in teamDefs[raceId].players)
   {
-    addPlayerButton(addPlayerContainer, playerType);
+    playerAddButton(addPlayerContainer, playerType);
   }
 }
 
-function addPlayerButton(addPlayerContainer, playerType)
+function playerAddButton(addPlayerContainer, playerType)
 {
-  var addPlayerButton = document.createElement("button");
-  addPlayerButton.id = playerType.id + "Button";
-  addPlayerButton.onclick = function() {addIfNotFull(teamDefs[raceId].players[playerType]);};
-  addPlayerButton.innerHTML = "Recruit " + teamDefs[raceId].players[playerType].name;
+  var playerAddButton = document.createElement("button");
+  playerAddButton.id = playerType.id + "Button";
+  playerAddButton.onclick = function() {addIfNotFull(teamDefs[raceId].players[playerType]);};
+  playerAddButton.innerHTML = "Recruit " + teamDefs[raceId].players[playerType].name;
   
-  addPlayerContainer.appendChild(addPlayerButton);
+  addPlayerContainer.appendChild(playerAddButton);
 }
 
 function addIfNotFull(playerType)
@@ -223,7 +262,7 @@ function addIfNotFull(playerType)
   var positionTally = 0;
   for (var player in activeTeam.players)
   {
-    if (activeTeam.players[player].playerTypeId == playerType.id)
+    if (activeTeam.players[player].playerTypeId === playerType.id)
     {
       positionTally++;
     }
@@ -254,9 +293,9 @@ function addIfNotFull(playerType)
 
 function addPlayerToRoster(playerType, playerData)
 {
-  var roster = document.getElementById("roster");
+  var playersTable = document.getElementById("playersTable");
   var rosterRow = document.createElement("tr");
-  roster.appendChild(rosterRow);
+  playersTable.appendChild(rosterRow);
   var cells = [];
   for (var i = 0; i < 12; i++)
   {
@@ -277,6 +316,8 @@ function addPlayerToRoster(playerType, playerData)
     playerUndoButton.onclick = function() {playerUndo(thisPlayer, rosterRow);};
     playerUndoButton.innerHTML = "Undo";
     cells[11].appendChild(playerUndoButton);
+    
+    changesSaved = false;
   }
   else
   {
@@ -287,7 +328,10 @@ function addPlayerToRoster(playerType, playerData)
   var playerNameBox = document.createElement("input");
   playerNameBox.type = "text";
   playerNameBox.value = thisPlayer.playerName;
-  playerNameBox.oninput = function() {thisPlayer.playerName = playerNameBox.value;};
+  playerNameBox.oninput = function() {
+      thisPlayer.playerName = playerNameBox.value;
+      changesSaved = false;
+    };
   cells[1].appendChild(playerNameBox);
   
   cells[2].innerHTML = playerType.name;
@@ -299,9 +343,15 @@ function addPlayerToRoster(playerType, playerData)
   injuriesContainer.classList.add("injuries");
   cells[8].appendChild(injuriesContainer);
   
+  cells[3].classList.add("alignRight");
+  cells[4].classList.add("alignCentre");
+  cells[5].classList.add("alignCentre");
+  cells[6].classList.add("alignCentre");
+  cells[7].classList.add("alignCentre");
   displayStats(thisPlayer, rosterRow, cells, injuriesContainer);
   displaySkills(thisPlayer, skillsContainer);
   
+  cells[9].classList.add("alignCentre");
   cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
   
   var selectSPPButton = document.createElement("button");
@@ -314,10 +364,10 @@ function addPlayerToRoster(playerType, playerData)
   selectInjuryButton.innerHTML = "Add injury";
   cells[10].appendChild(selectInjuryButton);
   
-  var removePlayerButton = document.createElement("button");
-  removePlayerButton.onclick = function() {removePlayerFromRoster(thisPlayer, rosterRow);};
-  removePlayerButton.innerHTML = "Fire";
-  cells[10].appendChild(removePlayerButton);
+  var playerFireButton = document.createElement("button");
+  playerFireButton.onclick = function() {removePlayerFromRoster(thisPlayer, rosterRow);};
+  playerFireButton.innerHTML = "Fire";
+  cells[10].appendChild(playerFireButton);
   addRemoveInjuriesButton(thisPlayer, rosterRow, cells[11], injuriesContainer);
   addLevelUpButton(thisPlayer, rosterRow, cells);
 }
@@ -340,6 +390,8 @@ function addSPP(thisPlayer, rosterRow, cells)
     cells[9].innerHTML = SPPToString(thisPlayer.starPlayerPoints);
     
     addLevelUpButton(thisPlayer, rosterRow, cells);
+    
+    changesSaved = false;
   }
 }
 
@@ -625,7 +677,9 @@ function removePlayerFromRoster(thisPlayer, rosterRow)
   /* Removes player without leaving a gap in the array.*/
   activeTeam.players.splice(activeTeam.players.indexOf(thisPlayer), 1);
   setTeamValue();
-  document.getElementById("roster").removeChild(rosterRow);
+  document.getElementById("playersTable").removeChild(rosterRow);
+  
+  changesSaved = false;
 }
 
 function addLevelUpButton(playerData, rosterRow, cells)
@@ -635,7 +689,7 @@ function addLevelUpButton(playerData, rosterRow, cells)
     var levelUpButton = document.createElement("button");
     levelUpButton.onclick = function() {selectSkill(playerData, rosterRow, cells, levelUpButton);};
     levelUpButton.innerHTML = "Level Up!";
-    cells[10].appendChild(levelUpButton);
+    cells[11].appendChild(levelUpButton);
   }
 }
 
@@ -644,7 +698,7 @@ function addRemoveInjuriesButton(playerData, rosterRow, outputCell, injuriesCont
   if (!playerData.isAvailable && !playerData.injuries.includes("Dead!"))
   {
     var removeInjuriesButton = document.createElement("button");
-    removeInjuriesButton.onclick = function() {removeInjuries(playerData, rosterRow, injuriesContainer, outputCell, removeInjuriesButton)};
+    removeInjuriesButton.onclick = function() {removeInjuries(playerData, rosterRow, injuriesContainer, outputCell, removeInjuriesButton);};
     removeInjuriesButton.innerHTML = "Miss game";
     outputCell.appendChild(removeInjuriesButton);
   }
@@ -750,7 +804,6 @@ function addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup)
   }
   else
   {
-    cells[10].removeChild(levelUpButton);
     skillsPopup.classList.add("hidden");
     skillSelectError.innerHTML = "";
     var skillNumber = parseInt(skillName);
@@ -783,6 +836,12 @@ function addSkill(playerData, rosterRow, cells, levelUpButton, skillsPopup)
       }
       
       displaySkills(playerData, cells[8]);
+      
+      /* Remove Level Up button if all levels have been assigned. */
+      if (getLevel(playerData.starPlayerPoints) <= getAssignedLevels(playerData))
+      {
+        cells[11].removeChild(levelUpButton);
+      }
     }
     
     displayPlayerCost(playerType, playerData, cells[3]);
@@ -836,6 +895,8 @@ function addInjury(playerData, rosterRow, cells, injuriesContainer)
   {
     playerData.injuries.push(injuryName);
     playerData.injuries.sort();
+    
+    changesSaved = false;
   }
   
   document.getElementById("injuriesPopup").classList.add("hidden");
@@ -863,12 +924,16 @@ function removeInjuries(playerData, rosterRow, injuriesContainer, outputCell, re
   outputCell.removeChild(removeInjuriesButton);
   displayInjuries(playerData, rosterRow, injuriesContainer);
   setTeamValue();
+  
+  changesSaved = false;
 }
 
 function storeColour(picker)
 {
   activeTeam.colour = picker.toHEXString();
   playerPortraitContent.getElementById("teamColourFilterValues").setAttribute("values", "0 0 0 0 " + (picker.rgb[0]/255) + " 0 0 0 0 " + (picker.rgb[1]/255) + " 0 0 0 0 " + (picker.rgb[2]/255) + " 0 0 0 1 0");
+  
+  changesSaved = false;
 }
 
 /* Saves the current roster then sends browser to formation popup page. */
@@ -903,6 +968,8 @@ function updateTreasury()
     updateTreasuryError.innerHTML = "";
     
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
+    
+    changesSaved = false;
   }
 }
 
@@ -940,6 +1007,8 @@ function buyFanFactor()
     document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
     document.getElementById("rosterGold").innerHTML = activeTeam.gold;
     setTeamValue();
+    
+    changesSaved = false;
   }
 }
 
@@ -963,6 +1032,8 @@ function updateFanFactor()
     
     document.getElementById("fanFactor").innerHTML = activeTeam.fanFactor;
     setTeamValue();
+    
+    changesSaved = false;
   }
 }
 

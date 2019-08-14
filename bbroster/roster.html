@@ -18,12 +18,16 @@
     <link rel="stylesheet" type="text/css" href="css/web.css">
     <link rel="stylesheet" type="text/css" href="css/print.css">
   </head>
-  <body>
-    <nav>
-      <a href="index.html">Return to Team Selection</a>
-    </nav>
+  <body onbeforeunload="return closeWithoutSaving()">
+    <header>
+      <h1>Blood Bowl Online Roster</h1>
+      <nav>
+        <a href="index.html">Return to Team Selection</a>
+      </nav>
+    </header>
     <main>
       <!-- clearfix forces container to wrap correctly, removes float. -->
+      <section id="teamRoster">
       <div class="clearfix">
         <div id="playerPortraitContainer" class="floatRight">
           <h3>Team Colour: <input id="colourPicker" class="jscolor" onchange="storeColour(this.jscolor)"></h3>
@@ -33,9 +37,14 @@
         <h3>Treasury: <span id="rosterGold"></span> GP <button onclick="selectUpdateTreasury()">Update Treasury</button></h3>
         <h3>Team Value: <span id="teamValue"></span> GP</h3>
         <h3>Fan Factor: <span id="fanFactor"></span> x 10,000 <button onclick="selectUpdateFanFactor()">Update Fan Factor</button></h3>
-        <table id="staffContainer"></table>
+        <table id="staffTable">
+          <tr>
+            <th>Position</th>
+            <th>Qty</th>
+          </tr>
+        </table>
       </div>
-      <table id="roster">
+      <table id="playersTable">
         <tr>
           <th>#</th>
           <th>Name</th>
@@ -56,6 +65,7 @@
       <button onclick="exportRoster()">Export Roster</button>
       <button onclick="deleteRoster()">Delete Roster</button>
       <button onclick="goToSetup()">Set Up Formations</button>
+      </section>
       
       <!-- Popup to add gold to treasury or correct errors. -->
       <div id="treasuryPopup" class="hidden popup">
@@ -135,8 +145,13 @@
       </div>
     </main>
     <footer>
-      <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
-      <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
+      <div id="footerContainer">
+        <details>
+          <summary>Legal</summary>
+          <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
+          <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
+        </details>
+      </div>
     </footer>
     <script>
       initialiseRoster();

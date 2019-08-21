@@ -13,12 +13,13 @@
     <script src="js/teamdefinitions.js"></script>
     <script src="js/setup.js"></script>
     <link rel="stylesheet" type="text/css" href="css/web.css">
+    <link rel="stylesheet" type="text/css" href="css/print.css">
   </head>
   <body onload="initialiseSetup()" onbeforeunload="return closeWithoutSaving()">
     <header>
       <h1>Blood Bowl Online Roster</h1>
       <nav>
-        <a href="index.html">Return to Team Selection</a>
+        <a class="button" href="index.html">Return to Team Selection</a>
       </nav>
     </header>
     <main>
@@ -45,9 +46,15 @@
     <footer>
       <div id="footerContainer">
         <details>
+          <summary>About this site</summary>
+          <p>This website requires JavaScript to handle various logic and the use of local storage to store your rosters. It does not require cookies.</p>
+          <p>Your rosters will be saved to your computer, associated with a specific browser. If you want to transfer your rosters between browsers or devices, please use the import and export functions to convert a roster to plain text and back.</p>
+        </details>
+        <details>
           <summary>Legal</summary>
           <p>This website has been created as part of an assignment in an approved course of study for Curtin University and contains copyright material not created by the author. All copyright material used remains copyright of the respective owners and has been used here pursuant to Section 40 of the Copyright Act 1968 (Commonwealth of Australia). No part of this work may be reproduced without consent of the original copyright owners. See code comments for references.</p>
-          <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://guide.bloodbowl-game.com/">published online under license by Cyanide Studios.</a></p>
+          <p>All rules are the intellectual property of Games Workshop Limited, <a href="http://www.bloodbowl-game.com/files/BB_LRB6.pdf" target="_blank">as published online under license by Cyanide Studios.</a></p>
+          <p>Human Blood Bowl team sprites &copy; <a href="https://fumbbl.com/~nkelsch">Nick Kelsch</a> from <a href="https://fumbbl.com/help:LRB6HumanSetUp">Fumbbl.com</a>. Orc Blood Bowl team sprites &copy; <a href="https://fumbbl.com/~nkelsch">Nick Kelsch</a> from <a href="https://fumbbl.com/help:LRB6OrcSetUp">Fumbbl.com</a>. Used without permission.</p>
         </details>
       </div>
     </footer>

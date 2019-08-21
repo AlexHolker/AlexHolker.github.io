@@ -1,7 +1,28 @@
 @media print {
+  header,
   nav,
   footer,
   button {
     display: none;
+  }
+  
+  input {
+    border: none;
+  }
+  
+  .pitchSquare {
+    background: transparent;
+    border: dashed 1px black;
+  }
+  
+  .jerseyNumber {
+    color: black;
+    text-shadow: none;
+  }
+  
+  .pitchSection,
+  #touchdownZone {
+    background: transparent;
+    border: solid 1px black;
   }
 }

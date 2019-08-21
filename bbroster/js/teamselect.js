@@ -1,24 +1,32 @@
 /* Populates index.html with elements derived from teamDefinitions.js and localStorage.bbTeamRosters. */
 function populateTeamSelect()
 {
-  var JSONAllTeams = localStorage.getItem("bbTeamRosters");
   var noOfRosters = 0;
   
-  /* If new user, save new empty roster array. */
-  if (JSONAllTeams === null)
+  try
   {
-    localStorage.setItem("bbTeamRosters", "[]");
-  }
-  else
-  {
-    /* Loop through all existing teams, creating a button to access each roster. */
-    var allTeams = JSON.parse(JSONAllTeams);
-    noOfRosters = allTeams.length;
+    var JSONAllTeams = localStorage.getItem("bbTeamRosters");
     
-    for (var teamNo in allTeams)
+    /* If new user, save new empty roster array. */
+    if (JSONAllTeams === null)
     {
-      addLoadTeamButton(allTeams[teamNo], teamNo);
+      localStorage.setItem("bbTeamRosters", "[]");
     }
+    else
+    {
+      /* Loop through all existing teams, creating a button to access each roster. */
+      var allTeams = JSON.parse(JSONAllTeams);
+      noOfRosters = allTeams.length;
+      
+      for (var teamNo in allTeams)
+      {
+        addLoadTeamButton(allTeams[teamNo], teamNo);
+      }
+    }
+  }
+  catch (err)
+  {
+    alert("Roster storage cannot be accessed. This website requires the use of window.localStorage to manage rosters.");
   }
   
   if (noOfRosters === 0)
@@ -41,7 +49,7 @@ function addLoadTeamButton(thisTeam, teamNo)
   rosterOpen.style.background = thisTeam.colour + "80";
   
   rosterOpen.onmouseenter = function() {teamMouseEnter(thisTeam.raceId, thisTeam.colour);};
-  rosterOpen.onmouseout = function() {teamMouseOut(thisTeam.raceId);};
+  rosterOpen.onmouseleave = function() {teamMouseOut(thisTeam.raceId);};
   document.getElementById("rosterOpenContainer").appendChild(rosterOpen);
   
   var loadTeamButton = document.createElement("button");
@@ -70,7 +78,7 @@ function addTeamSelect(teamId, newRosterNo)
   var teamSelect = document.createElement("div");
   teamSelect.className = "raceBox clearfix";
   teamSelect.onmouseenter = function() {teamMouseEnter(teamId, teamDefs[teamId].defaultColour);};
-  teamSelect.onmouseout = function() {teamMouseOut(teamId);};
+  teamSelect.onmouseleave = function() {teamMouseOut(teamId);};
   document.getElementById("rosterCreateContainer").appendChild(teamSelect);
   
   var teamSelectCrest = document.createElement("img");

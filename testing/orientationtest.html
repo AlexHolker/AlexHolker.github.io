@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title id="pageTitle">Screen.orientation test page</title>
+    <meta charset="windows-1252">
+    <script>
+      var orientation = window.screen.orientation;
+      
+      orientation.onchange(function() {
+        document.getElementById("orientationDisplay").innerHTML = orientation.angle;
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Screen.orientation Test</h1>
+    <p>Angle: <span id="orientationDisplay"></span></p>
+  </body>
+</html>
